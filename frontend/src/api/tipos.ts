@@ -70,7 +70,7 @@ export interface Alerta {
 /** Elemento de GET /api/cargas */
 export interface CargaResiduo {
   id: number
-  /** null mientras no se registre la fecha real del pesaje */
+  /** Fecha del pesaje (AAAA-MM-DD); null si no se registró */
   fecha: string | null
   pesoKg: number
   tipoResiduo: string

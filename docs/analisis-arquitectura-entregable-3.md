@@ -196,7 +196,7 @@ erDiagram
         long id PK
         string nombre "Casa de Jenis"
         string ubicacion "Santa Marta"
-        int capacidadLitros "50 (diseño E2)"
+        int capacidadLitros "220 (revisado con FAO 2013)"
         datetime iniciadaEn
     }
     LECTURA {
@@ -866,9 +866,9 @@ Revisión de fuentes hecha el 25 de octubre de 2026. El detalle por dato (valor,
 | Normativa local | — | PGIRS de Santa Marta: Decreto 070 de 2023, modificado por Decreto 461 de 2023 | Gaceta Distrital, edición 091 |
 | Residuos desviados | ≈ 117 kg/mes | Igual | Medición propia (5 días), proyección lineal |
 | Temperatura ambiente de Santa Marta | 30 °C | **Sigue sin fuente** | Medir con termómetro o citar normales del IDEAM |
-| Fechas del pesaje | — | **Pendiente** | Notas de campo |
+| Fechas del pesaje | — | 17, 19, 20, 21 y 22 de octubre de 2026 | Notas de campo del equipo |
 
-**Hallazgo de diseño:** con el método de la FAO (ejemplo 8, p. 64, densidad compactada de 400 kg/m³), 3,9 kg/día llenan un tanque de 50 L en unos 5 días. El contenedor conceptual de E2 queda corto; ver referencias.md.
+**Cambio de diseño:** con el método de la FAO (ejemplo 8, p. 64, densidad compactada de 400 kg/m³), 3,9 kg/día llenan el tanque de 50 L de E2 en unos 5 días. El equipo cambia el contenedor conceptual a un bidón de 220 L, que se llena en unos 22 días, dentro de las 2 o 3 semanas que sugiere la FAO; ver referencias.md.
 
 **Cómo dejar el dashboard preparado para la trazabilidad:**
 

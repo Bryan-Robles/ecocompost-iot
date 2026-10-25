@@ -4,30 +4,35 @@
   "cargas": [
     {
       "dia": 1,
+      "fecha": "2026-10-17",
       "diaSemana": "sábado",
       "pesoKg": 3.8,
       "tipo": "Cáscaras de plátano, papa y yuca; residuos de café"
     },
     {
       "dia": 2,
+      "fecha": "2026-10-19",
       "diaSemana": "lunes",
       "pesoKg": 4.1,
       "tipo": "Restos de verduras, cáscaras de tomate y cebolla, frutas de jugo"
     },
     {
       "dia": 3,
+      "fecha": "2026-10-20",
       "diaSemana": "martes",
       "pesoKg": 3.5,
       "tipo": "Cáscaras de huevo, cítricos, restos de ahogao, tallos"
     },
     {
       "dia": 4,
+      "fecha": "2026-10-21",
       "diaSemana": "miércoles",
       "pesoKg": 4.2,
       "tipo": "Cáscaras de plátano verde, auyama, corteza de frutas"
     },
     {
       "dia": 5,
+      "fecha": "2026-10-22",
       "diaSemana": "jueves",
       "pesoKg": 3.9,
       "tipo": "Cáscaras de zanahoria y papa, ensaladas crudas"
