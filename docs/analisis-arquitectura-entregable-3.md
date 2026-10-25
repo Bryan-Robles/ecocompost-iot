@@ -8,6 +8,8 @@
 
 **Fuentes internas usadas como verdad:** `docs/fuentes/Trabajo final - Biodigestor educativo.pdf` (guía de la docente), `docs/fuentes/Entregable_1.pdf` y `docs/fuentes/Entregable_2.pdf`.
 
+> **Actualización (25 de octubre de 2026):** los umbrales y las recomendaciones ya tienen fuente verificada (FAO, 2013) o están declarados como criterio del equipo. El detalle por dato, con página, está en [referencias.md](referencias.md). Las secciones 4.2, 4.3 y 11 reflejan los valores nuevos.
+
 **Convención de este documento.** Todo valor marcado con ⚠️ **SUPUESTO** es una propuesta del equipo que aún no tiene fuente citada. La guía exige que *"los rangos de operación, los valores de alerta y las estimaciones de impacto deben venir de fuentes citadas y de mediciones propias"*; por eso esos valores se tratan como configuración reemplazable, nunca como verdad fija del código.
 
 ---
@@ -238,7 +240,7 @@ erDiagram
         string clave PK "fao-2013"
         string referencia "texto APA o IEEE"
         string url
-        enum estado "VERIFICADA | PENDIENTE"
+        enum estado "VERIFICADA | CRITERIO_EQUIPO | PENDIENTE"
     }
 ```
 
@@ -454,23 +456,24 @@ Formato: contexto → opciones → decisión → consecuencias. Criterio dominan
 3. **Tres niveles** en lugar de dos para cubrir los huecos entre rangos de la propuesta: `NORMAL`, `ATENCION` (ámbar #F9A825), `CRITICO` (rojo #C62828).
 4. **Límites explícitos**: inclusivo en el rango normal (`45,0 °C` es normal).
 
-### 4.2 Configuración propuesta (⚠️ SUPUESTO: valores del equipo pendientes de fuente)
+### 4.2 Configuración (respaldo en referencias.md)
 
 ```yaml
 ecocompost:
   diagnostico:
     temperatura:
-      normal-min: 45.0        # fase termófila
-      normal-max: 65.0
-      critica-alta: 65.0      # > 65 → mezclar y agregar material marrón
-      critica-baja-fase-activa: 40.0   # < 40 en fase activa → revisar aireación
-      fuente: PENDIENTE
+      normal-min: 45.0        # inicio de fase termófila (FAO 2013, p. 23)
+      normal-max: 65.0        # máximo sin calentamiento externo (p. 28)
+      critica-alta: 70.0      # Tabla 3: > 70 °C (p. 28)
+      critica-baja-fase-activa: 35.0   # Tabla 3: < 35 °C (p. 28)
+      enfriamiento-prematuro-antes-de: 14d   # criterio del equipo: Tabla 7 (p. 31)
+      fuente: FAO-2013
     humedad:
-      normal-min: 50.0
+      normal-min: 45.0        # Tabla 2: rango ideal 45–60 % (p. 27)
       normal-max: 60.0
-      critica-baja: 40.0      # < 40 → agregar agua y mezclar
-      critica-alta: 65.0      # > 65 → agregar material seco, revisar lixiviados
-      fuente: PENDIENTE
+      critica-baja: 40.0      # criterio del equipo: margen de aviso
+      critica-alta: 65.0      # criterio del equipo: margen de aviso
+      fuente: FAO-2013
     fase:
       umbral-termofila: 45.0
       margen-sobre-ambiente: 5.0      # T ≤ ambiente + margen → candidata a maduración
@@ -490,23 +493,26 @@ Mapeado a una clase `@ConfigurationProperties(prefix = "ecocompost.diagnostico")
 
 | Condición | Estado | Acción recomendada (texto para usuario) |
 |---|---|---|
-| H < 40 | CRITICO | "La mezcla está muy seca. 1) Agregar agua poco a poco. 2) Mezclar con la pala. 3) Revisar en 12 horas." |
-| 40 ≤ H < 50 | ATENCION | "La mezcla se está secando. Revisar mañana." |
-| 50 ≤ H ≤ 60 | NORMAL | "No se requiere acción." |
-| 60 < H ≤ 65 | ATENCION | "La mezcla está algo húmeda. Agregar material seco si sigue subiendo." |
-| H > 65 | CRITICO | "Demasiada humedad. 1) Agregar material seco (hojas, cartón sin tinta). 2) Mezclar. 3) Vaciar la bandeja de lixiviados." |
+| H < 40 | CRITICO | Agregar agua o restos de fruta y verdura, mezclar, prueba del puño (Tabla 2 y p. 56) |
+| 40 ≤ H < 45 | ATENCION | Fuera del rango ideal de la FAO; mismas acciones |
+| 45 ≤ H ≤ 60 | NORMAL | "No se requiere acción." |
+| 60 < H ≤ 65 | ATENCION | Fuera del rango ideal de la FAO; mezclar y agregar material seco |
+| H > 65 | CRITICO | Mezclar, agregar hojas secas, paja o aserrín, vaciar la bandeja de lixiviados (Tabla 2) |
+
+Los textos exactos para el usuario están en `frontend/src/contenido/acciones.ts`.
 
 **Temperatura (depende de la fase):**
 
 | Condición | Estado | Acción |
 |---|---|---|
-| T > 65 | CRITICO | "Muy caliente. Mezclar y agregar material marrón." |
+| T > 70 | CRITICO | Mezclar, revisar humedad y agregar material de lenta degradación (Tabla 3) |
+| 65 < T ≤ 70 | ATENCION | Por encima del máximo esperado sin intervención (p. 28) |
 | 45 ≤ T ≤ 65 | NORMAL | — |
-| 40 ≤ T < 45 | ATENCION solo si la fase es TERMOFILA | "Se está enfriando antes de tiempo. Revisar en 12 h." |
-| T < 40 y fase TERMOFILA y enfriamiento prematuro | CRITICO | "Revisar aireación: mezclar y verificar que entra aire." |
+| 35 ≤ T < 45 en TERMOFILA | ATENCION | Revisar humedad y cantidad de material (Tabla 3) |
+| T < 35 en TERMOFILA y antes de 14 días desde la carga | CRITICO | Mismas acciones; enfriamiento prematuro |
 | T < 45 en MESOFILA, ENFRIAMIENTO o MADURACION | NORMAL | Comportamiento esperado de la fase |
 
-> ⚠️ **Ambigüedad detectada en la regla "< 40 °C en fase activa".** El enfriamiento **natural** después de la fase termófila también baja de 40 °C. Sin un criterio adicional, el sistema alertaría en cada ciclo sano. Propuesta: considerar **prematuro** el enfriamiento si ocurre antes de `N` días desde la última carga (`N` pendiente de literatura). Mientras no haya fuente, documentar el supuesto y mostrarlo en la UI como "regla en validación".
+> **Enfriamiento natural frente a prematuro.** El enfriamiento natural después de la fase termófila también baja de 40 °C (FAO, 2013, p. 24), así que una temperatura baja por sí sola no es un problema. El sistema la considera **prematura** si ocurre antes de 14 días desde la última carga. Es un criterio del equipo derivado de la Tabla 7 (fase termofílica de 2 a 5 semanas, p. 31); la FAO no da un umbral explícito.
 
 ### 4.4 Detección de fase (máquina de estados)
 
@@ -616,7 +622,7 @@ Wireframes existentes (E2, escritorio): (1) Estado actual, (2) Historial y madur
 2. Cómo depositar: con guantes y tapabocas (R5); tapa siempre cerrada (R3).
 3. Qué significa cada color (verde, ámbar, rojo) y qué hacer.
 4. Cómo vaciar la bandeja de lixiviados (R2).
-5. Cuándo el abono podría estar listo (fase de maduración) y cómo lo usa el esposo. ⚠️ Pendiente de fuente.
+5. Cuándo el abono podría estar listo: 6 a 10 semanas en compostera cerrada, y cómo reconocerlo (FAO, 2013, pp. 57 y 61).
 6. A quién llamar si el sensor aparece desconectado.
 
 ---
@@ -750,7 +756,7 @@ La guía es explícita: *"Sin esa aprobación no se carga el prototipo con resid
 | ID | Riesgo | Mitigación de diseño (E2) | Cómo lo refleja el software |
 |---|---|---|---|
 | R1 | Humedad, cortocircuito o corrosión | Solo baja tensión (5 V DC), sensores encapsulados, sonda IP67, nunca a la red eléctrica | Guía: advertencia de seguridad eléctrica; rechazo de lecturas físicamente imposibles (posible sensor dañado) |
-| R2 | Lixiviados y malos olores | Bandeja con llave de paso, mezcla 3:1 marrón/verde ⚠️ (proporción sin fuente) | Alerta "Humedad alta" con instrucción de vaciar la bandeja |
+| R2 | Lixiviados y malos olores | Bandeja con llave de paso, mezcla con relación C:N inicial de 25:1 a 35:1 (FAO, 2013, p. 64; reemplaza la proporción 3:1, que no tenía fuente) | Alerta "Humedad alta" con instrucción de vaciar la bandeja |
 | R3 | Plagas | Malla de acero inoxidable, tapa sellada, acceso restringido | Guía: "tapa siempre cerrada" |
 | R4 | Pérdida de Wi-Fi del ESP32 | Búfer local de 48 h y reenvío | Estado "Sin conexión", idempotencia, `POST /lecturas/lote` |
 | R5 | Manipulación sin protección | Guantes y tapabocas | Guía: primer paso de cada acción |
@@ -773,7 +779,7 @@ Riesgo adicional sugerido para la lista: **R6 · Decisiones con datos erróneos*
 | 9:30–11:00 | **Demo 3 · Historial y fases** | Historial con bandas; `ciclo-completo` avanza la fase; `temperatura-alta` | LD (Karyme) |
 | 11:00–12:00 | **Demo 4 · Sin conexión y móvil** | `sensor-sin-conexion`: tarjetas en gris, reenvío al volver; vista en celular | LT (Jussi) |
 | 12:00–13:30 | Seguridad, guía y evidencia | Lista de riesgos aprobada, pantalla Guía, trazabilidad de umbrales (qué está citado y qué está pendiente) | LD (Karyme) |
-| 13:30–15:00 | Cierre | Impacto (≈117 kg/mes desviados, abono estimado como supuesto), siguientes pasos (Entrega 4: prueba con usuarios), quién operará el sistema | LU (Bryan) |
+| 13:30–15:00 | Cierre | Impacto (≈117 kg/mes desviados, abono estimado de 35 a 70 kg/mes según el rango de rendimiento de la CRA, 2025), siguientes pasos (Entrega 4: prueba con usuarios), quién operará el sistema | LU (Bryan) |
 | 15:00–20:00 | Preguntas | Todos responden; cada uno prepara 2 de las 6 preguntas de la sección 8 de la guía | Todos |
 
 **Planes de respaldo:**
@@ -840,34 +846,34 @@ Regla: si algo falla, quien está hablando **lo dice** ("pasamos al modo sin con
 
 ---
 
-## 11. Pendientes de evidencia y trazabilidad
+## 11. Evidencia y trazabilidad
 
-| Dato | Valor actual | Estado | Dónde se usa | Cómo cerrarlo |
-|---|---|---|---|---|
-| Rango térmico normal (fase termófila) | 45–65 °C | ⚠️ Propuesta del equipo, sin fuente | Regla de temperatura, banda de la gráfica | Buscar en literatura técnica de compostaje y citar en APA o IEEE |
-| Alerta por temperatura alta | > 65 °C | ⚠️ Sin fuente | Regla TEMP_ALTA | Ídem |
-| Alerta por temperatura baja en fase activa | < 40 °C | ⚠️ Sin fuente y **ambigua** (sección 4.3) | Regla TEMP_BAJA | Fuente + definir "fase activa" en días |
-| Rango de humedad normal | 50–60 % | ⚠️ Sin fuente | Regla de humedad, banda de la gráfica | Fuente |
-| Alertas de humedad | < 40 % y > 65 % | ⚠️ Sin fuente | Regla de humedad | Fuente |
-| Rendimiento de abono | 30–35 % de la masa | ⚠️ Sin fuente | Tarjeta de impacto (≈35–40 kg/mes) | Fuente; si no hay, mostrar como "estimación sin fuente" o retirarlo |
-| Hogar estándar | 1,2 kg/día | ⚠️ Sin fuente (usado en la bitácora 2 para afirmar "3 veces más") | Narrativa | Fuente oficial; si no aparece, eliminar la comparación |
-| Proporción marrón/verde | 3:1 (R2) | ⚠️ Sin fuente | Guía de uso | Fuente |
-| Temperatura ambiente de Santa Marta | 30 °C en el simulador | ⚠️ Valor ilustrativo | Mock Data Service, detector de maduración | Fuente meteorológica o medición propia |
-| Normativa local de residuos | — | Falta | Guía, propuesta de implementación | Ver candidatas abajo |
-| Residuos desviados | 3,9 kg/día × 30 = ≈117 kg/mes | ✅ Medición propia (5 días) | Tarjeta de impacto | Ya trazable a E2; aclarar que es proyección lineal |
+Revisión de fuentes hecha el 25 de octubre de 2026. El detalle por dato (valor, cita y página) está en [referencias.md](referencias.md).
 
-**Fuentes candidatas a revisar** (no se han verificado contra los valores anteriores; **no citar hasta leerlas** y confirmar que respaldan cada número):
+| Dato | Valor anterior | Valor actual | Respaldo |
+|---|---|---|---|
+| Temperatura normal (fase termófila) | 45–65 °C | 45–65 °C | FAO (2013), pp. 23 y 28 |
+| Temperatura crítica alta | > 65 °C | > 70 °C | FAO (2013), Tabla 3, p. 28 |
+| Temperatura crítica baja | < 40 °C | < 35 °C | FAO (2013), Tabla 3, p. 28 |
+| Enfriamiento prematuro | 7 días (sin fuente) | 14 días | Criterio del equipo a partir de FAO (2013), Tabla 7, p. 31 |
+| Humedad normal | 50–60 % | 45–60 % | FAO (2013), Tabla 2, p. 27 |
+| Humedad crítica | < 40 % y > 65 % | Igual | Criterio del equipo: margen de aviso fuera del rango FAO |
+| Rendimiento de abono | 30–35 % | 30–60 %, típico cerca de 50 % | CRA (2025), fuente secundaria que recopila a Haug (1993) y Diaz et al. (1993) |
+| Abono estimado | 35–40 kg/mes | 35–70 kg/mes | Cálculo propio con el rango anterior |
+| Hogar estándar | 1,2 kg/día | **Retirado** | Sin fuente; se usa el dato propio de 0,33 kg/persona/día de orgánicos |
+| Proporción marrón/verde | 3:1 | **Reemplazada** por relación C:N inicial de 25:1 a 35:1 | FAO (2013), p. 64 |
+| Normativa nacional | — | Bolsa o recipiente verde para orgánicos aprovechables | Resolución 2184 de 2019, art. 4 |
+| Normativa local | — | PGIRS de Santa Marta: Decreto 070 de 2023, modificado por Decreto 461 de 2023 | Gaceta Distrital, edición 091 |
+| Residuos desviados | ≈ 117 kg/mes | Igual | Medición propia (5 días), proyección lineal |
+| Temperatura ambiente de Santa Marta | 30 °C | **Sigue sin fuente** | Medir con termómetro o citar normales del IDEAM |
+| Fechas del pesaje | — | **Pendiente** | Notas de campo |
 
-- Manual de compostaje del agricultor de la FAO (Oficina Regional para América Latina y el Caribe, 2013).
-- Resolución 2184 de 2019 del Ministerio de Ambiente y Desarrollo Sostenible de Colombia (código de colores para la separación de residuos en la fuente).
-- Decreto 2981 de 2013, compilado en el Decreto 1077 de 2015 (servicio público de aseo y aprovechamiento).
-- Plan de Gestión Integral de Residuos Sólidos (PGIRS) vigente del Distrito de Santa Marta.
-- Para el dato de 1,2 kg/día: buscar estadísticas oficiales (por ejemplo, del DANE o de la Superintendencia de Servicios Públicos) o retirar la comparación.
+**Hallazgo de diseño:** con el método de la FAO (ejemplo 8, p. 64, densidad compactada de 400 kg/m³), 3,9 kg/día llenan un tanque de 50 L en unos 5 días. El contenedor conceptual de E2 queda corto; ver referencias.md.
 
 **Cómo dejar el dashboard preparado para la trazabilidad:**
 
-1. Cada umbral en `application.yml` lleva una clave `fuente` (`PENDIENTE` o la clave de una referencia).
-2. `docs/referencias.yml` (o la tabla `FUENTE`) guarda la referencia completa en APA o IEEE y su estado.
+1. Cada umbral en `application.yml` lleva una clave `fuente` (por ejemplo `FAO-2013`).
+2. `docs/referencias.md` guarda la referencia completa en APA y la página de cada dato.
 3. `GET /api/umbrales` devuelve valor + fuente + estado.
 4. En la UI, junto a cada rango, un ícono "ⓘ" muestra "Fuente: [referencia]" o la insignia **"Fuente pendiente"** en ámbar.
 5. El diagnóstico devuelve `umbralesConFuentePendiente: true` mientras exista alguno sin fuente; el pie de la pantalla Estado lo indica.

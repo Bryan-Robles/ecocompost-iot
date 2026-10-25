@@ -1,7 +1,7 @@
 // Textos para el usuario de cada tipo de alerta, en lenguaje sencillo.
 // Los usa la Guía (M17) y los usará la pantalla de Alertas (M16).
-// Estado: borrador del equipo, pendiente de validar con Jenis y Cande (M23).
-// Las cantidades (por ejemplo, 1 litro de agua) vienen del wireframe de E2 y no tienen fuente.
+// Respaldo: Tablas 2 y 3 y técnica del puño de FAO (2013), pp. 27, 28 y 56. Detalle en docs/referencias.md.
+// Pendiente: validar la redacción con Jenis y Cande (M23).
 
 import type { TipoAlerta } from '../api/tipos'
 
@@ -14,27 +14,39 @@ export interface AccionGuia {
 export const acciones: Record<TipoAlerta, AccionGuia> = {
   HUM_BAJA: {
     titulo: 'Humedad baja',
-    queSignifica: 'La mezcla se está secando.',
-    queHacer: ['Agregar 1 litro de agua.', 'Mezclar con una pala.', 'Revisar de nuevo en 12 horas.'],
+    queSignifica: 'La mezcla se está secando y el proceso se puede detener.',
+    queHacer: [
+      'Agregar agua poco a poco, o restos de fruta y verdura.',
+      'Mezclar con una pala.',
+      'Hacer la prueba del puño: el material debe quedar pegado sin escurrir agua.',
+    ],
   },
   HUM_ALTA: {
     titulo: 'Humedad alta',
-    queSignifica: 'La mezcla tiene demasiada agua y puede oler mal.',
+    queSignifica: 'La mezcla tiene demasiada agua: le falta aire y puede oler mal.',
     queHacer: [
-      'Agregar material seco: hojas secas o cartón sin tinta.',
       'Mezclar con una pala.',
+      'Agregar material seco: hojas secas, paja o aserrín.',
       'Vaciar la bandeja de lixiviados (el líquido de abajo).',
     ],
   },
   TEMP_ALTA: {
     titulo: 'Temperatura alta',
-    queSignifica: 'La mezcla está demasiado caliente.',
-    queHacer: ['Mezclar con una pala.', 'Agregar material marrón: hojas secas o cartón sin tinta.'],
+    queSignifica: 'La mezcla está demasiado caliente y el proceso se frena.',
+    queHacer: [
+      'Mezclar con una pala.',
+      'Hacer la prueba del puño para revisar la humedad.',
+      'Agregar material seco que tarde en descomponerse: pasto seco o astillas de madera.',
+    ],
   },
   TEMP_BAJA: {
     titulo: 'Temperatura baja',
-    queSignifica: 'La mezcla se enfrió antes de tiempo; puede que le falte aire.',
-    queHacer: ['Mezclar con una pala para que entre aire.', 'Revisar de nuevo en 12 horas.'],
+    queSignifica: 'La mezcla se enfrió antes de tiempo.',
+    queHacer: [
+      'Hacer la prueba del puño: si está seca, agregar agua o restos de fruta y verdura.',
+      'Si hay poco material, agregar más residuos de cocina.',
+      'Revisar de nuevo al día siguiente.',
+    ],
   },
   SIN_CONEXION: {
     titulo: 'Sensor sin conexión',

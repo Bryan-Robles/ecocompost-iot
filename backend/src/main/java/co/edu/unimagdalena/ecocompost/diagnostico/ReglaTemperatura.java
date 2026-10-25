@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
  * Clasifica la temperatura según la fase del compostaje.
  * Una temperatura baja solo es problema en fase TERMOFILA: en MESOFILA, ENFRIAMIENTO o MADURACION es lo esperado.
  * Para distinguir el enfriamiento natural del prematuro se usa el tiempo desde la última carga
- * (sección 4.3 del análisis: regla en validación, sin fuente).
+ * (criterio del equipo a partir de la Tabla 7 de FAO 2013; ver docs/referencias.md).
  */
 @Component
 public class ReglaTemperatura {

@@ -3,7 +3,8 @@ import { acciones } from '../contenido/acciones'
 import './Guia.css'
 
 // Guía de uso en lenguaje sencillo (M17). Producto esperado N.° 4 de la guía del curso.
-// Contenido trazable a: riesgos R1–R5 y pesaje (E2), mapa de empatía y punto de vista (E1).
+// Contenido trazable a: riesgos R1–R5 y pesaje (E2), mapa de empatía y punto de vista (E1)
+// y FAO (2013), Manual de compostaje del agricultor. Detalle por dato en docs/referencias.md.
 
 const siSeEcha = [
   'Cáscaras de plátano, papa, yuca y zanahoria',
@@ -28,8 +29,8 @@ function Guia() {
     <article className="guia">
       <h1>Guía de uso</h1>
       <p className="guia-aviso" role="note">
-        Borrador del equipo. Falta revisarlo con Jenis y Cande. Las cantidades y los tiempos aún no tienen fuente
-        citada.
+        Los rangos y recomendaciones siguen el Manual de compostaje del agricultor de la FAO (2013). Falta revisar la
+        redacción con Jenis y Cande.
       </p>
 
       <section aria-labelledby="g-quien">
@@ -85,7 +86,11 @@ function Guia() {
             </ul>
           </div>
         </div>
-        <p className="guia-nota">Lista basada en los residuos pesados en la cocina durante 5 días.</p>
+        <p>Picar los residuos en trozos de 5 a 20 cm para que se descompongan mejor.</p>
+        <p className="guia-nota">
+          Lista basada en los residuos pesados en la cocina durante 5 días. Los residuos orgánicos van en el recipiente
+          verde (Resolución 2184 de 2019).
+        </p>
       </section>
 
       <section aria-labelledby="g-colores">
@@ -106,6 +111,10 @@ function Guia() {
 
       <section aria-labelledby="g-alertas">
         <h2 id="g-alertas">5. ¿Qué hacer con cada alerta?</h2>
+        <p>
+          <strong>Prueba del puño:</strong> con guantes, apretar un puñado de la mezcla y abrir la mano. Debe quedar
+          pegado, sin escurrir agua. Si escurre, está muy húmedo; si se suelta, está seco.
+        </p>
         <div className="guia-tarjetas guia-tarjetas--alertas">
           {ordenAlertas.map((tipo) => {
             const a = acciones[tipo]
@@ -122,6 +131,10 @@ function Guia() {
             )
           })}
         </div>
+        <p className="guia-nota">
+          En clima cálido como el de Santa Marta, la FAO recomienda agregar algo de tierra (hasta un 10 %) para que la
+          compostera no se caliente demasiado.
+        </p>
       </section>
 
       <section aria-labelledby="g-bandeja">
@@ -131,15 +144,20 @@ function Guia() {
           <li>Abrir la llave y dejar salir el líquido.</li>
           <li>Cerrar la llave.</li>
         </ol>
-        <p className="guia-nota">Hacerlo cuando el sistema avise humedad alta o cuando la bandeja se vea llena.</p>
+        <p className="guia-nota">Hacerlo una vez por semana, y también cuando el sistema avise humedad alta.</p>
       </section>
 
       <section aria-labelledby="g-listo">
         <h2 id="g-listo">7. ¿Cuándo está listo el abono?</h2>
         <p>
-          Cuando la pestaña Historial muestre la fase <strong>Maduración</strong>. El tiempo exacto depende de la mezcla
-          y del clima; el equipo aún debe citar una fuente para este dato.
+          En una compostera cerrada suele llegar a la fase de <strong>Maduración</strong> en 6 a 10 semanas, según el
+          clima y los residuos. Está listo cuando:
         </p>
+        <ul className="guia-pasos">
+          <li>La pestaña Historial muestra la fase Maduración.</li>
+          <li>Al mezclarlo, ya no se vuelve a calentar.</li>
+          <li>Se ve oscuro y huele a tierra húmeda.</li>
+        </ul>
       </section>
 
       <section aria-labelledby="g-ayuda">
@@ -148,6 +166,11 @@ function Guia() {
           Avisar al responsable técnico: <strong>Bryan Robles</strong> (equipo EcoCompost IoT).
         </p>
       </section>
+
+      <footer className="guia-nota">
+        Fuente: Román, P., Martínez, M. M. y Pantoja, A. (2013). <cite>Manual de compostaje del agricultor</cite>. FAO,
+        pp. 23–64. Resolución 2184 de 2019 del Ministerio de Ambiente y Desarrollo Sostenible.
+      </footer>
     </article>
   )
 }

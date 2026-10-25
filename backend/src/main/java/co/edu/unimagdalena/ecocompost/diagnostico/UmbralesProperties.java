@@ -12,7 +12,7 @@ import org.springframework.validation.annotation.Validated;
 /**
  * Umbrales de diagnóstico leídos de {@code ecocompost.diagnostico.*} en application.yml.
  * Si la configuración es incoherente (por ejemplo, normal-min mayor que normal-max), la aplicación no arranca.
- * Los valores actuales son una propuesta del equipo pendiente de fuente (ver sección 11 del análisis).
+ * El respaldo de cada valor está en docs/referencias.md.
  */
 @Validated
 @ConfigurationProperties(prefix = "ecocompost.diagnostico")
@@ -24,7 +24,7 @@ public record UmbralesProperties(@NotNull @Valid Temperatura temperatura, @NotNu
 			@NotNull Double normalMax,
 			@NotNull Double criticaAlta,
 			@NotNull Double criticaBajaFaseActiva,
-			// Enfriamiento antes de este tiempo desde la última carga se considera prematuro (valor sin fuente)
+			// Enfriamiento antes de este tiempo desde la última carga se considera prematuro (criterio del equipo)
 			@NotNull Duration enfriamientoPrematuroAntesDe,
 			String fuente) {
 

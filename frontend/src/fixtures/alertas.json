@@ -4,11 +4,11 @@
     "tipo": "HUM_BAJA",
     "severidad": "CRITICA",
     "titulo": "Humedad baja (38 %)",
-    "queSignifica": "La mezcla se está secando.",
+    "queSignifica": "La mezcla se está secando y el proceso se puede detener.",
     "queHacer": [
-      "Agregar 1 litro de agua.",
+      "Agregar agua poco a poco, o restos de fruta y verdura.",
       "Mezclar con una pala.",
-      "Revisar de nuevo en 12 horas."
+      "Hacer la prueba del puño: el material debe quedar pegado sin escurrir agua."
     ],
     "creadaEn": "2026-10-28T14:05:01Z",
     "atendidaEn": null
@@ -17,11 +17,12 @@
     "id": 5,
     "tipo": "TEMP_ALTA",
     "severidad": "CRITICA",
-    "titulo": "Temperatura alta (67 °C)",
-    "queSignifica": "La mezcla está demasiado caliente.",
+    "titulo": "Temperatura alta (72 °C)",
+    "queSignifica": "La mezcla está demasiado caliente y el proceso se frena.",
     "queHacer": [
       "Mezclar con una pala.",
-      "Agregar material marrón (hojas secas, cartón sin tinta)."
+      "Hacer la prueba del puño para revisar la humedad.",
+      "Agregar material seco que tarde en descomponerse: pasto seco o astillas de madera."
     ],
     "creadaEn": "2026-10-27T09:30:00Z",
     "atendidaEn": "2026-10-27T10:02:00Z"

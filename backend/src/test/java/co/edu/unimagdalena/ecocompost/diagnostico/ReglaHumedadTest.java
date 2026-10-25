@@ -14,8 +14,8 @@ class ReglaHumedadTest {
 	@CsvSource(nullValues = "-", value = {
 			"39.9, CRITICO,  HUM_BAJA",
 			"40.0, ATENCION, HUM_BAJA",
-			"49.9, ATENCION, HUM_BAJA",
-			"50.0, NORMAL,   -",
+			"44.9, ATENCION, HUM_BAJA",
+			"45.0, NORMAL,   -",
 			"55.0, NORMAL,   -",
 			"60.0, NORMAL,   -",
 			"60.1, ATENCION, HUM_ALTA",

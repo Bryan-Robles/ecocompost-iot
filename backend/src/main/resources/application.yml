@@ -23,20 +23,20 @@ management:
       exposure:
         include: health,info
 
-# Umbrales de diagnóstico (M08). Propuesta del equipo PENDIENTE de fuente citada:
-# cambiar aquí, nunca en el código. Ver docs/analisis-arquitectura-entregable-3.md, secciones 4 y 11.
+# Umbrales de diagnóstico. Cambiar aquí, nunca en el código.
+# Respaldo de cada valor: docs/referencias.md (FAO 2013 = Román, Martínez y Pantoja, Manual de compostaje del agricultor).
 ecocompost:
   diagnostico:
     temperatura:
-      normal-min: 45.0        # fase termófila
-      normal-max: 65.0
-      critica-alta: 65.0      # mayor que esto: mezclar y agregar material marrón
-      critica-baja-fase-activa: 40.0   # menor que esto en termófila prematura: revisar aireación
-      enfriamiento-prematuro-antes-de: 7d   # sin fuente
-      fuente: PENDIENTE
+      normal-min: 45.0        # inicio de fase termófila (FAO 2013, p. 23)
+      normal-max: 65.0        # máximo sin calentamiento externo (FAO 2013, p. 28)
+      critica-alta: 70.0      # Tabla 3: altas temperaturas > 70 °C (FAO 2013, p. 28)
+      critica-baja-fase-activa: 35.0   # Tabla 3: bajas temperaturas < 35 °C (FAO 2013, p. 28)
+      enfriamiento-prematuro-antes-de: 14d   # criterio del equipo: Tabla 7, termofílica de 2 a 5 semanas (FAO 2013, p. 31)
+      fuente: FAO-2013
     humedad:
-      normal-min: 50.0
+      normal-min: 45.0        # Tabla 2: rango ideal 45-60 % (FAO 2013, p. 27)
       normal-max: 60.0
-      critica-baja: 40.0      # menor que esto: agregar agua y mezclar
-      critica-alta: 65.0      # mayor que esto: agregar material seco y revisar lixiviados
-      fuente: PENDIENTE
+      critica-baja: 40.0      # criterio del equipo: 5 puntos de aviso bajo el rango FAO
+      critica-alta: 65.0      # criterio del equipo: 5 puntos de aviso sobre el rango FAO
+      fuente: FAO-2013

@@ -1,6 +1,6 @@
 # Fixtures del contrato de API (M04)
 
-Respuestas de ejemplo con la forma exacta de `src/api/tipos.ts`. Permiten construir las pantallas sin el backend. Los valores son ilustrativos, salvo `cargas.json`, que replica el pesaje real del Entregable 2 (sus fechas quedan en `null` hasta registrar las fechas reales del pesaje).
+Respuestas de ejemplo con la forma exacta de `src/api/tipos.ts`. Permiten construir las pantallas sin el backend. Las lecturas son ilustrativas; `umbrales.json` usa los valores con fuente de `docs/referencias.md`, y `cargas.json` replica el pesaje real del Entregable 2 (sus fechas quedan en `null` hasta registrar las fechas reales del pesaje).
 
 | Archivo | Endpoint |
 |---|---|

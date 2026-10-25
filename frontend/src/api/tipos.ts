@@ -82,5 +82,5 @@ export interface Umbral {
   clave: string
   valor: number
   unidad: string
-  fuente: { clave: string; referencia: string; url?: string; estado: 'VERIFICADA' | 'PENDIENTE' } | null
+  fuente: { clave: string; referencia: string; url?: string; estado: 'VERIFICADA' | 'CRITERIO_EQUIPO' | 'PENDIENTE' } | null
 }
