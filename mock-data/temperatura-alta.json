@@ -1,0 +1,39 @@
+{
+  "nombre": "temperatura-alta",
+  "descripcion": "Sobrecalentamiento por alto volumen de residuos",
+  "semilla": 42,
+  "intervaloSegundos": 5,
+  "segundosPorDiaSimulado": 60,
+  "origen": "SIMULADO",
+  "valoresIlustrativos": true,
+  "ruido": {
+    "temperaturaSigma": 0.3,
+    "humedadSigma": 0.8
+  },
+  "curva": [
+    {
+      "dia": 0,
+      "temperaturaC": 30,
+      "humedadPct": 58
+    },
+    {
+      "dia": 3,
+      "temperaturaC": 58,
+      "humedadPct": 55
+    },
+    {
+      "dia": 7,
+      "temperaturaC": 58,
+      "humedadPct": 55
+    }
+  ],
+  "eventos": [
+    {
+      "tipo": "rampa",
+      "variable": "temperaturaC",
+      "inicioSeg": 20,
+      "duracionSeg": 120,
+      "hasta": 69
+    }
+  ]
+}

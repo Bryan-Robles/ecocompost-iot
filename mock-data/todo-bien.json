@@ -1,0 +1,31 @@
+{
+  "nombre": "todo-bien",
+  "descripcion": "Proceso sano en fase termófila, sin alertas",
+  "semilla": 42,
+  "intervaloSegundos": 5,
+  "segundosPorDiaSimulado": 60,
+  "origen": "SIMULADO",
+  "valoresIlustrativos": true,
+  "ruido": {
+    "temperaturaSigma": 0.3,
+    "humedadSigma": 0.8
+  },
+  "curva": [
+    {
+      "dia": 0,
+      "temperaturaC": 30,
+      "humedadPct": 58
+    },
+    {
+      "dia": 3,
+      "temperaturaC": 58,
+      "humedadPct": 55
+    },
+    {
+      "dia": 7,
+      "temperaturaC": 58,
+      "humedadPct": 55
+    }
+  ],
+  "eventos": []
+}

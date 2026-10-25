@@ -1,0 +1,48 @@
+{
+  "nombre": "ciclo-completo",
+  "descripcion": "Recorre mesófila, termófila, enfriamiento y maduración en ~6 min",
+  "semilla": 42,
+  "intervaloSegundos": 5,
+  "segundosPorDiaSimulado": 12,
+  "origen": "SIMULADO",
+  "valoresIlustrativos": true,
+  "ruido": {
+    "temperaturaSigma": 0.3,
+    "humedadSigma": 0.8
+  },
+  "curva": [
+    {
+      "dia": 0,
+      "temperaturaC": 30,
+      "humedadPct": 58
+    },
+    {
+      "dia": 4,
+      "temperaturaC": 60,
+      "humedadPct": 55
+    },
+    {
+      "dia": 12,
+      "temperaturaC": 57,
+      "humedadPct": 54
+    },
+    {
+      "dia": 20,
+      "temperaturaC": 38,
+      "humedadPct": 52
+    },
+    {
+      "dia": 30,
+      "temperaturaC": 31,
+      "humedadPct": 50
+    }
+  ],
+  "eventos": [
+    {
+      "tipo": "carga",
+      "inicioSeg": 0,
+      "pesoKg": 3.9,
+      "origen": "PESAJE_REAL"
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+{
+  "nombre": "sensor-sin-conexion",
+  "descripcion": "Pérdida de Wi-Fi del ESP32 (R4): corte y reenvío del búfer",
+  "semilla": 42,
+  "intervaloSegundos": 5,
+  "segundosPorDiaSimulado": 60,
+  "origen": "SIMULADO",
+  "valoresIlustrativos": true,
+  "ruido": {
+    "temperaturaSigma": 0.3,
+    "humedadSigma": 0.8
+  },
+  "curva": [
+    {
+      "dia": 0,
+      "temperaturaC": 30,
+      "humedadPct": 58
+    },
+    {
+      "dia": 3,
+      "temperaturaC": 58,
+      "humedadPct": 55
+    },
+    {
+      "dia": 7,
+      "temperaturaC": 58,
+      "humedadPct": 55
+    }
+  ],
+  "eventos": [
+    {
+      "tipo": "corte",
+      "inicioSeg": 20,
+      "duracionSeg": 180,
+      "reenviarAlVolver": true
+    }
+  ]
+}
