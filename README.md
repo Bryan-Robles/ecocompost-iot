@@ -97,7 +97,7 @@ curl -X POST http://localhost:8080/api/lecturas \
 
 ## Umbrales y fuentes
 
-Los rangos de diagnóstico (temperatura normal 45–65 °C; humedad normal 50–60 %) son **una propuesta del equipo pendiente de validar con literatura**. Están en configuración (`application.yml`), no en el código, y el dashboard indica cuáles aún no tienen fuente citada.
+Los rangos de diagnóstico salen del *Manual de compostaje del agricultor* de la FAO (Román, Martínez y Pantoja, 2013): temperatura normal 45–65 °C con problema sobre 70 °C o bajo 35 °C, y humedad ideal 45–60 %. Los márgenes de aviso que agregó el equipo están declarados como criterio propio. Todo vive en configuración (`application.yml`), no en el código. El respaldo de cada dato, con página, está en [docs/referencias.md](docs/referencias.md).
 
 ## Equipo
 

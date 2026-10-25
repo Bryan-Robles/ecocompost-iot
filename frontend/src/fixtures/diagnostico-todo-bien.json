@@ -12,5 +12,5 @@
   "acciones": [
     "No se requiere acción. Próxima revisión en 24 h."
   ],
-  "umbralesConFuentePendiente": true
+  "umbralesConFuentePendiente": false
 }

@@ -70,7 +70,7 @@ export interface Alerta {
 /** Elemento de GET /api/cargas */
 export interface CargaResiduo {
   id: number
-  /** null mientras no se registre la fecha real del pesaje */
+  /** Fecha del pesaje (AAAA-MM-DD); null si no se registró */
   fecha: string | null
   pesoKg: number
   tipoResiduo: string
@@ -82,5 +82,5 @@ export interface Umbral {
   clave: string
   valor: number
   unidad: string
-  fuente: { clave: string; referencia: string; url?: string; estado: 'VERIFICADA' | 'PENDIENTE' } | null
+  fuente: { clave: string; referencia: string; url?: string; estado: 'VERIFICADA' | 'CRITERIO_EQUIPO' | 'PENDIENTE' } | null
 }

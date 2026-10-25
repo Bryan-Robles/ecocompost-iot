@@ -10,9 +10,9 @@
   "fase": "TERMOFILA",
   "estadoGeneral": "CRITICO",
   "acciones": [
-    "Agregar 1 litro de agua.",
+    "Agregar agua poco a poco, o restos de fruta y verdura.",
     "Mezclar con una pala.",
-    "Revisar de nuevo en 12 horas."
+    "Hacer la prueba del puño: el material debe quedar pegado sin escurrir agua."
   ],
-  "umbralesConFuentePendiente": true
+  "umbralesConFuentePendiente": false
 }
