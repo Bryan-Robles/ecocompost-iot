@@ -22,3 +22,21 @@ management:
     web:
       exposure:
         include: health,info
+
+# Umbrales de diagnóstico (M08). Propuesta del equipo PENDIENTE de fuente citada:
+# cambiar aquí, nunca en el código. Ver docs/analisis-arquitectura-entregable-3.md, secciones 4 y 11.
+ecocompost:
+  diagnostico:
+    temperatura:
+      normal-min: 45.0        # fase termófila
+      normal-max: 65.0
+      critica-alta: 65.0      # mayor que esto: mezclar y agregar material marrón
+      critica-baja-fase-activa: 40.0   # menor que esto en termófila prematura: revisar aireación
+      enfriamiento-prematuro-antes-de: 7d   # sin fuente
+      fuente: PENDIENTE
+    humedad:
+      normal-min: 50.0
+      normal-max: 60.0
+      critica-baja: 40.0      # menor que esto: agregar agua y mezclar
+      critica-alta: 65.0      # mayor que esto: agregar material seco y revisar lixiviados
+      fuente: PENDIENTE
