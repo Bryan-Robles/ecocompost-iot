@@ -14,6 +14,20 @@
     "atendidaEn": null
   },
   {
+    "id": 8,
+    "tipo": "HUM_ALTA",
+    "severidad": "ATENCION",
+    "titulo": "Humedad algo alta (63 %)",
+    "queSignifica": "La mezcla tiene demasiada agua: le falta aire y puede oler mal.",
+    "queHacer": [
+      "Mezclar con una pala.",
+      "Agregar material seco: hojas secas, paja o aserrín.",
+      "Vaciar la bandeja de lixiviados (el líquido de abajo)."
+    ],
+    "creadaEn": "2026-10-28T08:40:00Z",
+    "atendidaEn": null
+  },
+  {
     "id": 5,
     "tipo": "TEMP_ALTA",
     "severidad": "CRITICA",
