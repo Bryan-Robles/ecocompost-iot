@@ -1,0 +1,144 @@
+.guia {
+  max-width: 880px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.guia h1 {
+  color: var(--verde);
+  margin-bottom: 8px;
+}
+
+.guia h2 {
+  font-size: 1.2rem;
+  margin: 28px 0 10px;
+  color: var(--verde);
+}
+
+.guia h3 {
+  font-size: 1rem;
+  margin: 0 0 6px;
+}
+
+.guia-aviso {
+  background: #fff8e1;
+  border-left: 4px solid var(--ambar);
+  padding: 8px 12px;
+  margin: 0;
+}
+
+.guia-nota {
+  font-size: 0.9rem;
+  color: #52606d;
+}
+
+.guia-tarjetas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.guia-tarjetas > li,
+.guia-alerta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.guia-alerta p {
+  margin: 0;
+}
+
+.guia-alerta ol {
+  margin: 4px 0 0;
+  padding-left: 20px;
+}
+
+.guia-pasos {
+  padding-left: 22px;
+}
+
+.guia-pasos li {
+  margin-bottom: 4px;
+}
+
+.guia-columnas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 12px;
+}
+
+.guia-lista {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-top: 4px solid;
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.guia-lista ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.guia-lista--si {
+  border-top-color: var(--verde);
+}
+
+.guia-lista--no {
+  border-top-color: var(--rojo);
+}
+
+.guia-colores {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.guia-color {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 10px 14px;
+}
+
+.guia-color-icono {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  font-weight: 700;
+  color: #fff;
+}
+
+.guia-color--verde .guia-color-icono {
+  background: var(--verde);
+}
+
+.guia-color--ambar .guia-color-icono {
+  background: var(--ambar);
+  color: var(--texto);
+}
+
+.guia-color--rojo .guia-color-icono {
+  background: var(--rojo);
+}
+
+.guia-color--gris .guia-color-icono {
+  background: #7b8794;
+}
