@@ -1,0 +1,50 @@
+[
+  {
+    "clave": "temperatura.normal-min",
+    "valor": 45.0,
+    "unidad": "°C",
+    "fuente": null
+  },
+  {
+    "clave": "temperatura.normal-max",
+    "valor": 65.0,
+    "unidad": "°C",
+    "fuente": null
+  },
+  {
+    "clave": "temperatura.critica-alta",
+    "valor": 65.0,
+    "unidad": "°C",
+    "fuente": null
+  },
+  {
+    "clave": "temperatura.critica-baja-fase-activa",
+    "valor": 40.0,
+    "unidad": "°C",
+    "fuente": null
+  },
+  {
+    "clave": "humedad.normal-min",
+    "valor": 50.0,
+    "unidad": "%",
+    "fuente": null
+  },
+  {
+    "clave": "humedad.normal-max",
+    "valor": 60.0,
+    "unidad": "%",
+    "fuente": null
+  },
+  {
+    "clave": "humedad.critica-baja",
+    "valor": 40.0,
+    "unidad": "%",
+    "fuente": null
+  },
+  {
+    "clave": "humedad.critica-alta",
+    "valor": 65.0,
+    "unidad": "%",
+    "fuente": null
+  }
+]

@@ -1,0 +1,29 @@
+[
+  {
+    "id": 7,
+    "tipo": "HUM_BAJA",
+    "severidad": "CRITICA",
+    "titulo": "Humedad baja (38 %)",
+    "queSignifica": "La mezcla se está secando.",
+    "queHacer": [
+      "Agregar 1 litro de agua.",
+      "Mezclar con una pala.",
+      "Revisar de nuevo en 12 horas."
+    ],
+    "creadaEn": "2026-10-28T14:05:01Z",
+    "atendidaEn": null
+  },
+  {
+    "id": 5,
+    "tipo": "TEMP_ALTA",
+    "severidad": "CRITICA",
+    "titulo": "Temperatura alta (67 °C)",
+    "queSignifica": "La mezcla está demasiado caliente.",
+    "queHacer": [
+      "Mezclar con una pala.",
+      "Agregar material marrón (hojas secas, cartón sin tinta)."
+    ],
+    "creadaEn": "2026-10-27T09:30:00Z",
+    "atendidaEn": "2026-10-27T10:02:00Z"
+  }
+]
