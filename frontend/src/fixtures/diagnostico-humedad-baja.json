@@ -1,0 +1,18 @@
+{
+  "temperatura": {
+    "valor": 57.6,
+    "estado": "NORMAL"
+  },
+  "humedad": {
+    "valor": 38.0,
+    "estado": "CRITICO"
+  },
+  "fase": "TERMOFILA",
+  "estadoGeneral": "CRITICO",
+  "acciones": [
+    "Agregar 1 litro de agua.",
+    "Mezclar con una pala.",
+    "Revisar de nuevo en 12 horas."
+  ],
+  "umbralesConFuentePendiente": true
+}

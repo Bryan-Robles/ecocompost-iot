@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "fecha": null,
+    "pesoKg": 3.8,
+    "tipoResiduo": "Cáscaras de plátano, papa y yuca; residuos de café",
+    "origen": "PESAJE_REAL"
+  },
+  {
+    "id": 2,
+    "fecha": null,
+    "pesoKg": 4.1,
+    "tipoResiduo": "Restos de verduras, cáscaras de tomate y cebolla, frutas de jugo",
+    "origen": "PESAJE_REAL"
+  },
+  {
+    "id": 3,
+    "fecha": null,
+    "pesoKg": 3.5,
+    "tipoResiduo": "Cáscaras de huevo, cítricos, restos de ahogao, tallos",
+    "origen": "PESAJE_REAL"
+  },
+  {
+    "id": 4,
+    "fecha": null,
+    "pesoKg": 4.2,
+    "tipoResiduo": "Cáscaras de plátano verde, auyama, corteza de frutas",
+    "origen": "PESAJE_REAL"
+  },
+  {
+    "id": 5,
+    "fecha": null,
+    "pesoKg": 3.9,
+    "tipoResiduo": "Cáscaras de zanahoria y papa, ensaladas crudas",
+    "origen": "PESAJE_REAL"
+  }
+]

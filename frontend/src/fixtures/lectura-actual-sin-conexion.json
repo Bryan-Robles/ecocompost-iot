@@ -1,0 +1,14 @@
+{
+  "lectura": {
+    "id": 1201,
+    "dispositivoId": "mock-01",
+    "medidoEn": "2026-10-28T14:05:00Z",
+    "recibidoEn": "2026-10-28T14:05:01Z",
+    "temperaturaC": 58.2,
+    "humedadPct": 55.0,
+    "origen": "SIMULADO"
+  },
+  "recibidoEn": "2026-10-28T14:05:01Z",
+  "conexion": "SIN_CONEXION",
+  "segundosDesdeUltima": 540
+}

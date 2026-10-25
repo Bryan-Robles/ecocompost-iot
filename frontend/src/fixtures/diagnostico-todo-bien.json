@@ -1,0 +1,16 @@
+{
+  "temperatura": {
+    "valor": 58.2,
+    "estado": "NORMAL"
+  },
+  "humedad": {
+    "valor": 55.0,
+    "estado": "NORMAL"
+  },
+  "fase": "TERMOFILA",
+  "estadoGeneral": "TODO_BIEN",
+  "acciones": [
+    "No se requiere acción. Próxima revisión en 24 h."
+  ],
+  "umbralesConFuentePendiente": true
+}
