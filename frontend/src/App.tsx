@@ -1,9 +1,15 @@
 import { useEffect, useState } from 'react'
+import Alertas from './paginas/Alertas'
 import Guia from './paginas/Guia'
 
-const secciones = ['Estado', 'Historial', 'Guía', 'Alertas'] as const
+const secciones = [
+  { nombre: 'Estado', ruta: '#/' },
+  { nombre: 'Historial', ruta: '#/historial' },
+  { nombre: 'Guía', ruta: '#/guia' },
+  { nombre: 'Alertas', ruta: '#/alertas' },
+] as const
 
-// Provisional hasta M02 (React Router): #/guia muestra la Guía; cualquier otra ruta, Estado.
+// Provisional hasta M02 (React Router): #/guia y #/alertas tienen pantalla; el resto muestra Estado.
 function useHash() {
   const [hash, setHash] = useState(window.location.hash)
   useEffect(() => {
@@ -37,23 +43,19 @@ function App() {
       >
         <strong>EcoCompost IoT</strong>
         <nav style={{ display: 'flex', gap: 12 }}>
-          {secciones.map((s) =>
-            s === 'Guía' ? (
-              <a key={s} href="#/guia">
-                {s}
-              </a>
-            ) : (
-              <a key={s} href="#/">
-                {s}
-              </a>
-            ),
-          )}
+          {secciones.map((s) => (
+            <a key={s.nombre} href={s.ruta} aria-current={hash === s.ruta ? 'page' : undefined}>
+              {s.nombre}
+            </a>
+          ))}
         </nav>
         <span>Casa de Jenis</span>
       </header>
       <main style={{ padding: 16 }}>
         {hash === '#/guia' ? (
           <Guia />
+        ) : hash === '#/alertas' ? (
+          <Alertas />
         ) : (
           <>
             <h1 style={{ color: 'var(--verde)' }}>Estado actual</h1>
