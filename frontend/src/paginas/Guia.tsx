@@ -48,7 +48,7 @@ function Guia() {
             <span>Nada extra. La compostera no debe darle más trabajo de limpieza.</span>
           </li>
         </ul>
-        <p className="guia-nota">Reparto propuesto por el equipo; se confirma en la prueba con usuarios.</p>
+        <p className="guia-nota">Reparto acordado por el equipo; se valida con Jenis y Cande en la prueba con usuarios.</p>
       </section>
 
       <section aria-labelledby="g-seguridad">
@@ -145,7 +145,7 @@ function Guia() {
       <section aria-labelledby="g-ayuda">
         <h2 id="g-ayuda">8. Si algo no funciona</h2>
         <p>
-          Avisar al responsable técnico: <strong>por definir</strong>.
+          Avisar al responsable técnico: <strong>Bryan Robles</strong> (equipo EcoCompost IoT).
         </p>
       </section>
     </article>

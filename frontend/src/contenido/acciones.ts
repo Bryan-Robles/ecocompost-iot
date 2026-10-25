@@ -42,7 +42,7 @@ export const acciones: Record<TipoAlerta, AccionGuia> = {
     queHacer: [
       'Revisar que el Wi-Fi de la casa funcione.',
       'No desconectar ni mojar el sensor.',
-      'Avisar al responsable técnico.',
+      'Avisar al responsable técnico (Bryan Robles).',
     ],
   },
 }
