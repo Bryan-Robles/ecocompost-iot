@@ -32,6 +32,12 @@ public record Escenario(
 	 * tipo "corte": el sensor no envía lecturas durante {@code duracionSeg}. Tiempos en segundos reales desde el cambio de escenario.
 	 */
 	@JsonIgnoreProperties(ignoreUnknown = true)
-	public record Evento(String tipo, String variable, double inicioSeg, double duracionSeg, Double hasta) {
+	public record Evento(String tipo, String variable, Double inicioSeg, Double duracionSeg, Double hasta) {
+
+		/** Eventos sin tiempos (p. ej. "carga") no fallan: inicio 0 y duración 0. Ver MockSensorService. */
+		public Evento {
+			inicioSeg = inicioSeg != null ? inicioSeg : 0;
+			duracionSeg = duracionSeg != null ? duracionSeg : 0;
+		}
 	}
 }
