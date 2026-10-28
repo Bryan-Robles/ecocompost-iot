@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import Alertas from './paginas/Alertas'
+import Estado from './paginas/Estado'
 import Guia from './paginas/Guia'
+import Historial from './paginas/Historial'
 
 const secciones = [
   { nombre: 'Estado', ruta: '#/' },
@@ -9,7 +11,7 @@ const secciones = [
   { nombre: 'Alertas', ruta: '#/alertas' },
 ] as const
 
-// Provisional hasta M02 (React Router): #/guia y #/alertas tienen pantalla; el resto muestra Estado.
+// Provisional hasta M02 (React Router). Rutas: #/ Estado, #/historial, #/guia, #/alertas.
 function useHash() {
   const [hash, setHash] = useState(window.location.hash)
   useEffect(() => {
@@ -20,8 +22,7 @@ function useHash() {
   return hash
 }
 
-// Esqueleto inicial: navegación de los wireframes de E2 y aviso de datos simulados.
-// Las pantallas se implementan en las issues M14–M17.
+// Navegación de los wireframes de E2 y aviso de datos simulados.
 function App() {
   const hash = useHash()
   return (
@@ -56,11 +57,10 @@ function App() {
           <Guia />
         ) : hash === '#/alertas' ? (
           <Alertas />
+        ) : hash === '#/historial' ? (
+          <Historial />
         ) : (
-          <>
-            <h1 style={{ color: 'var(--verde)' }}>Estado actual</h1>
-            <p>Pantalla en construcción.</p>
-          </>
+          <Estado />
         )}
       </main>
     </>

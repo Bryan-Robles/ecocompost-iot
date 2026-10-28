@@ -1,6 +1,9 @@
 spring:
   application:
     name: ecocompost-backend
+  # Simulador activo por defecto (prototipo). Con un ESP32 real: quitar 'mock'.
+  profiles:
+    active: mock
   datasource:
     # H2 en modo archivo (ADR-001): sin instalar base de datos
     url: jdbc:h2:file:./data/ecocompost
@@ -34,9 +37,23 @@ ecocompost:
       critica-baja-fase-activa: 35.0   # Tabla 3: bajas temperaturas < 35 °C (FAO 2013, p. 28)
       enfriamiento-prematuro-antes-de: 14d   # criterio del equipo: Tabla 7, termofílica de 2 a 5 semanas (FAO 2013, p. 31)
       fuente: FAO-2013
+    fase:
+      dias-ventana: 14
+      dias-enfriamiento-a-maduracion: 14   # criterio del equipo (ver docs/referencias.md)
     humedad:
       normal-min: 45.0        # Tabla 2: rango ideal 45-60 % (FAO 2013, p. 27)
       normal-max: 60.0
       critica-baja: 40.0      # criterio del equipo: 5 puntos de aviso bajo el rango FAO
       critica-alta: 65.0      # criterio del equipo: 5 puntos de aviso sobre el rango FAO
       fuente: FAO-2013
+# Conexión: 3 intervalos sin lecturas = SIN_CONEXION (riesgo R4)
+  conexion:
+    intervalo-esperado-segundos: 5   # el simulador envía cada 5 s; un ESP32 real: varios minutos
+  mock:
+    escenario-inicial: todo-bien
+    escenarios-dir: ../mock-data
+    dia-inicial: 4
+    dias-historial: 7
+    dispositivo-id: mock-01
+  alertas:
+    revision-ms: 5000
