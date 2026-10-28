@@ -1,0 +1,98 @@
+[
+  {
+    "clave": "temperatura.normal-min",
+    "valor": 45.0,
+    "unidad": "°C",
+    "fuente": {
+      "clave": "FAO-2013",
+      "referencia": "Román, P., Martínez, M. M. y Pantoja, A. (2013). Manual de compostaje del agricultor. FAO.",
+      "url": "https://www.fao.org/4/i3388s/i3388s.pdf",
+      "estado": "VERIFICADA"
+    }
+  },
+  {
+    "clave": "temperatura.normal-max",
+    "valor": 65.0,
+    "unidad": "°C",
+    "fuente": {
+      "clave": "FAO-2013",
+      "referencia": "Román, P., Martínez, M. M. y Pantoja, A. (2013). Manual de compostaje del agricultor. FAO.",
+      "url": "https://www.fao.org/4/i3388s/i3388s.pdf",
+      "estado": "VERIFICADA"
+    }
+  },
+  {
+    "clave": "temperatura.critica-alta",
+    "valor": 70.0,
+    "unidad": "°C",
+    "fuente": {
+      "clave": "FAO-2013",
+      "referencia": "Román, P., Martínez, M. M. y Pantoja, A. (2013). Manual de compostaje del agricultor. FAO.",
+      "url": "https://www.fao.org/4/i3388s/i3388s.pdf",
+      "estado": "VERIFICADA"
+    }
+  },
+  {
+    "clave": "temperatura.critica-baja-fase-activa",
+    "valor": 35.0,
+    "unidad": "°C",
+    "fuente": {
+      "clave": "FAO-2013",
+      "referencia": "Román, P., Martínez, M. M. y Pantoja, A. (2013). Manual de compostaje del agricultor. FAO.",
+      "url": "https://www.fao.org/4/i3388s/i3388s.pdf",
+      "estado": "VERIFICADA"
+    }
+  },
+  {
+    "clave": "temperatura.enfriamiento-prematuro-antes-de",
+    "valor": 14,
+    "unidad": "días",
+    "fuente": {
+      "clave": "EQUIPO",
+      "referencia": "Criterio del equipo derivado de FAO (2013); ver docs/referencias.md",
+      "estado": "CRITERIO_EQUIPO"
+    }
+  },
+  {
+    "clave": "humedad.normal-min",
+    "valor": 45.0,
+    "unidad": "%",
+    "fuente": {
+      "clave": "FAO-2013",
+      "referencia": "Román, P., Martínez, M. M. y Pantoja, A. (2013). Manual de compostaje del agricultor. FAO.",
+      "url": "https://www.fao.org/4/i3388s/i3388s.pdf",
+      "estado": "VERIFICADA"
+    }
+  },
+  {
+    "clave": "humedad.normal-max",
+    "valor": 60.0,
+    "unidad": "%",
+    "fuente": {
+      "clave": "FAO-2013",
+      "referencia": "Román, P., Martínez, M. M. y Pantoja, A. (2013). Manual de compostaje del agricultor. FAO.",
+      "url": "https://www.fao.org/4/i3388s/i3388s.pdf",
+      "estado": "VERIFICADA"
+    }
+  },
+  {
+    "clave": "humedad.critica-baja",
+    "valor": 40.0,
+    "unidad": "%",
+    "fuente": {
+      "clave": "EQUIPO",
+      "referencia": "Criterio del equipo derivado de FAO (2013); ver docs/referencias.md",
+      "estado": "CRITERIO_EQUIPO"
+    }
+  },
+  {
+    "clave": "humedad.critica-alta",
+    "valor": 65.0,
+    "unidad": "%",
+    "fuente": {
+      "clave": "EQUIPO",
+      "referencia": "Criterio del equipo derivado de FAO (2013); ver docs/referencias.md",
+      "estado": "CRITERIO_EQUIPO"
+    }
+  }
+]

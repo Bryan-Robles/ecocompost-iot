@@ -1,0 +1,18 @@
+{
+  "temperatura": {
+    "valor": 57.6,
+    "estado": "NORMAL"
+  },
+  "humedad": {
+    "valor": 38.0,
+    "estado": "CRITICO"
+  },
+  "fase": "TERMOFILA",
+  "estadoGeneral": "CRITICO",
+  "acciones": [
+    "Agregar agua poco a poco, o restos de fruta y verdura.",
+    "Mezclar con una pala.",
+    "Hacer la prueba del puño: el material debe quedar pegado sin escurrir agua."
+  ],
+  "umbralesConFuentePendiente": false
+}
