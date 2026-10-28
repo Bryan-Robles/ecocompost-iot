@@ -1,0 +1,79 @@
+.historial {
+  max-width: 880px;
+  margin: 0 auto;
+  font-size: 17px;
+  line-height: 1.5;
+}
+
+.historial h1 {
+  color: var(--verde);
+  margin-bottom: 12px;
+}
+
+.historial h2 {
+  font-size: 1.05rem;
+  margin: 0;
+}
+
+.historial-aviso {
+  background: #fff8e1;
+  border-left: 4px solid var(--ambar);
+  padding: 8px 12px;
+}
+
+.historial-grafica {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 12px 14px 6px;
+  margin-bottom: 12px;
+}
+
+.historial-grafica-cabecera {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 4px;
+}
+
+.historial-grafica-cabecera span {
+  font-weight: 600;
+  color: var(--verde);
+}
+
+.historial-fases {
+  background: #fff;
+  border: 1px solid var(--borde);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+
+.historial-fases ol {
+  list-style: none;
+  padding: 0;
+  margin: 8px 0 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.historial-fases li {
+  flex: 1 1 140px;
+  text-align: center;
+  padding: 8px;
+  border: 1px solid var(--borde);
+  border-radius: 6px;
+  color: #52606d;
+}
+
+.historial-fases li.activa {
+  background: var(--verde);
+  border-color: var(--verde);
+  color: #fff;
+  font-weight: 700;
+}
+
+.historial-nota {
+  font-size: 0.9rem;
+  color: #52606d;
+}
