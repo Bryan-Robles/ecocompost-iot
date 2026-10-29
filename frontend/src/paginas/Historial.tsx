@@ -142,7 +142,7 @@ function Historial() {
       </div>
 
       <p className="historial-nota">
-        Datos simulados para el prototipo. Los pesajes de residuos sí son reales.
+        Datos simulados para el prototipo: temperatura y humedad.
       </p>
     </section>
   )
