@@ -15,7 +15,8 @@ spring:
     open-in-view: false
   h2:
     console:
-      enabled: true
+      # Consola de H2 sin contraseña: apagada. Para depurar localmente, poner true temporalmente.
+      enabled: false
 
 server:
   port: 8080
