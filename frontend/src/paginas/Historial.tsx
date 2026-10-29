@@ -11,6 +11,13 @@ import './Historial.css'
 const DIA_MS = 24 * 60 * 60 * 1000
 const REFRESCO_MS = 15000
 
+const rangos: { dias: number; etiqueta: string }[] = [
+  { dias: 1, etiqueta: '1 día' },
+  { dias: 3, etiqueta: '3 días' },
+  { dias: 7, etiqueta: '7 días' },
+  { dias: 14, etiqueta: '14 días' },
+]
+
 const fases: { id: Fase; nombre: string }[] = [
   { id: 'MESOFILA', nombre: 'Mesófila' },
   { id: 'TERMOFILA', nombre: 'Termófila' },
@@ -35,6 +42,7 @@ function Historial() {
   const [ultima, setUltima] = useState<Lectura | null>(null)
   const [fase, setFase] = useState<Fase | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [dias, setDias] = useState(7)
 
   useEffect(() => {
     let cancelado = false
@@ -46,7 +54,7 @@ function Historial() {
           return
         }
         const hasta = new Date(actual.lectura.medidoEn)
-        const desde = new Date(hasta.getTime() - 7 * DIA_MS)
+        const desde = new Date(hasta.getTime() - dias * DIA_MS)
         const [historial, diagnostico] = await Promise.all([
           obtenerHistorial(desde, new Date(hasta.getTime() + 60_000)),
           obtenerDiagnostico(),
@@ -72,7 +80,7 @@ function Historial() {
       cancelado = true
       clearInterval(id)
     }
-  }, [])
+  }, [dias])
 
   if (puntos === null) {
     return <p className="historial-aviso">Cargando el historial…</p>
@@ -81,6 +89,16 @@ function Historial() {
   return (
     <section className="historial">
       <h1>Historial y maduración</h1>
+      <div className="historial-rango">
+        <label htmlFor="historial-rango">Rango</label>
+        <select id="historial-rango" value={dias} onChange={(e) => setDias(Number(e.target.value))}>
+          {rangos.map((r) => (
+            <option key={r.dias} value={r.dias}>
+              {r.etiqueta}
+            </option>
+          ))}
+        </select>
+      </div>
       {error && <p className="historial-aviso" role="alert">{error}</p>}
       {puntos.length === 0 ? (
         <p className="historial-aviso">Todavía no hay lecturas para mostrar.</p>
