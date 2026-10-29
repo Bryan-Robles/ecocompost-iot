@@ -108,9 +108,9 @@ Los rangos de diagnóstico salen del *Manual de compostaje del agricultor* de la
 
 | Integrante | Rol de coordinación |
 |---|---|
-| Bryan Andre Robles Mojica | Líder de usuarios *(por confirmar)* |
-| Karyme Judith Sánchez Fernández | Líder de documentación *(por confirmar)* |
-| Jussi Torres González | Líder técnico *(por confirmar)* |
+| Bryan Andre Robles Mojica | Líder de usuarios |
+| Karyme Judith Sánchez Fernández | Líder de documentación |
+| Jussi Torres González | Líder técnico |
 
 Los roles coordinan; no reparten el trabajo técnico. Todos participan en backend, frontend y documentación. Ver [CONTRIBUTING.md](CONTRIBUTING.md).
 

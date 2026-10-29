@@ -586,7 +586,7 @@ JUnit 5 + AssertJ, `@ParameterizedTest` con `@CsvSource` para los límites:
 | Crítico alto H | 65,1 | CRITICO |
 | T alta | 65,1 | CRITICO (TEMP_ALTA) |
 | T 38 en MESOFILA | 38,0 | NORMAL |
-| T 38 en TERMOFILA prematuro | 38,0, 1 día desde carga | CRITICO (TEMP_BAJA) |
+| T 38 en TERMOFILA prematuro | 38,0, 1 día desde carga | ATENCION (TEMP_BAJA) sin cargas registradas; CRITICO solo cuando exista la fecha de la última carga (#28, fuera de E3) |
 | Cambio de configuración | `normal-min = 52` y H = 51 | ATENCION (prueba de configurabilidad) |
 | Ruido no cambia fase | ventana con un pico aislado | Fase sin cambio |
 | Sin conexión | última lectura hace 16 s, intervalo 5 s × 3 | SIN_CONEXION |
@@ -643,7 +643,7 @@ El reparto es **por porciones verticales** (cada persona lleva una pantalla de p
 
 | ID | Tarea | h | Depende de | Responsable | Etiquetas |
 |---|---|---|---|---|---|
-| M01 | Esqueleto backend (Spring Boot 3, Java 21, Maven Wrapper, Web, JPA, Validation, H2) | 2 | — | LT | backend |
+| M01 | Esqueleto backend (Spring Boot 4, Java 21, Maven Wrapper, Web, JPA, Validation, H2) | 2 | — | LT | backend |
 | M02 | Esqueleto frontend (Vite + React + TS, router, layout con navegación y paleta) | 2 | — | LD | frontend |
 | M03 | CI en GitHub Actions (build backend + frontend en PR) | 1 | M01, M02 | LT | backend, frontend |
 | M04 | Contrato de API acordado + fixtures JSON (permite trabajo en paralelo) | 2 | — | LT + todos | backend, frontend, docs |
@@ -747,7 +747,7 @@ Reglas del plan:
 | RS7 | Conflictos de Git entre 3 personas | Media | Medio | Ramas `feature/*` cortas, PR pequeños, porciones verticales | LT |
 | RS8 | Diferencias de entorno (Java/Node) entre PCs | Media | Medio | Maven Wrapper, `.nvmrc`, versiones fijadas en CI y README. Nota: en el PC de Bryan no hay `mvn` instalado, por eso se usa `mvnw` | LT |
 | RS9 | Participación desigual en la demo | Baja | Medio (20 % de la nota) | Guion con tiempos por persona; ensayos | LU |
-| RS10 | Cambio de requisitos de última hora | Baja | Medio | Congelamiento el miércoles 28 | LT |
+| RS10 | Cambio de requisitos de última hora | Baja | Medio | Congelamiento el jueves 29 | LT |
 
 ### 8.2 Riesgos de seguridad del diseño (lista existente, E2)
 

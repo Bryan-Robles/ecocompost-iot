@@ -4,7 +4,7 @@
 
 Rúbrica (actividad evaluativa N.° 3): Claridad y coherencia 20 % · Originalidad 30 % · Aplicabilidad 30 % · Presentación y orden 20 %.
 
-> **Roles por confirmar.** El guion usa la propuesta del análisis: Bryan Robles (líder de usuarios), Karyme Sánchez (líder de documentación) y Jussi Torres (líder técnico). Si cambian, solo se cambian los nombres.
+> **Roles confirmados.** Son los del análisis: Bryan Robles (líder de usuarios), Karyme Sánchez (líder de documentación) y Jussi Torres (líder técnico). Si cambian, solo se cambian los nombres.
 
 **Público:** personas sin conocimientos de programación. Se habla de la compostera, de Cande y de la familia; la tecnología se nombra solo si hace falta, en una frase.
 
@@ -23,7 +23,7 @@ Rúbrica (actividad evaluativa N.° 3): Claridad y coherencia 20 % · Originalid
 | 7:30–9:30 | Bryan | **Demo 2 · Una alerta** | Cambiar al caso de humedad baja. La pantalla pasa de verde a ámbar y luego a rojo. Abrir **Alertas**: "Qué significa" y "Qué hacer", en lenguaje simple. Marcarla como atendida. | Aplicabilidad, Originalidad |
 | 9:30–11:00 | Karyme | **Demo 3 · La historia de la compostera** | Mostrar **Historial**: la franja verde es el rango ideal. Mostrar cómo cambia la fase del compostaje (calentamiento, enfriamiento, maduración). El caso de ciclo completo pasa de termófila a enfriamiento y luego a maduración (probado con el simulador). | Aplicabilidad |
 | 11:00–12:00 | Jussi | **Demo 4 · Se corta la señal** | Caso de sensor sin conexión: la pantalla se pone en gris y dice cuánto tiempo hace que no llegan datos. Al volver la señal, vuelve a mostrar datos. Mostrar la vista en el celular. | Aplicabilidad (seguro y robusto) |
-| 12:00–13:30 | Karyme | **Seguridad y confianza** | Los riesgos de seguridad (electricidad, olores, plagas, manipulación) están en una lista aprobada por la docente. Pantalla **Guía**: qué hace cada persona, con guantes y tapabocas, y la tapa siempre cerrada. Los rangos de temperatura y humedad vienen de la guía de la FAO (2013). | Aplicabilidad, Claridad |
+| 12:00–13:30 | Karyme | **Seguridad y confianza** | Los riesgos de seguridad (electricidad, olores, plagas, manipulación) están en una lista de riesgos (aprobación de la docente: por confirmar). Pantalla **Guía**: qué hace cada persona, con guantes y tapabocas, y la tapa siempre cerrada. Los rangos de temperatura y humedad vienen de la guía de la FAO (2013). | Aplicabilidad, Claridad |
 | 13:30–15:00 | Bryan | **Impacto y cierre** | Con este pesaje, unos 117 kg al mes dejarían de ir al camión. El abono estimado es de 35 a 70 kg al mes. Son proyecciones, no mediciones. Siguiente paso: probar el sistema con usuarios reales. Repetir el mensaje central. | Claridad y coherencia |
 | 15:00–20:00 | Todos | **Preguntas** | Cada integrante responde las preguntas que preparó (ver abajo). | Presentación y orden |
 
@@ -37,7 +37,7 @@ Rúbrica (actividad evaluativa N.° 3): Claridad y coherencia 20 % · Originalid
 | Demo 4 | Estado "sin conexión" y vista móvil | M14, M18 | Pantalla con datos guardados de "sin conexión" |
 | Seguridad y guía | Pantalla Guía y aprobación de riesgos | M17 (hecha), M22 | Diapositiva con la lista de riesgos |
 
-**Corte:** si el miércoles 28 a las 18:00 (congelamiento) un bloque no está listo, se presenta con su plan B y se dice en voz alta.
+**Corte:** si el jueves 29 a las 18:00 (congelamiento) un bloque no está listo, se presenta con su plan B y se dice en voz alta.
 
 ## Planes de respaldo
 
