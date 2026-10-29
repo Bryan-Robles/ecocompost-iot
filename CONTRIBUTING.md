@@ -57,4 +57,4 @@ Si la issue se cierra con el PR, incluir `Closes #<número>` en la descripción.
 - **Nunca** subir credenciales, tokens ni archivos `.env`.
 - Los umbrales de diagnóstico van en configuración, no en el código.
 - Todo dato numérico nuevo (rangos, rendimientos, comparaciones) debe tener fuente citada o marcarse como supuesto.
-- Desde el **miércoles 28 de octubre a las 18:00** (congelamiento) solo se aceptan PR de tipo `fix`.
+- Desde el **jueves 29 de octubre a las 18:00** (congelamiento) solo se aceptan PR de tipo `fix`.

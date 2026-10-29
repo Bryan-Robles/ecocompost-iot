@@ -747,7 +747,7 @@ Reglas del plan:
 | RS7 | Conflictos de Git entre 3 personas | Media | Medio | Ramas `feature/*` cortas, PR pequeños, porciones verticales | LT |
 | RS8 | Diferencias de entorno (Java/Node) entre PCs | Media | Medio | Maven Wrapper, `.nvmrc`, versiones fijadas en CI y README. Nota: en el PC de Bryan no hay `mvn` instalado, por eso se usa `mvnw` | LT |
 | RS9 | Participación desigual en la demo | Baja | Medio (20 % de la nota) | Guion con tiempos por persona; ensayos | LU |
-| RS10 | Cambio de requisitos de última hora | Baja | Medio | Congelamiento el miércoles 28 | LT |
+| RS10 | Cambio de requisitos de última hora | Baja | Medio | Congelamiento el jueves 29 | LT |
 
 ### 8.2 Riesgos de seguridad del diseño (lista existente, E2)
 
