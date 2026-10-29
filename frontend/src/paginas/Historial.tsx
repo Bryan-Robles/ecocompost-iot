@@ -83,7 +83,11 @@ function Historial() {
   }, [dias])
 
   if (puntos === null) {
-    return <p className="historial-aviso">Cargando el historial…</p>
+    return error ? (
+      <p className="historial-aviso" role="alert">{error}</p>
+    ) : (
+      <p className="historial-aviso">Cargando el historial…</p>
+    )
   }
 
   return (

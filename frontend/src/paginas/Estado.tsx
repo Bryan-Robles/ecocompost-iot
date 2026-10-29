@@ -84,7 +84,11 @@ function Estado() {
   }
 
   if (actual === undefined) {
-    return <p className="estado-aviso">Cargando el estado de la compostera…</p>
+    return error ? (
+      <p className="estado-aviso" role="alert">{error}</p>
+    ) : (
+      <p className="estado-aviso">Cargando el estado de la compostera…</p>
+    )
   }
 
   const sinConexion = actual?.conexion === 'SIN_CONEXION' || actual === null
