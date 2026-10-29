@@ -92,6 +92,8 @@ Contrato del prototipo (detalle en la sección 2.5 del análisis de arquitectura
 | `GET`/`POST` | `/api/cargas` | Cargas de residuos (pesaje real). *Pendiente* |
 | `GET` | `/api/umbrales` | Umbrales vigentes con su fuente. *Pendiente* |
 
+Las alertas se cierran a mano: quien las atiende marca la alerta con `PATCH`. Si el problema desaparece, la alerta sigue abierta hasta que alguien la marque. Es una decisión del equipo para el prototipo.
+
 Ejemplo de lectura, tal como la enviaría el ESP32:
 
 ```bash
