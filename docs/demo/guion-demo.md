@@ -4,42 +4,91 @@
 
 Rúbrica (actividad evaluativa N.° 3): Claridad y coherencia 20 % · Originalidad 30 % · Aplicabilidad 30 % · Presentación y orden 20 %.
 
-> **Roles por confirmar.** El guion usa la propuesta del análisis de arquitectura: Bryan Robles (líder de usuarios), Karyme Sánchez (líder de documentación) y Jussi Torres (líder técnico). Si cambian, solo se cambian los nombres; los tiempos quedan iguales (cada integrante habla unos 5 minutos).
+> **Roles por confirmar.** El guion usa la propuesta del análisis: Bryan Robles (líder de usuarios), Karyme Sánchez (líder de documentación) y Jussi Torres (líder técnico). Si cambian, solo se cambian los nombres.
 
-## Mensaje central (decirlo igual en la apertura y el cierre)
+**Público:** personas sin conocimientos de programación. Se habla de la compostera, de Cande y de la familia; la tecnología se nombra solo si hace falta, en una frase.
 
-> "La cocina de Jenis genera 3,9 kg de residuos orgánicos al día. EcoCompost IoT vigila la compostera y le dice a la familia, en palabras sencillas, qué hacer y cuándo, para que el residuo se vuelva abono para la terraza sin trabajo extra para Cande."
+## Mensaje central (decirlo al inicio y al cierre)
+
+> "En la cocina de Jenis se generan unos 4 kilos de residuos orgánicos al día. EcoCompost vigila la compostera y le dice a la familia, con palabras sencillas, qué hacer y cuándo, para que esos residuos se conviertan en abono sin trabajo extra para Cande."
 
 ## Guion minuto a minuto
 
 | Min | Quién | Bloque | Qué se dice o se muestra | Criterio de la rúbrica |
 |---|---|---|---|---|
-| 0:00–2:00 | Bryan | **Problema y usuarios** | Pensión con 12 personas. Pesaje propio del 17 al 22 de octubre de 2026: 19,5 kg en 5 días (3,9 kg/día). Dolores del mapa de empatía: bolsas que escurren (Cande), olores y plagas (Jenis), el esposo compra abono. Punto de vista y pregunta «¿Cómo podríamos…?». | Claridad y coherencia |
-| 2:00–4:00 | Karyme | **Ideación y decisión** | Crazy 8s (8 ideas) y matriz impacto/esfuerzo. Compostera aeróbica en lugar de biodigestor: sin metano ni presión, cumple la regla de baja tensión. Alcance: software e IoT con datos simulados; el nodo ESP32 + DS18B20 + sensor capacitivo es diseño conceptual. | Originalidad |
-| 4:00–5:30 | Jussi | **Arquitectura y diseño físico** | Diagrama: sensor (simulado) → API Spring Boot → base de datos → dashboard React. Cambio de diseño respaldado en la FAO: el tanque de 50 L se llenaba en unos 5 días; ahora es un bidón de 220 L (unos 22 días de llenado). | Originalidad, Aplicabilidad |
-| 5:30–7:30 | Jussi | **Demo 1 · Estado y lectura del sensor** | Pantalla Estado en "todo bien". En la terminal, enviar una lectura con `curl` como lo haría el ESP32 y verla aparecer. Señalar el aviso "Datos simulados". | Aplicabilidad (mide y muestra) |
-| 7:30–9:30 | Bryan | **Demo 2 · Alerta y qué hacer** | Activar el escenario `humedad-baja`. La pantalla pasa de verde a ámbar y a rojo. Abrir **Alertas**: "Qué significa / Qué hacer" en lenguaje sencillo y la prueba del puño. Pulsar **Marcar como atendida**. | Aplicabilidad, Originalidad |
-| 9:30–11:00 | Karyme | **Demo 3 · Historial y fases** | Pantalla Historial con la banda del rango ideal. Escenario `ciclo-completo`: la fase avanza de mesófila a termófila, enfriamiento y maduración. Escenario `temperatura-alta`. | Aplicabilidad |
-| 11:00–12:00 | Jussi | **Demo 4 · Sin conexión y celular** | Escenario `sensor-sin-conexion`: tarjetas en gris y "última lectura hace X min"; al volver, el historial se completa (riesgo R4). Mostrar la vista en el celular. | Aplicabilidad (seguro y robusto) |
-| 12:00–13:30 | Karyme | **Seguridad, guía y evidencia** | Lista de riesgos R1–R5 aprobada por la docente. Pantalla **Guía**: quién hace qué (Cande nada extra), guantes y tapabocas, recipiente verde (Resolución 2184 de 2019). Umbrales con fuente: FAO (2013), Tablas 2 y 3. | Aplicabilidad, Claridad |
-| 13:30–15:00 | Bryan | **Impacto y cierre** | ≈117 kg/mes que no van al camión (proyección del pesaje). Abono estimado de 35 a 70 kg/mes (rendimiento de 30 a 60 %, CRA 2025). Siguiente paso: prueba con usuarios en la Entrega 4. Repetir el mensaje central. | Claridad y coherencia |
+| 0:00–2:00 | Bryan | **El problema** | La pensión tiene 12 personas. Pesamos los residuos del 17 al 22 de octubre: 19,5 kg en 5 días. Las bolsas escurren, Cande las tiene que limpiar, y el esposo de Jenis compra abono para su terraza. Pregunta: "¿Cómo podríamos…?" | Claridad y coherencia |
+| 2:00–4:00 | Karyme | **Cómo llegamos a la idea** | Probamos muchas ideas (8 en una ronda rápida) y elegimos una compostera en lugar de un biodigestor, porque el biodigestor produce gas a presión y malos olores, y no es seguro en casa. Alcance: el software y los datos son reales de prototipo; los datos de temperatura y humedad son simulados, y el sensor físico es un diseño. | Originalidad |
+| 4:00–5:30 | Jussi | **Cómo funciona** | Dibujo simple: un sensor mide la temperatura y la humedad → el sistema guarda los datos y decide si todo está bien → la pantalla lo muestra a cualquiera, en el computador o en el celular. Cambio de diseño: el recipiente pasó de 50 litros a 220 litros, según la guía de la FAO. | Originalidad, Aplicabilidad |
+| 5:30–7:30 | Jussi | **Demo 1 · Todo está bien** | Mostrar la pantalla **Estado** en verde. Mostrar que llega un dato nuevo y aparece en la pantalla. Señalar el aviso "Datos simulados". | Aplicabilidad |
+| 7:30–9:30 | Bryan | **Demo 2 · Una alerta** | Cambiar al caso de humedad baja. La pantalla pasa de verde a ámbar y luego a rojo. Abrir **Alertas**: "Qué significa" y "Qué hacer", en lenguaje simple. Marcarla como atendida. | Aplicabilidad, Originalidad |
+| 9:30–11:00 | Karyme | **Demo 3 · La historia de la compostera** | Mostrar **Historial**: la franja verde es el rango ideal. Mostrar cómo cambia la fase del compostaje (calentamiento, enfriamiento, maduración). *Confirmar en el ensayo que el caso de ciclo completo avanza las cuatro fases.* | Aplicabilidad |
+| 11:00–12:00 | Jussi | **Demo 4 · Se corta la señal** | Caso de sensor sin conexión: la pantalla se pone en gris y dice cuánto tiempo hace que no llegan datos. Al volver la señal, vuelve a mostrar datos. Mostrar la vista en el celular. | Aplicabilidad (seguro y robusto) |
+| 12:00–13:30 | Karyme | **Seguridad y confianza** | Los riesgos de seguridad (electricidad, olores, plagas, manipulación) están en una lista aprobada por la docente. Pantalla **Guía**: qué hace cada persona, con guantes y tapabocas, y la tapa siempre cerrada. Los rangos de temperatura y humedad vienen de la guía de la FAO (2013). | Aplicabilidad, Claridad |
+| 13:30–15:00 | Bryan | **Impacto y cierre** | Con este pesaje, unos 117 kg al mes dejarían de ir al camión. El abono estimado es de 35 a 70 kg al mes. Son proyecciones, no mediciones. Siguiente paso: probar el sistema con usuarios reales. Repetir el mensaje central. | Claridad y coherencia |
 | 15:00–20:00 | Todos | **Preguntas** | Cada integrante responde las preguntas que preparó (ver abajo). | Presentación y orden |
 
-## Qué debe estar listo para cada bloque de la demo
+## Qué debe estar listo para cada bloque
 
 | Bloque | Necesita | Issue | Plan B si no está listo |
 |---|---|---|---|
-| Demo 1 | Pantalla Estado, `POST /api/lecturas`, simulador | M14, M06, M12 | Estado con fixtures; mostrar el `curl` y el JSON de respuesta en la terminal |
-| Demo 2 | Escenarios y cambio en vivo, pantalla Alertas | M13, M16 (hecha) | Alertas con fixtures (ya funciona) |
-| Demo 3 | Pantalla Historial y detección de fase | M15, M09 | Historial con `lecturas-7-dias.json` |
-| Demo 4 | Estado "sin conexión" y vista móvil | M14, M18 | Fixture `lectura-actual-sin-conexion.json` |
-| Seguridad y guía | Pantalla Guía, aprobación de riesgos | M17 (hecha), M22 | Diapositiva con la lista de riesgos |
+| Demo 1 | Pantalla Estado y llegada de un dato nuevo | M14, M06, M12 | Mostrar la pantalla con datos guardados y decirlo |
+| Demo 2 | Cambio de caso y pantalla Alertas | M13, M16 (hecha) | Alertas con datos guardados (ya funciona) |
+| Demo 3 | Pantalla Historial y fase | M15, M09 | Historial con datos guardados |
+| Demo 4 | Estado "sin conexión" y vista móvil | M14, M18 | Pantalla con datos guardados de "sin conexión" |
+| Seguridad y guía | Pantalla Guía y aprobación de riesgos | M17 (hecha), M22 | Diapositiva con la lista de riesgos |
 
 **Corte:** si el miércoles 28 a las 18:00 (congelamiento) un bloque no está listo, se presenta con su plan B y se dice en voz alta.
 
-## Comandos de la demo
+## Planes de respaldo
 
-Arranque (jueves en la noche y viernes 60 minutos antes):
+| Falla | Qué hacer | Quién lo dice |
+|---|---|---|
+| El sistema no responde | Pasar a la versión con datos guardados y decirlo: "pasamos al modo sin conexión que preparamos para esto" | Quien esté hablando |
+| No hay internet | Nada cambia: la demo es local | — |
+| El computador falla | Usar el computador de respaldo, ya preparado | Jussi |
+| Todo falla | Video de respaldo (máximo 3 min) y capturas en las diapositivas | Karyme |
+| La pantalla del celular no se ve bien en el proyector | Mostrar la vista de celular en el computador | Jussi |
+
+## Preguntas que pueden hacer
+
+| Pregunta | Responde | Respuesta corta |
+|---|---|---|
+| ¿Quiénes son sus usuarios y qué descubrieron que no sabían? | Bryan | Jenis, Cande, el esposo y los estudiantes. Lo que no sabíamos: el dolor más fuerte es el trabajo físico de Cande con las bolsas que escurren. |
+| ¿Por qué compostera y no biodigestor? | Karyme | La compostera es segura en una casa con mucha gente. El biodigestor produce gas y presión, y olores. |
+| ¿Cómo saben si el proceso va bien, y de dónde sale eso? | Karyme | Según la FAO (2013): el material está "activo" sobre 45 °C; por encima de 70 °C o por debajo de 35 °C hay un problema; la humedad ideal está entre 45 % y 60 %. Los márgenes de aviso son criterio del equipo y así se dice. |
+| ¿Qué cambió desde el primer prototipo? | Jussi | El recipiente pasó de 50 a 220 litros, según el cálculo de la FAO. Los rangos se ajustaron a la fuente. |
+| ¿Cuántos residuos dejarían de ir al camión y cómo lo calcularon? | Bryan | Unos 117 kg al mes: los 19,5 kg de 5 días, llevados a un mes. Es una proyección. |
+| ¿Quién opera el sistema después del curso? | Jussi | El esposo de Jenis atiende las alertas; Jenis lleva los residuos; Cande no hace trabajo extra. |
+
+**Preguntas difíciles probables:**
+
+- *"¿Los datos son reales?"* Los pesajes de residuos sí son reales. La temperatura y la humedad son simuladas, porque el sensor físico es un diseño. Así lo autorizó la docente.
+- *"¿Por qué 14 días?"* Es un criterio del equipo a partir de la guía de la FAO, que da entre 2 y 5 semanas para la fase de calor. La FAO no da un número exacto.
+- *"¿Cuándo se pesó?"* Aclarar las fechas de pesaje antes de la presentación: el Entregable 1 reportaba los días 1 a 3, y el pesaje registrado es del 17 al 22 de octubre.
+
+## Lista de chequeo
+
+**Jueves 29 (ensayo):**
+
+- [ ] Dos ensayos completos con cronómetro (máximo 15 min)
+- [ ] Probar cada plan B al menos una vez
+- [ ] Grabar el video de respaldo (M27)
+- [ ] Computador de respaldo listo
+- [ ] Diapositivas en PDF en una USB
+
+**Viernes 30 (60 minutos antes):**
+
+- [ ] Sistema encendido con el caso "todo bien"
+- [ ] Pantallas Estado, Historial, Alertas y Guía abiertas
+- [ ] Celular conectado a la misma red, con la pantalla abierta
+- [ ] Video de respaldo en el escritorio
+- [ ] Guantes y tapabocas a la vista (refuerzan el mensaje de seguridad)
+
+---
+
+## Anexo para el equipo (técnico, no se lee en la presentación)
+
+Comandos de la Demo 1 y del cambio de caso, para quien opere la demo:
 
 ```bash
 cd backend
@@ -51,64 +100,14 @@ cd frontend
 npm run dev
 ```
 
-Lectura "del ESP32" para la Demo 1 (dejarla escrita en la terminal antes de empezar):
+Envío de un dato como lo haría el sensor (en Windows PowerShell usar `curl.exe`):
 
 ```bash
 curl -X POST http://localhost:8080/api/lecturas -H "Content-Type: application/json" -d '{"dispositivoId":"esp32-01","medidoEn":"2026-10-30T14:05:00Z","temperaturaC":58.2,"humedadPct":55.0,"origen":"MANUAL"}'
 ```
 
-Cambio de escenario (si el selector de la interfaz no está listo):
+Cambio de caso (si el selector de la pantalla no está listo):
 
 ```bash
 curl -X POST http://localhost:8080/api/demo/escenario -H "Content-Type: application/json" -d '{"nombre":"humedad-baja"}'
 ```
-
-En PowerShell, usar `curl.exe` en lugar de `curl`.
-
-## Planes de respaldo
-
-| Falla | Qué hacer | Quién lo dice |
-|---|---|---|
-| El backend no arranca o se cae | Pasar al modo con fixtures (sin backend) y decirlo: "pasamos al modo sin conexión que preparamos para esto" | Quien esté hablando |
-| No hay internet | Nada cambia: la demo es local | — |
-| El portátil falla | Portátil de respaldo con todo instalado | Jussi |
-| Todo falla | Video de respaldo (máximo 3 min) y capturas en las diapositivas | Karyme |
-| El proyector no muestra bien el celular | Vista móvil del navegador (DevTools) | Jussi |
-
-## Preparación de preguntas
-
-La guía del curso pide que todos estén preparados para estas preguntas. Cada integrante prepara dos.
-
-| Pregunta | Responde | Respuesta corta con evidencia |
-|---|---|---|
-| ¿Quiénes son sus usuarios y qué descubrieron que no sabían? | Bryan | Jenis, Cande y el esposo (más 2 estudiantes). Lo que no sabíamos: el dolor más fuerte es el trabajo físico de Cande con bolsas que escurren, no solo el olor. |
-| ¿Por qué eligieron compostera o biodigestor, y qué descartaron? | Karyme | Compostera aeróbica. Se descartó el biodigestor por metano, presión y olores en una casa con más de 12 personas; la guía exige manejo de gas y presión. |
-| ¿Qué valores usaron para decidir si el proceso va bien, y de qué fuentes salen? | Karyme | Fase termófila sobre 45 °C, hasta 65 °C sin intervención, problema sobre 70 °C o bajo 35 °C; humedad ideal 45–60 %. FAO (2013), Tablas 2 y 3. Los márgenes de aviso son criterio del equipo y así se declaran. |
-| ¿Qué cambió entre su primer prototipo y el final, y por qué? | Jussi | El tanque pasó de 50 L a 220 L por el cálculo de la FAO; los umbrales se ajustaron a la fuente (por ejemplo, humedad de 50–60 % a 45–60 %); las alertas pasaron de dos a tres niveles. |
-| ¿Cuántos residuos se dejarían de enviar a la recolección y cómo lo calcularon? | Bryan | ≈117 kg/mes: 19,5 kg pesados en 5 días ÷ 5 × 30. Es una proyección lineal de 5 días de datos propios. |
-| ¿Quién operará el sistema después del curso? | Jussi | El esposo de Jenis atiende las alertas y la bandeja; Jenis deposita los residuos; Cande no hace nada extra. Soporte técnico: Bryan Robles. |
-
-**Preguntas difíciles probables:**
-
-- *"¿Funciona con residuos reales?"* Los residuos y su peso son reales y medidos por el equipo; la telemetría es simulada porque el hardware quedó como diseño conceptual con autorización de la docente. El sistema recibe lecturas por el mismo contrato que usaría el ESP32.
-- *"¿Por qué 14 días para el enfriamiento prematuro?"* Es criterio del equipo a partir de la Tabla 7 de la FAO (fase termofílica de 2 a 5 semanas); la FAO no da un umbral explícito.
-- *"Las fechas del pesaje y el Entregable 1."* El Entregable 1 (16 de octubre) ya reportaba los días 1 a 3, pero el pesaje registrado es del 17 al 22 de octubre. Aclarar el orden de los pesajes antes de la presentación.
-
-## Lista de chequeo del día
-
-**Jueves 29 (ensayo):**
-
-- [ ] Dos ensayos completos cronometrados (≤ 15 min)
-- [ ] Probar cada plan B al menos una vez
-- [ ] Grabar el video de respaldo (M27)
-- [ ] Portátil de respaldo con backend y frontend instalados
-- [ ] Diapositivas exportadas en PDF en una USB
-
-**Viernes 30 (60 minutos antes):**
-
-- [ ] Backend arrancado con el escenario `todo-bien`
-- [ ] Frontend abierto en las pestañas Estado, Historial, Alertas y Guía
-- [ ] Terminal con el `curl` de la Demo 1 escrito
-- [ ] Celular conectado a la misma red, con el dashboard abierto
-- [ ] Video de respaldo en el escritorio
-- [ ] Guantes y tapabocas a la vista (refuerzan el mensaje de seguridad)
