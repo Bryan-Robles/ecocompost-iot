@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { atenderAlerta, obtenerAlertas } from '../api/alertas'
 import type { Alerta, Severidad } from '../api/tipos'
 import './Alertas.css'
@@ -152,12 +153,12 @@ function Alertas() {
                     {guardando ? 'Guardando…' : 'Marcar como atendida'}
                   </button>
                 )}
-                <a className="boton-secundario" href="#/historial">
+                <Link className="boton-secundario" to="/historial">
                   Ver historial
-                </a>
-                <a className="boton-secundario" href="#/guia">
+                </Link>
+                <Link className="boton-secundario" to="/guia">
                   Ver guía
-                </a>
+                </Link>
               </div>
             </section>
           )}
