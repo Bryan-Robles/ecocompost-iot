@@ -37,7 +37,7 @@ Rúbrica (actividad evaluativa N.° 3): Claridad y coherencia 20 % · Originalid
 | Demo 4 | Estado "sin conexión" y vista móvil | M14, M18 | Pantalla con datos guardados de "sin conexión" |
 | Seguridad y guía | Pantalla Guía y aprobación de riesgos | M17 (hecha), M22 | Diapositiva con la lista de riesgos |
 
-**Corte:** si el miércoles 28 a las 18:00 (congelamiento) un bloque no está listo, se presenta con su plan B y se dice en voz alta.
+**Corte:** si el jueves 29 a las 18:00 (congelamiento) un bloque no está listo, se presenta con su plan B y se dice en voz alta.
 
 ## Planes de respaldo
 
