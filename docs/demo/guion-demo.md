@@ -10,14 +10,14 @@ Rúbrica (actividad evaluativa N.° 3): Claridad y coherencia 20 % · Originalid
 
 ## Mensaje central (decirlo al inicio y al cierre)
 
-> "En la cocina de Jenis se generan unos 4 kilos de residuos orgánicos al día. EcoCompost vigila la compostera y le dice a la familia, con palabras sencillas, qué hacer y cuándo, para que esos residuos se conviertan en abono sin trabajo extra para Cande."
+> "En la cocina de Jenis se generan unos 3,9 kilos de residuos orgánicos al día. EcoCompost vigila la compostera y le dice a la familia, con palabras sencillas, qué hacer y cuándo, para que esos residuos se conviertan en abono sin trabajo extra para Cande."
 
 ## Guion minuto a minuto
 
 | Min | Quién | Bloque | Qué se dice o se muestra | Criterio de la rúbrica |
 |---|---|---|---|---|
 | 0:00–2:00 | Bryan | **El problema** | La pensión tiene 12 personas. Pesamos los residuos del 17 al 22 de octubre: 19,5 kg en 5 días. Las bolsas escurren, Cande las tiene que limpiar, y el esposo de Jenis compra abono para su terraza. Pregunta: "¿Cómo podríamos…?" | Claridad y coherencia |
-| 2:00–4:00 | Karyme | **Cómo llegamos a la idea** | Probamos muchas ideas (8 en una ronda rápida) y elegimos una compostera en lugar de un biodigestor, porque el biodigestor produce gas a presión y malos olores, y no es seguro en casa. Alcance: el software y los datos son reales de prototipo; los datos de temperatura y humedad son simulados, y el sensor físico es un diseño. | Originalidad |
+| 2:00–4:00 | Karyme | **Cómo llegamos a la idea** | Probamos muchas ideas (8 en una ronda rápida) y elegimos una compostera en lugar de un biodigestor, porque el biodigestor produce gas a presión y malos olores, y no es seguro en casa. Alcance: es un prototipo de software. La temperatura y la humedad son simuladas, y el sensor físico es un diseño. | Originalidad |
 | 4:00–5:30 | Jussi | **Cómo funciona** | Dibujo simple: un sensor mide la temperatura y la humedad → el sistema guarda los datos y decide si todo está bien → la pantalla lo muestra a cualquiera, en el computador o en el celular. Cambio de diseño: el recipiente pasó de 50 litros a 220 litros, según la guía de la FAO. | Originalidad, Aplicabilidad |
 | 5:30–7:30 | Jussi | **Demo 1 · Todo está bien** | Mostrar la pantalla **Estado** en verde. Mostrar que llega un dato nuevo y aparece en la pantalla. Señalar el aviso "Datos simulados". | Aplicabilidad |
 | 7:30–9:30 | Bryan | **Demo 2 · Una alerta** | Cambiar al caso de humedad baja. La pantalla pasa de verde a ámbar y luego a rojo. Abrir **Alertas**: "Qué significa" y "Qué hacer", en lenguaje simple. Marcarla como atendida. | Aplicabilidad, Originalidad |
