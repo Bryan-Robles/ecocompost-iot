@@ -55,10 +55,14 @@ class PrototipoIntegracionTest {
 
 	@Test
 	void diagnosticoEnTermofilaConTemperaturaYHumedadNormales() {
-		Map<String, Object> cuerpo = Map.of("dispositivoId", "test-int-3", "medidoEn", Instant.now().toString(),
-				"temperaturaC", 52.0, "humedadPct", 55.0);
-		cliente().post().uri("/api/lecturas").contentType(MediaType.APPLICATION_JSON).body(cuerpo).retrieve()
-				.toBodilessEntity();
+		// La fase necesita una ventana completa de 12 lecturas sobre 45 °C (histéresis, análisis 4.4).
+		Instant ahora = Instant.now();
+		for (int i = 12; i > 0; i--) {
+			Map<String, Object> cuerpo = Map.of("dispositivoId", "test-int-3", "medidoEn", ahora.minusSeconds(i).toString(),
+					"temperaturaC", 52.0, "humedadPct", 55.0);
+			cliente().post().uri("/api/lecturas").contentType(MediaType.APPLICATION_JSON).body(cuerpo).retrieve()
+					.toBodilessEntity();
+		}
 
 		JsonNode d = cliente().get().uri("/api/diagnostico").retrieve().body(JsonNode.class);
 

@@ -21,12 +21,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class LecturaController {
 
 	private final LecturaService servicio;
-	private final ConexionProperties conexion;
+	private final DetectorDeConexion detectorDeConexion;
 	private final Clock reloj;
 
-	public LecturaController(LecturaService servicio, ConexionProperties conexion, Clock reloj) {
+	public LecturaController(LecturaService servicio, DetectorDeConexion detectorDeConexion, Clock reloj) {
 		this.servicio = servicio;
-		this.conexion = conexion;
+		this.detectorDeConexion = detectorDeConexion;
 		this.reloj = reloj;
 	}
 
@@ -59,9 +59,9 @@ public class LecturaController {
 				.map(l -> {
 					Instant ahora = reloj.instant();
 					long segundos = Duration.between(l.getRecibidoEn(), ahora).toSeconds();
-					boolean enLinea = segundos <= 3 * conexion.intervaloEsperadoSegundos();
+					EstadoConexion estado = detectorDeConexion.evaluar(l.getRecibidoEn(), ahora);
 					return ResponseEntity.ok(new LecturaActualRespuesta(LecturaRespuesta.de(l), l.getRecibidoEn(),
-							enLinea ? "EN_LINEA" : "SIN_CONEXION", segundos));
+							estado.name(), segundos));
 				})
 				.orElseGet(() -> ResponseEntity.noContent().build());
 	}

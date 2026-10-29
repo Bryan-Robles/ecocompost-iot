@@ -8,7 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-import co.edu.unimagdalena.ecocompost.lectura.ConexionProperties;
+import co.edu.unimagdalena.ecocompost.lectura.DetectorDeConexion;
+import co.edu.unimagdalena.ecocompost.lectura.EstadoConexion;
 import co.edu.unimagdalena.ecocompost.lectura.Lectura;
 import co.edu.unimagdalena.ecocompost.lectura.LecturaService;
 
@@ -36,19 +37,19 @@ public class DiagnosticoService {
 	private final LecturaService lecturas;
 	private final ReglaTemperatura reglaTemperatura;
 	private final ReglaHumedad reglaHumedad;
-	private final UmbralesProperties umbrales;
 	private final FaseProperties fase;
-	private final ConexionProperties conexion;
+	private final DetectorDeFase detectorDeFase;
+	private final DetectorDeConexion detectorDeConexion;
 	private final Clock reloj;
 
 	public DiagnosticoService(LecturaService lecturas, ReglaTemperatura reglaTemperatura, ReglaHumedad reglaHumedad,
-			UmbralesProperties umbrales, FaseProperties fase, ConexionProperties conexion, Clock reloj) {
+			FaseProperties fase, DetectorDeFase detectorDeFase, DetectorDeConexion detectorDeConexion, Clock reloj) {
 		this.lecturas = lecturas;
 		this.reglaTemperatura = reglaTemperatura;
 		this.reglaHumedad = reglaHumedad;
-		this.umbrales = umbrales;
 		this.fase = fase;
-		this.conexion = conexion;
+		this.detectorDeFase = detectorDeFase;
+		this.detectorDeConexion = detectorDeConexion;
 		this.reloj = reloj;
 	}
 
@@ -60,8 +61,9 @@ public class DiagnosticoService {
 			return new Evaluacion(vacio, List.of());
 		}
 		Lectura l = actual.get();
-		long segundos = Duration.between(l.getRecibidoEn(), reloj.instant()).toSeconds();
-		boolean sinConexion = segundos > 3 * conexion.intervaloEsperadoSegundos();
+		Instant ahora = reloj.instant();
+		long segundos = Duration.between(l.getRecibidoEn(), ahora).toSeconds();
+		boolean sinConexion = detectorDeConexion.evaluar(l.getRecibidoEn(), ahora) == EstadoConexion.SIN_CONEXION;
 
 		Fase faseActual = detectarFase(l);
 		var rt = reglaTemperatura.evaluar(l.getTemperaturaC(), faseActual, null);
@@ -95,28 +97,10 @@ public class DiagnosticoService {
 		return new Evaluacion(d, hallazgos);
 	}
 
-	/**
-	 * Fase según la temperatura actual y el último pico de la ventana:
-	 * termófila si está sobre 45 °C; mesófila si nunca llegó; enfriamiento tras el pico;
-	 * maduración cuando el enfriamiento dura al menos diasEnfriamientoAMaduracion días.
-	 */
+	/** Fase al final del historial de {@code diasVentana} días hasta la lectura actual. */
 	Fase detectarFase(Lectura actual) {
-		double umbralTermofila = umbrales.temperatura().normalMin();
-		if (actual.getTemperaturaC() >= umbralTermofila) {
-			return Fase.TERMOFILA;
-		}
 		Instant desde = actual.getMedidoEn().minus(fase.diasVentana(), ChronoUnit.DAYS);
-		Lectura pico = null;
-		for (Lectura l : lecturas.historial(desde, actual.getMedidoEn())) {
-			if (l.getTemperaturaC() >= umbralTermofila) {
-				pico = l;
-			}
-		}
-		if (pico == null) {
-			return Fase.MESOFILA;
-		}
-		long dias = ChronoUnit.DAYS.between(pico.getMedidoEn(), actual.getMedidoEn());
-		return dias >= fase.diasEnfriamientoAMaduracion() ? Fase.MADURACION : Fase.ENFRIAMIENTO;
+		return detectorDeFase.detectar(lecturas.historial(desde, actual.getMedidoEn()));
 	}
 
 	private static String peorEstado(EstadoVariable a, EstadoVariable b) {
