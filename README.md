@@ -87,6 +87,8 @@ Contrato del prototipo (detalle en la sección 2.5 del análisis de arquitectura
 | `GET` | `/api/diagnostico` | Estado de temperatura y humedad, fase del compostaje y acciones |
 | `GET` | `/api/alertas?estado=` | Alertas. `estado` puede ser `abiertas`, `atendidas` o `todas` (por defecto) |
 | `PATCH` | `/api/alertas/{id}/atender` | Marcar una alerta como atendida |
+
+Las alertas se cierran a mano: quien las atiende marca la alerta con `PATCH`. Si el problema desaparece, la alerta sigue abierta hasta que alguien la marque. Es una decisión del equipo para el prototipo.
 | `GET` | `/api/demo/escenarios` | Escenario activo y escenarios disponibles (solo perfil `mock`) |
 | `POST` | `/api/demo/escenario` | Cambiar el escenario del simulador, body `{"nombre":"humedad-baja"}` (solo perfil `mock`) |
 | `GET`/`POST` | `/api/cargas` | Cargas de residuos (pesaje real). *Pendiente* |
