@@ -12,8 +12,9 @@ import org.springframework.stereotype.Component;
 
 /**
  * Detecta la fase del compostaje (máquina de estados de la sección 4.4 del análisis).
- * La fase no se guarda: se recorre el historial en orden y se calcula el estado al final.
- * Así, cambiar la configuración recalcula la fase sin migrar datos.
+ *
+ * <p>La máquina avanza lectura por lectura. Por eso no depende de una ventana fija de días:
+ * el estado (fase, racha de enfriamiento y últimas temperaturas) se conserva entre lecturas.
  *
  * <p>Media móvil: la temperatura se suaviza con el promedio de las últimas {@code ventana-lecturas}.
  * Histéresis: un cambio de fase solo se confirma si la media móvil cumple la condición
@@ -30,6 +31,11 @@ public class DetectorDeFase {
 		this.fase = fase;
 	}
 
+	/** Seguimiento nuevo, en MESOFILA y sin historia. */
+	public Seguimiento nuevoSeguimiento() {
+		return new Seguimiento();
+	}
+
 	/**
 	 * @param historial lecturas ordenadas por hora de medición, hasta la lectura actual inclusive
 	 * @return la fase al final del historial; DESCONOCIDA si no hay lecturas
@@ -38,14 +44,22 @@ public class DetectorDeFase {
 		if (historial.isEmpty()) {
 			return Fase.DESCONOCIDA;
 		}
-		int n = fase.ventanaLecturas();
-		double limiteFrio = fase.temperaturaAmbiente() + fase.margenSobreAmbiente();
-		Deque<Double> temperaturas = new ArrayDeque<>();
-		Deque<Double> medias = new ArrayDeque<>();
-		Fase estado = Fase.MESOFILA;
-		Instant inicioFrio = null;
+		Seguimiento seguimiento = nuevoSeguimiento();
+		historial.forEach(seguimiento::avanzar);
+		return seguimiento.fase();
+	}
 
-		for (Lectura l : historial) {
+	/** Estado de la máquina de fases. Se alimenta con las lecturas en orden. */
+	public class Seguimiento {
+
+		private final Deque<Double> temperaturas = new ArrayDeque<>();
+		private final Deque<Double> medias = new ArrayDeque<>();
+		private Fase estado = Fase.MESOFILA;
+		private Instant inicioFrio;
+
+		public void avanzar(Lectura l) {
+			int n = fase.ventanaLecturas();
+			double limiteFrio = fase.temperaturaAmbiente() + fase.margenSobreAmbiente();
 			agregar(temperaturas, l.getTemperaturaC(), n);
 			agregar(medias, promedio(temperaturas), n);
 			double media = medias.peekLast();
@@ -86,7 +100,10 @@ public class DetectorDeFase {
 				}
 			}
 		}
-		return estado;
+
+		public Fase fase() {
+			return estado;
+		}
 	}
 
 	private Duration diasMinimos() {
