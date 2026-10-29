@@ -38,7 +38,6 @@ ecocompost:
       enfriamiento-prematuro-antes-de: 14d   # criterio del equipo: Tabla 7, termofílica de 2 a 5 semanas (FAO 2013, p. 31)
       fuente: FAO-2013
     fase:
-      dias-ventana: 14                 # historial que se recorre para calcular la fase
       ventana-lecturas: 12             # media móvil e histéresis (análisis, sección 4.2)
       dias-minimos-maduracion: 3       # días con T ≤ ambiente + margen antes de maduración; criterio del equipo
       margen-sobre-ambiente: 5.0       # criterio del equipo

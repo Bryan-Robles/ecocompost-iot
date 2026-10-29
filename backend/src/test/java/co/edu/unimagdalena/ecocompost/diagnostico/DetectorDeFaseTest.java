@@ -17,7 +17,7 @@ import org.junit.jupiter.api.Test;
 class DetectorDeFaseTest {
 
 	private static final Instant INICIO = Instant.parse("2026-10-01T00:00:00Z");
-	private static final FaseProperties PROPIEDADES = new FaseProperties(14, 12, 3, 5.0, 30.0);
+	private static final FaseProperties PROPIEDADES = new FaseProperties(12, 3, 5.0, 30.0);
 
 	@Test
 	void sinLecturasLaFaseEsDesconocida() {

@@ -3,7 +3,6 @@ package co.edu.unimagdalena.ecocompost.diagnostico;
 import java.time.Clock;
 import java.time.Duration;
 import java.time.Instant;
-import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -37,17 +36,19 @@ public class DiagnosticoService {
 	private final LecturaService lecturas;
 	private final ReglaTemperatura reglaTemperatura;
 	private final ReglaHumedad reglaHumedad;
-	private final FaseProperties fase;
 	private final DetectorDeFase detectorDeFase;
 	private final DetectorDeConexion detectorDeConexion;
 	private final Clock reloj;
 
+	/** Estado de la fase entre llamadas: solo se alimenta con las lecturas nuevas. */
+	private DetectorDeFase.Seguimiento seguimiento;
+	private Instant ultimaProcesada = Instant.EPOCH;
+
 	public DiagnosticoService(LecturaService lecturas, ReglaTemperatura reglaTemperatura, ReglaHumedad reglaHumedad,
-			FaseProperties fase, DetectorDeFase detectorDeFase, DetectorDeConexion detectorDeConexion, Clock reloj) {
+			DetectorDeFase detectorDeFase, DetectorDeConexion detectorDeConexion, Clock reloj) {
 		this.lecturas = lecturas;
 		this.reglaTemperatura = reglaTemperatura;
 		this.reglaHumedad = reglaHumedad;
-		this.fase = fase;
 		this.detectorDeFase = detectorDeFase;
 		this.detectorDeConexion = detectorDeConexion;
 		this.reloj = reloj;
@@ -97,10 +98,25 @@ public class DiagnosticoService {
 		return new Evaluacion(d, hallazgos);
 	}
 
-	/** Fase al final del historial de {@code diasVentana} días hasta la lectura actual. */
-	Fase detectarFase(Lectura actual) {
-		Instant desde = actual.getMedidoEn().minus(fase.diasVentana(), ChronoUnit.DAYS);
-		return detectorDeFase.detectar(lecturas.historial(desde, actual.getMedidoEn()));
+	/**
+	 * Fase de la lectura actual. Avanza el seguimiento solo con las lecturas posteriores a la última procesada.
+	 * Si la lectura actual es anterior a la última procesada (p. ej. tras borrar los datos simulados),
+	 * el seguimiento se reconstruye desde el inicio.
+	 */
+	synchronized Fase detectarFase(Lectura actual) {
+		if (seguimiento == null || actual.getMedidoEn().isBefore(ultimaProcesada)) {
+			seguimiento = detectorDeFase.nuevoSeguimiento();
+			ultimaProcesada = Instant.EPOCH;
+		}
+		if (actual.getMedidoEn().isAfter(ultimaProcesada)) {
+			for (Lectura l : lecturas.historial(ultimaProcesada, actual.getMedidoEn())) {
+				if (l.getMedidoEn().isAfter(ultimaProcesada)) {
+					seguimiento.avanzar(l);
+					ultimaProcesada = l.getMedidoEn();
+				}
+			}
+		}
+		return seguimiento.fase();
 	}
 
 	private static String peorEstado(EstadoVariable a, EstadoVariable b) {
