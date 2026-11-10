@@ -1,8 +1,72 @@
 .guia {
   max-width: 880px;
   margin: 0 auto;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.5;
+}
+
+/* Cajas de color de la sección del líquido de abajo (E4, cambios 4 y 6). */
+.guia-caja {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  border-radius: 8px;
+  padding: 12px 14px;
+  margin: 10px 0;
+  border-left: 6px solid;
+}
+
+.guia-caja ol {
+  margin: 4px 0 0;
+  padding-left: 22px;
+}
+
+.guia-caja-icono {
+  flex: none;
+  display: inline-grid;
+  place-items: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  color: #fff;
+  font-weight: 800;
+}
+
+.guia-caja--rojo {
+  background: #fdecea;
+  border-left-color: var(--rojo);
+}
+
+.guia-caja--rojo .guia-caja-icono {
+  background: var(--rojo);
+}
+
+.guia-caja--verde {
+  background: #f1f8f2;
+  border-left-color: var(--verde);
+}
+
+.guia-caja--verde .guia-caja-icono {
+  background: var(--verde);
+}
+
+.guia-caja--ambar {
+  background: #fff8e1;
+  border-left-color: var(--ambar);
+}
+
+.guia-caja--ambar .guia-caja-icono {
+  background: var(--ambar);
+  color: var(--texto);
+}
+
+.guia-caja--gris {
+  background: #f1f3f5;
+  border-left-color: #7b8794;
+}
+
+.guia-caja--gris .guia-caja-icono {
+  background: #7b8794;
 }
 
 .guia h1 {
@@ -29,7 +93,7 @@
 }
 
 .guia-nota {
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   color: #52606d;
 }
 

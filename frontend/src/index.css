@@ -17,3 +17,47 @@
 body {
   margin: 0;
 }
+
+/* Cabecera y navegación (prueba con usuarios, E4, cambios 1 y 5: letra más grande y pestañas claras). */
+.aviso-simulado {
+  background: var(--ambar);
+  padding: 6px 16px;
+  font-size: 15px;
+}
+
+.cabecera {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 16px;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--borde);
+  background: #fff;
+  font-size: 18px;
+}
+
+.cabecera-nav {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cabecera-nav a {
+  padding: 8px 16px;
+  border: 2px solid var(--verde);
+  border-radius: 999px;
+  color: var(--verde);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.cabecera-nav a.active {
+  background: var(--verde);
+  color: #fff;
+}
+
+.cabecera-nav a:focus-visible {
+  outline: 3px solid var(--ambar);
+  outline-offset: 2px;
+}

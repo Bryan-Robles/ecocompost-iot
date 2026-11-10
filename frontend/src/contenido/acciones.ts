@@ -27,7 +27,7 @@ export const acciones: Record<TipoAlerta, AccionGuia> = {
     queHacer: [
       'Mezclar con una pala.',
       'Agregar material seco: hojas secas, paja o aserrín.',
-      'Vaciar la bandeja de lixiviados (el líquido de abajo).',
+      'Vaciar la bandeja del líquido de abajo (ver la Guía, sección 6).',
     ],
   },
   TEMP_ALTA: {

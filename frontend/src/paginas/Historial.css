@@ -1,7 +1,7 @@
 .historial {
   max-width: 880px;
   margin: 0 auto;
-  font-size: 17px;
+  font-size: 18px;
   line-height: 1.5;
 }
 
@@ -66,15 +66,34 @@
   color: #52606d;
 }
 
+.historial-fases li {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
 .historial-fases li.activa {
   background: var(--verde);
   border-color: var(--verde);
   color: #fff;
-  font-weight: 700;
+}
+
+.historial-fase-actual {
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.historial-fase-tecnico {
+  font-size: 0.85rem;
+  opacity: 0.8;
+}
+
+.historial-fase-descripcion {
+  margin: 10px 0 0;
 }
 
 .historial-nota {
-  font-size: 0.9rem;
+  font-size: 1rem;
   color: #52606d;
 }
 

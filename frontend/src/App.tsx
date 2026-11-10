@@ -15,23 +15,10 @@ const secciones = [
 function App() {
   return (
     <>
-      <div style={{ background: 'var(--ambar)', padding: '6px 16px', fontSize: 14 }}>
-        Datos simulados: el hardware (ESP32 + sensores) es un diseño conceptual.
-      </div>
-      <header
-        style={{
-          display: 'flex',
-          flexWrap: 'wrap',
-          gap: 16,
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '12px 16px',
-          borderBottom: '1px solid var(--borde)',
-          background: '#fff',
-        }}
-      >
+      <div className="aviso-simulado">Datos simulados: el hardware (ESP32 + sensores) es un diseño conceptual.</div>
+      <header className="cabecera">
         <strong>EcoCompost IoT</strong>
-        <nav style={{ display: 'flex', gap: 12 }}>
+        <nav className="cabecera-nav" aria-label="Secciones">
           {secciones.map((s) => (
             <NavLink key={s.nombre} to={s.ruta} end={s.ruta === '/'}>
               {s.nombre}
