@@ -1,33 +1,31 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { cambiarEscenario, listarEscenarios, obtenerActual, obtenerDiagnostico } from '../api/cliente'
-import type { Diagnostico, EstadoVariable, Fase, LecturaActual } from '../api/tipos'
+import type { Diagnostico, EstadoVariable, LecturaActual } from '../api/tipos'
+import { fases } from '../contenido/fases'
 import './Estado.css'
 
 // Pantalla Estado (wireframe 1 de E2). Consulta la API cada 5 s.
 // El selector de escenario solo aparece con ?demo=1 (modo demo, perfil mock).
+// Cambios de la prueba con usuarios (E4): el estado y lo que hay que hacer van primero;
+// la etiqueta (Normal / Crítico) pesa más que el número, y el número se muestra sin decimales.
 
 const INTERVALO_MS = 5000
 
-const nombreFase: Record<Fase, string> = {
-  MESOFILA: 'Mesófila',
-  TERMOFILA: 'Termófila',
-  ENFRIAMIENTO: 'Enfriamiento',
-  MADURACION: 'Maduración',
-  DESCONOCIDA: 'Sin determinar',
+const textoEstado: Record<EstadoVariable, { icono: string; etiqueta: string; frase: string }> = {
+  NORMAL: { icono: '✓', etiqueta: 'Normal', frase: 'está bien' },
+  ATENCION: { icono: '!', etiqueta: 'Atención', frase: 'revisar pronto' },
+  CRITICO: { icono: '!!', etiqueta: 'Crítico', frase: 'hay que actuar hoy' },
 }
 
-const textoEstado: Record<EstadoVariable, string> = {
-  NORMAL: 'Normal',
-  ATENCION: 'Atención',
-  CRITICO: 'Crítico',
+const mensajeGeneral: Record<string, { icono: string; titulo: string; detalle: string }> = {
+  TODO_BIEN: { icono: '✓', titulo: 'Todo bien', detalle: 'No hay que hacer nada.' },
+  ATENCION: { icono: '!', titulo: 'Revisar pronto', detalle: 'Mire los pasos de abajo.' },
+  CRITICO: { icono: '!!', titulo: 'Actuar hoy', detalle: 'Siga los pasos de abajo.' },
+  SIN_DATOS: { icono: '?', titulo: 'Sin datos del sensor', detalle: 'Todavía no llegan lecturas.' },
 }
 
-const mensajeGeneral: Record<string, string> = {
-  TODO_BIEN: 'Todo bien',
-  ATENCION: 'Revisar pronto',
-  CRITICO: 'Actuar hoy',
-  SIN_DATOS: 'Sin datos del sensor',
-}
+const sinConexionMensaje = { icono: '?', titulo: 'Sensor sin conexión', detalle: 'El aparato no está enviando datos.' }
 
 function hace(segundos: number) {
   if (segundos < 60) return `hace ${segundos} s`
@@ -94,6 +92,34 @@ function Estado() {
   const sinConexion = actual?.conexion === 'SIN_CONEXION' || actual === null
   const estadoGeneral = diagnostico?.estadoGeneral ?? 'SIN_DATOS'
   const colorBanner = sinConexion ? 'gris' : estadoGeneral === 'CRITICO' ? 'rojo' : estadoGeneral === 'ATENCION' ? 'ambar' : 'verde'
+  const mensaje = sinConexion ? sinConexionMensaje : mensajeGeneral[estadoGeneral]
+  const pasos = diagnostico && !sinConexion ? [...new Set(diagnostico.acciones)] : []
+  const hayQueActuar = sinConexion || pasos.length > 0
+  const fase = diagnostico && !sinConexion && diagnostico.fase !== 'DESCONOCIDA' ? fases[diagnostico.fase] : null
+
+  const accion = (
+    <div className={`estado-accion${hayQueActuar ? ` estado-accion--${colorBanner}` : ''}`}>
+      <h2>{hayQueActuar ? 'Qué hacer ahora' : 'Acción recomendada'}</h2>
+      {pasos.length > 0 ? (
+        <>
+          <ol>
+            {pasos.map((paso) => (
+              <li key={paso}>{paso}</li>
+            ))}
+          </ol>
+          <p className="estado-accion-enlace">
+            <Link to="/alertas">Ver la alerta y marcarla como atendida</Link>
+          </p>
+        </>
+      ) : (
+        <p>
+          {sinConexion
+            ? 'Revisar el Wi-Fi de la casa. Los datos se completan cuando el sensor vuelva a enviar.'
+            : 'No se requiere acción. Revisar de nuevo en 24 horas.'}
+        </p>
+      )}
+    </div>
+  )
 
   return (
     <section className="estado">
@@ -102,10 +128,16 @@ function Estado() {
       {error && <p className="estado-aviso" role="alert">{error}</p>}
 
       <div className={`estado-banner estado-banner--${colorBanner}`} role="status">
-        <strong>Estado del proceso:</strong>{' '}
-        {sinConexion ? 'Sensor sin conexión' : mensajeGeneral[estadoGeneral]}
-        {diagnostico && !sinConexion && <> · Fase {nombreFase[diagnostico.fase].toLowerCase()}</>}
+        <span className="estado-banner-icono" aria-hidden="true">
+          {mensaje.icono}
+        </span>
+        <span>
+          <strong className="estado-banner-titulo">{mensaje.titulo}</strong>
+          <span className="estado-banner-detalle">{mensaje.detalle}</span>
+        </span>
       </div>
+
+      {hayQueActuar && accion}
 
       <div className="estado-tarjetas">
         <Tarjeta
@@ -124,28 +156,19 @@ function Estado() {
         />
       </div>
 
+      {fase && (
+        <p className="estado-fase">
+          <strong>{fase.nombre}:</strong> {fase.descripcion}
+        </p>
+      )}
+
       <p className="estado-ultima">
         {actual
           ? `Última lectura ${hace(actual.segundosDesdeUltima)}${sinConexion ? ' · sin conexión' : ''}`
           : 'Todavía no hay lecturas del sensor.'}
       </p>
 
-      <div className="estado-accion">
-        <h2>Acción recomendada</h2>
-        {diagnostico && diagnostico.acciones.length > 0 && !sinConexion ? (
-          <ol>
-            {[...new Set(diagnostico.acciones)].map((paso) => (
-              <li key={paso}>{paso}</li>
-            ))}
-          </ol>
-        ) : (
-          <p>
-            {sinConexion
-              ? 'Revisar el Wi-Fi de la casa. Los datos se completan cuando el sensor vuelva a enviar.'
-              : 'No se requiere acción. Revisar de nuevo en 24 horas.'}
-          </p>
-        )}
-      </div>
+      {!hayQueActuar && accion}
 
       {demo && escenarios && (
         <div className="estado-demo">
@@ -174,15 +197,27 @@ function Tarjeta(props: {
 }) {
   const valor = props.valor
   const sinValor = valor === null || valor === undefined || props.desconectado
+  const texto = props.estado ? textoEstado[props.estado] : null
   return (
     <div className={`estado-tarjeta ${clase(props.estado)}${props.desconectado ? ' estado-tarjeta--gris' : ''}`}>
       <span className="estado-tarjeta-titulo">{props.titulo}</span>
-      <span className="estado-tarjeta-valor">
-        {sinValor ? '—' : valor.toFixed(1)}
-        {!sinValor && <small> {props.unidad}</small>}
-      </span>
       <span className="estado-tarjeta-etiqueta">
-        {props.desconectado ? 'Sin conexión' : props.estado ? textoEstado[props.estado] : '—'}
+        {props.desconectado ? (
+          <>
+            <span className="estado-tarjeta-icono" aria-hidden="true">?</span> Sin conexión
+          </>
+        ) : texto ? (
+          <>
+            <span className="estado-tarjeta-icono" aria-hidden="true">{texto.icono}</span> {texto.etiqueta}:{' '}
+            {texto.frase}
+          </>
+        ) : (
+          '—'
+        )}
+      </span>
+      <span className="estado-tarjeta-valor">
+        {sinValor ? '—' : Math.round(valor)}
+        {!sinValor && <small> {props.unidad}</small>}
       </span>
     </div>
   )

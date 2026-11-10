@@ -23,7 +23,7 @@ public final class TextosAlerta {
 			case HUM_ALTA -> new Texto("La mezcla tiene demasiada agua: le falta aire y puede oler mal.", List.of(
 					"Mezclar con una pala.",
 					"Agregar material seco: hojas secas, paja o aserrín.",
-					"Vaciar la bandeja de lixiviados (el líquido de abajo)."));
+					"Vaciar la bandeja del líquido de abajo (ver la Guía, sección 6)."));
 			case TEMP_ALTA -> new Texto("La mezcla está demasiado caliente y el proceso se frena.", List.of(
 					"Mezclar con una pala.",
 					"Hacer la prueba del puño para revisar la humedad.",

@@ -29,8 +29,8 @@ function Guia() {
     <article className="guia">
       <h1>Guía de uso</h1>
       <p className="guia-aviso" role="note">
-        Los rangos y recomendaciones siguen el Manual de compostaje del agricultor de la FAO (2013). Falta revisar la
-        redacción con Jenis y Cande.
+        Los rangos y recomendaciones siguen el Manual de compostaje del agricultor de la FAO (2013). La redacción se
+        ajustó con lo que dijeron Jenis, Cande y el esposo de Jenis en la prueba con usuarios.
       </p>
 
       <section aria-labelledby="g-quien">
@@ -42,14 +42,17 @@ function Guia() {
           </li>
           <li>
             <strong>Esposo de Jenis</strong>
-            <span>Mira el estado en el celular, atiende las alertas y vacía la bandeja de abajo.</span>
+            <span>
+              Mira el estado en el celular, atiende las alertas, vacía la bandeja de abajo y cierra la llave si hay
+              líquido en el piso.
+            </span>
           </li>
           <li>
             <strong>Cande</strong>
-            <span>Nada extra. La compostera no debe darle más trabajo de limpieza.</span>
+            <span>Nada extra. Si ve líquido en el piso, solo avisar al esposo de Jenis.</span>
           </li>
         </ul>
-        <p className="guia-nota">Reparto acordado por el equipo; se valida con Jenis y Cande en la prueba con usuarios.</p>
+        <p className="guia-nota">Reparto validado con Jenis y Cande en la prueba con usuarios.</p>
       </section>
 
       <section aria-labelledby="g-seguridad">
@@ -138,23 +141,65 @@ function Guia() {
       </section>
 
       <section aria-labelledby="g-bandeja">
-        <h2 id="g-bandeja">6. La bandeja de abajo (lixiviados)</h2>
+        <h2 id="g-bandeja">6. El líquido de abajo (bandeja)</h2>
+        <p>Vaciar la bandeja una vez por semana, y también cuando el sistema avise humedad alta.</p>
         <ol className="guia-pasos">
           <li>Con guantes, poner un recipiente debajo de la llave.</li>
           <li>Abrir la llave y dejar salir el líquido.</li>
           <li>Cerrar la llave.</li>
         </ol>
-        <p className="guia-nota">Hacerlo una vez por semana, y también cuando el sistema avise humedad alta.</p>
+
+        <div className="guia-caja guia-caja--rojo" role="note">
+          <span className="guia-caja-icono" aria-hidden="true">✕</span>
+          <div>
+            <strong>No echarlo recién salido a las plantas.</strong> Puede quemarlas. Tampoco devolverlo a la
+            compostera.
+          </div>
+        </div>
+
+        <div className="guia-caja guia-caja--verde">
+          <span className="guia-caja-icono" aria-hidden="true">✓</span>
+          <div>
+            <strong>Para usarlo en las plantas:</strong>
+            <ol>
+              <li>Guardarlo en botellas tapadas unos 15 días. Destaparlas de vez en cuando.</li>
+              <li>Si ya no huele mal, mezclar 1 litro con 10 litros de agua.</li>
+              <li>Regar la tierra, no las hojas. Máximo una vez cada 15 días.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div className="guia-caja guia-caja--ambar">
+          <span className="guia-caja-icono" aria-hidden="true">!</span>
+          <div>
+            <strong>Si sigue oscuro o con mal olor:</strong> mezclarlo con agua y botarlo por el sifón del lavaplatos,
+            del lavadero o del sanitario. Nunca por la rejilla de aguas lluvias.
+          </div>
+        </div>
+
+        <div className="guia-caja guia-caja--gris">
+          <span className="guia-caja-icono" aria-hidden="true">?</span>
+          <div>
+            <strong>Si hay líquido en el piso:</strong> avisar al esposo de Jenis para que cierre la llave antes de
+            limpiar.
+          </div>
+        </div>
+
+        <p className="guia-nota">
+          El líquido fresco puede ser tóxico para las plantas (FAO, 2013, p. 73). Recircularlo solo sirve antes de la
+          etapa de calor (UAESP, 2014). Reposo y mezcla 1 en 10: Intendencia de Montevideo (2026). Botarlo por el
+          sifón es una decisión del equipo.
+        </p>
       </section>
 
       <section aria-labelledby="g-listo">
         <h2 id="g-listo">7. ¿Cuándo está listo el abono?</h2>
         <p>
-          En una compostera cerrada suele llegar a la fase de <strong>Maduración</strong> en 6 a 10 semanas, según el
-          clima y los residuos. Está listo cuando:
+          En una compostera cerrada suele llegar a la etapa de <strong>Maduración</strong> en 6 a 10 semanas, según
+          el clima y los residuos. Está listo cuando:
         </p>
         <ul className="guia-pasos">
-          <li>La pestaña Historial muestra la fase Maduración.</li>
+          <li>La pestaña Historial muestra la etapa Maduración.</li>
           <li>Al mezclarlo, ya no se vuelve a calentar.</li>
           <li>Se ve oscuro y huele a tierra húmeda.</li>
         </ul>
@@ -169,7 +214,9 @@ function Guia() {
 
       <footer className="guia-nota">
         Fuente: Román, P., Martínez, M. M. y Pantoja, A. (2013). <cite>Manual de compostaje del agricultor</cite>. FAO,
-        pp. 23–64. Resolución 2184 de 2019 del Ministerio de Ambiente y Desarrollo Sostenible.
+        pp. 23–73. Resolución 2184 de 2019 del Ministerio de Ambiente y Desarrollo Sostenible. UAESP y Universidad
+        Nacional de Colombia (2014), <cite>Guía técnica para el aprovechamiento de residuos orgánicos</cite>.
+        Intendencia de Montevideo (2026), <cite>Manual de compostaje</cite>.
       </footer>
     </article>
   )

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { CartesianGrid, Line, LineChart, ReferenceArea, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { obtenerActual, obtenerDiagnostico, obtenerHistorial } from '../api/cliente'
 import type { Fase, Lectura } from '../api/tipos'
+import { fases, ordenFases } from '../contenido/fases'
 import './Historial.css'
 
 // Pantalla Historial y maduración (wireframe 2 de E2).
@@ -18,12 +19,6 @@ const rangos: { dias: number; etiqueta: string }[] = [
   { dias: 14, etiqueta: '14 días' },
 ]
 
-const fases: { id: Fase; nombre: string }[] = [
-  { id: 'MESOFILA', nombre: 'Mesófila' },
-  { id: 'TERMOFILA', nombre: 'Termófila' },
-  { id: 'ENFRIAMIENTO', nombre: 'Enfriamiento' },
-  { id: 'MADURACION', nombre: 'Maduración' },
-]
 
 const formatoHora = new Intl.DateTimeFormat('es-CO', {
   timeZone: 'America/Bogota',
@@ -130,15 +125,19 @@ function Historial() {
       )}
 
       <div className="historial-fases" aria-label="Fases del compostaje">
-        <h2>Fases del compostaje</h2>
+        <h2>Etapas del compostaje</h2>
         <ol>
-          {fases.map((f) => (
-            <li key={f.id} className={f.id === fase ? 'activa' : ''} aria-current={f.id === fase ? 'step' : undefined}>
-              {f.nombre}
-              {f.id === fase && <small> · fase actual</small>}
+          {ordenFases.map((id) => (
+            <li key={id} className={id === fase ? 'activa' : ''} aria-current={id === fase ? 'step' : undefined}>
+              <strong>{fases[id].nombre}</strong>
+              {id === fase && <span className="historial-fase-actual">Etapa actual</span>}
+              {fases[id].tecnico !== fases[id].nombre.toLowerCase() && (
+                <small className="historial-fase-tecnico">Fase {fases[id].tecnico}</small>
+              )}
             </li>
           ))}
         </ol>
+        {fase && fase !== 'DESCONOCIDA' && <p className="historial-fase-descripcion">{fases[fase].descripcion}</p>}
       </div>
 
       <p className="historial-nota">
