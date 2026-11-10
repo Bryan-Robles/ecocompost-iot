@@ -12,6 +12,8 @@ Revisión de fuentes del 25 de octubre de 2026. Cada dato del sistema indica de 
 - **[UAESP-2014]** Unidad Administrativa Especial de Servicios Públicos y Universidad Nacional de Colombia, Facultad de Ciencias Agrarias. (2014). *Guía técnica para el aprovechamiento de residuos orgánicos a través de metodologías de compostaje y lombricultura* (Contrato Interadministrativo 369 de 2014). Alcaldía Mayor de Bogotá. https://www.uaesp.gov.co/images/Guia-UAESP_SR.pdf. El año es el del contrato; el documento no imprime fecha de publicación. Se citan páginas del PDF.
 - **[IM-2026]** Intendencia de Montevideo. (2026). *Manual de compostaje* [versión web V2]. https://montevideo.gub.uy/sites/default/files/2026-09/2026_manual%20web%20de%20compostaje_V2.pdf. Se citan páginas del PDF.
 - **[SALL-2019]** Sall, P. M., Antoun, H., Chalifour, F.-P. y Beauchamp, C. J. (2019). Potential use of leachate from composted fruit and vegetable waste as fertilizer for corn. *Cogent Food & Agriculture, 5*(1), 1580180. https://doi.org/10.1080/23311932.2019.1580180. Solo se leyó el resumen.
+- **[HC-2026]** Homecenter Colombia. (s. f.). *Tanque con tapa 220 litros negro Colplast; Regulación moderna hembra macho 1/2 pulgada (Grival); Malla para mosquitero en fibra de vidrio 91,44 cm × 7,62 m (Adfors)*. Recuperado el 9 de noviembre de 2026 de https://www.homecenter.com.co
+- **[DYN-2026]** Dynamo Electronics. (s. f.). *Board ESP32-DevKitC-32D; Sensor de temperatura DS18B20 a prueba de agua; Sensor de humedad del suelo; Adaptador 5 V/2 A USB*. Recuperado el 9 de noviembre de 2026 de https://www.dynamoelectronics.com
 - **[EQUIPO-E2]** Robles Mojica, B. A., Sánchez Fernández, K. J. y Torres González, J. (2026). *EcoCompost IoT: Entregable 2. Idear y prototipar en baja fidelidad* [Documento de curso]. Universidad del Magdalena.
 
 ## Umbrales de diagnóstico
@@ -90,6 +92,25 @@ Ya no se usa "agregar 1 litro de agua" (venía del wireframe sin fuente); se ree
 | Normativa local | PGIRS de Santa Marta adoptado por Decreto 070 de 2023 y modificado por Decreto 461 de 2023 | [SM-2023] |
 
 **Retirado:** "un hogar estándar genera 1,2 kg/día" y "la pensión genera 3 veces más". No se encontró fuente para 1,2 kg/día, y las cifras oficiales son por persona e incluyen todo tipo de residuos, así que no son comparables con 3,9 kg/día de orgánicos de toda la casa.
+
+## Costos de la propuesta de implementación (E5)
+
+Precios de una unidad consultados el 9 de noviembre de 2026. No se verificó si incluyen IVA.
+
+| Componente | Referencia | Precio (COP) | Respaldo |
+|---|---|---|---|
+| Bidón con tapa | Tanque con tapa 220 L, Colplast | 199.900 | [HC-2026] |
+| Microcontrolador | ESP32-DevKitC-32D (agotado el día de la consulta) | 44.000 | [DYN-2026] |
+| Sensor de temperatura | DS18B20 a prueba de agua | 15.000 | [DYN-2026] |
+| Sensor de humedad | Sensor de humedad de suelo genérico (no confirma ser el capacitivo v1.2) | 6.500 | [DYN-2026] |
+| Alimentación | Adaptador 5 V / 2 A USB (agotado el día de la consulta) | 26.000 | [DYN-2026] |
+| Llave de la bandeja | Regulación 1/2", Grival | 36.900 | [HC-2026] |
+| Malla | 1 m de un rollo de 7,62 m a 99.900 (cálculo propio) | 13.100 | [HC-2026] |
+| **Subtotal cotizado** | | **341.400** | |
+
+**Por cotizar:** caja IP65, resina para encapsular, cables, recipiente de la bandeja, guantes y tapabocas, y el servidor de la fase 2.
+
+**Consumo eléctrico máximo:** 5 V × 2 A = 10 W → 0,24 kWh/día → 7,2 kWh/mes si el adaptador trabajara siempre al máximo (cálculo propio; el ESP32 consume menos).
 
 ## Hallazgos de las fuentes que afectan el diseño
 

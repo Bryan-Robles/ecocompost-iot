@@ -16,7 +16,7 @@ Cada hipótesis tiene un criterio claro para decidir si se cumple. Dos de ellas 
 | H2 | Ante una alerta, el usuario sabe qué hacer | Mostramos una alerta de humedad baja y preguntamos "¿qué haría usted?" | Cuántos pasos de "Qué hacer" logra explicar | El esposo explica al menos 2 de los 3 pasos sin ayuda |
 | H3 | El usuario sabe qué hacer con el líquido de la bandeja (lixiviado) | Preguntamos "¿qué haría con el líquido que sale abajo?" | Respuesta | Al menos 2 de 3 dicen algo seguro (no regarlo directo a las plantas, usar guantes) |
 | H4 | Cande siente que la app no le da trabajo extra | Le mostramos "¿Quién hace qué?" en la Guía | Su opinión | Cande dice que no le agrega trabajo |
-| H5 | El usuario entiende qué significan los números de temperatura y humedad | Preguntamos "¿qué quiere decir humedad 55 %?" | Respuesta | Al menos 2 de 3 explican si está bien o mal, con sus palabras |
+| H5 | El usuario entiende qué significan los números de temperatura y humedad | Preguntamos "¿qué quiere decir humedad 56 %?" | Respuesta | Al menos 2 de 3 explican si está bien o mal, con sus palabras |
 | H6 | El usuario sabe si el sistema está funcionando | Mostramos la pantalla con "Sin conexión" y preguntamos "¿el aparato está funcionando?" | Respuesta | Al menos 2 de 3 notan que no está funcionando |
 
 ---
@@ -73,7 +73,7 @@ Leer cada tarea tal cual. Anotar en la tabla de la sección 5: si lo logró (sí
 | Tarea | Pantalla o captura | Qué se dice |
 |---|---|---|
 | T1 | Estado, "Todo bien" (`01-estado-todo-bien.png`) | "Mire esta pantalla. ¿La compostera está bien o hay que hacer algo?" |
-| T2 | Misma pantalla | "¿Qué quiere decir esto de la humedad 55 %? ¿Eso está bien o mal?" |
+| T2 | Misma pantalla | "¿Qué quiere decir esto de la humedad 56 %? ¿Eso está bien o mal?" |
 | T3 | Estado con alerta (`02-estado-alerta.png`) | "Ahora mire esta. ¿Qué está pasando? ¿Qué haría usted?" |
 | T4 | Estado sin conexión (`03-estado-sin-conexion.png`) | "¿El aparato de la compostera está funcionando?" |
 
@@ -133,7 +133,7 @@ Hacerlas en este orden:
 | Tarea | Resultado (sí / con ayuda / no) | Tiempo aprox. | Lo que dijo (textual) | Observaciones |
 |---|---|---|---|---|
 | T1 ¿Está bien? | | | | |
-| T2 Humedad 55 % | | | | |
+| T2 Humedad 56 % | | | | |
 | T3 Alerta | | | | |
 | T4 ¿Funciona el aparato? | | | | |
 | T5 Atender alerta (esposo) | | | | |

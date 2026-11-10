@@ -72,8 +72,10 @@ Abrir <http://localhost:5173>.
 
 ```bash
 cd backend && ./mvnw verify
-cd frontend && npm run build
+cd frontend && npm run lint && npm run build
 ```
+
+**Plan B sin backend:** `VITE_MODO=offline npm run dev` muestra las pantallas con los datos guardados de `frontend/src/fixtures/`.
 
 ## Endpoints
 
@@ -105,6 +107,21 @@ curl -X POST http://localhost:8080/api/lecturas \
 ## Umbrales y fuentes
 
 Los rangos de diagnóstico salen del *Manual de compostaje del agricultor* de la FAO (Román, Martínez y Pantoja, 2013): temperatura normal 45–65 °C con problema sobre 70 °C o bajo 35 °C, y humedad ideal 45–60 %. Los márgenes de aviso que agregó el equipo están declarados como criterio propio. Todo vive en configuración (`application.yml`), no en el código. El respaldo de cada dato, con página, está en [docs/referencias.md](docs/referencias.md).
+
+## Documentos del proceso
+
+| Etapa | Documento |
+|---|---|
+| Prototipar (E3) | [Análisis de arquitectura](docs/analisis-arquitectura-entregable-3.md) · [Guion de la demo](docs/demo/guion-demo.md) |
+| Evaluar (E4) | [Kit de prueba con usuarios](docs/prueba-usuarios/kit-prueba-usuarios.md) |
+| Cierre (E5) | [Guion de la sustentación final](docs/demo/guion-sustentacion.md) |
+| Todas | [Bitácoras semanales](docs/bitacoras/) · [Referencias y trazabilidad de datos](docs/referencias.md) |
+
+Los PDF de los entregables y la guía de la docente se guardan fuera del repositorio (`docs/fuentes/`, ignorado por Git).
+
+**Cambios tras la prueba con usuarios (E4):** letra más grande y menú en pestañas, etapas con nombres sencillos (Arranque, Etapa de calor, Enfriamiento, Maduración), etiqueta antes que el número, «Qué hacer ahora» primero cuando hay alerta y una sección de la Guía sobre el líquido de abajo (lixiviado) con fuente para cada paso.
+
+**Trabajo futuro (issues abiertas):** registro de cargas de residuos y tarjeta de impacto (#28), umbrales con fuente en la API (#29), envío por lotes del búfer del ESP32 (#30), Swagger UI (#31) y build offline publicada (#32).
 
 ## Equipo
 
