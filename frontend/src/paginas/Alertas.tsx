@@ -9,6 +9,8 @@ import './Alertas.css'
 
 type Filtro = 'abiertas' | 'atendidas'
 
+const INTERVALO_MS = 10000
+
 const etiquetaSeveridad: Record<Severidad, { icono: string; texto: string }> = {
   CRITICA: { icono: '!!', texto: 'Actuar hoy' },
   ATENCION: { icono: '!', texto: 'Revisar pronto' },
@@ -31,10 +33,30 @@ function Alertas() {
   const [seleccionadaId, setSeleccionadaId] = useState<number | null>(null)
   const [guardando, setGuardando] = useState(false)
 
+  // Se actualiza sola cada 10 s para que una alerta nueva aparezca sin recargar la página.
+  // Si falla una actualización, se conserva la lista que ya se ve.
   useEffect(() => {
-    obtenerAlertas()
-      .then((lista) => setAlertas(lista.sort((a, b) => b.creadaEn.localeCompare(a.creadaEn))))
-      .catch(() => setError('No se pudieron cargar las alertas.'))
+    let cancelado = false
+    let primeraCarga = true
+    async function cargar() {
+      try {
+        const lista = await obtenerAlertas()
+        if (!cancelado) {
+          setAlertas(lista.sort((a, b) => b.creadaEn.localeCompare(a.creadaEn)))
+          setError(null)
+        }
+      } catch {
+        if (!cancelado && primeraCarga) setError('No se pudieron cargar las alertas.')
+      } finally {
+        primeraCarga = false
+      }
+    }
+    cargar()
+    const id = setInterval(cargar, INTERVALO_MS)
+    return () => {
+      cancelado = true
+      clearInterval(id)
+    }
   }, [])
 
   if (error) {

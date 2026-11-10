@@ -41,5 +41,7 @@ jobs:
           cache-dependency-path: frontend/package-lock.json
       - name: Instalar dependencias
         run: npm ci
+      - name: Revisar estilo (oxlint)
+        run: npm run lint
       - name: Compilar
         run: npm run build
