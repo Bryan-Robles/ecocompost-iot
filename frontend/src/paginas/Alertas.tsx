@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react'
+import { Link } from 'react-router'
 import { atenderAlerta, obtenerAlertas } from '../api/alertas'
 import type { Alerta, Severidad } from '../api/tipos'
 import './Alertas.css'
@@ -7,6 +8,8 @@ import './Alertas.css'
 // "Qué significa / Qué hacer" (wireframe 3 de E2).
 
 type Filtro = 'abiertas' | 'atendidas'
+
+const INTERVALO_MS = 10000
 
 const etiquetaSeveridad: Record<Severidad, { icono: string; texto: string }> = {
   CRITICA: { icono: '!!', texto: 'Actuar hoy' },
@@ -30,10 +33,30 @@ function Alertas() {
   const [seleccionadaId, setSeleccionadaId] = useState<number | null>(null)
   const [guardando, setGuardando] = useState(false)
 
+  // Se actualiza sola cada 10 s para que una alerta nueva aparezca sin recargar la página.
+  // Si falla una actualización, se conserva la lista que ya se ve.
   useEffect(() => {
-    obtenerAlertas()
-      .then((lista) => setAlertas(lista.sort((a, b) => b.creadaEn.localeCompare(a.creadaEn))))
-      .catch(() => setError('No se pudieron cargar las alertas.'))
+    let cancelado = false
+    let primeraCarga = true
+    async function cargar() {
+      try {
+        const lista = await obtenerAlertas()
+        if (!cancelado) {
+          setAlertas(lista.sort((a, b) => b.creadaEn.localeCompare(a.creadaEn)))
+          setError(null)
+        }
+      } catch {
+        if (!cancelado && primeraCarga) setError('No se pudieron cargar las alertas.')
+      } finally {
+        primeraCarga = false
+      }
+    }
+    cargar()
+    const id = setInterval(cargar, INTERVALO_MS)
+    return () => {
+      cancelado = true
+      clearInterval(id)
+    }
   }, [])
 
   if (error) {
@@ -152,12 +175,12 @@ function Alertas() {
                     {guardando ? 'Guardando…' : 'Marcar como atendida'}
                   </button>
                 )}
-                <a className="boton-secundario" href="#/historial">
+                <Link className="boton-secundario" to="/historial">
                   Ver historial
-                </a>
-                <a className="boton-secundario" href="#/guia">
+                </Link>
+                <Link className="boton-secundario" to="/guia">
                   Ver guía
-                </a>
+                </Link>
               </div>
             </section>
           )}

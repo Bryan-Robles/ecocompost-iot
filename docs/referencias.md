@@ -9,6 +9,11 @@ Revisión de fuentes del 25 de octubre de 2026. Cada dato del sistema indica de 
 - **[MADS-2019]** Ministerio de Ambiente y Desarrollo Sostenible. (2019). *Resolución 2184 de 2019, por la cual se modifica la Resolución 668 de 2016 sobre uso racional de bolsas plásticas y se adoptan otras disposiciones* (26 de diciembre). Diario Oficial 51.179. https://cancilleria.gov.co/normograma/compilacion/docs/resolucion_minambienteds_2184_2019.htm
 - **[SM-2023]** Alcaldía del Distrito de Santa Marta. (2023). *Decreto 461 de 2023, por el cual se modifica el Decreto 070 de 2023 por el cual se adopta la actualización del PGIRS del Distrito Turístico, Cultural e Histórico de Santa Marta* (7 de diciembre). Gaceta Distrital, edición 091. https://www.santamarta.gov.co/sites/default/files/091.pdf
 - **[DNP-2022]** Departamento Nacional de Planeación, Ministerio de Ambiente y Desarrollo Sostenible, Ministerio de Vivienda, Ciudad y Territorio, Superintendencia de Servicios Públicos Domiciliarios y Comisión de Regulación de Agua Potable y Saneamiento Básico. (2022). *Guía nacional para la adecuada separación de residuos sólidos*. https://www.minambiente.gov.co/wp-content/uploads/2022/12/Guia_Residuos-Solidos_Digital.pdf
+- **[UAESP-2014]** Unidad Administrativa Especial de Servicios Públicos y Universidad Nacional de Colombia, Facultad de Ciencias Agrarias. (2014). *Guía técnica para el aprovechamiento de residuos orgánicos a través de metodologías de compostaje y lombricultura* (Contrato Interadministrativo 369 de 2014). Alcaldía Mayor de Bogotá. https://www.uaesp.gov.co/images/Guia-UAESP_SR.pdf. El año es el del contrato; el documento no imprime fecha de publicación. Se citan páginas del PDF.
+- **[IM-2026]** Intendencia de Montevideo. (2026). *Manual de compostaje* [versión web V2]. https://montevideo.gub.uy/sites/default/files/2026-09/2026_manual%20web%20de%20compostaje_V2.pdf. Se citan páginas del PDF.
+- **[SALL-2019]** Sall, P. M., Antoun, H., Chalifour, F.-P. y Beauchamp, C. J. (2019). Potential use of leachate from composted fruit and vegetable waste as fertilizer for corn. *Cogent Food & Agriculture, 5*(1), 1580180. https://doi.org/10.1080/23311932.2019.1580180. Solo se leyó el resumen.
+- **[HC-2026]** Homecenter Colombia. (s. f.). *Tanque con tapa 220 litros negro Colplast; Regulación moderna hembra macho 1/2 pulgada (Grival); Malla para mosquitero en fibra de vidrio 91,44 cm × 7,62 m (Adfors)*. Recuperado el 9 de noviembre de 2026 de https://www.homecenter.com.co
+- **[DYN-2026]** Dynamo Electronics. (s. f.). *Board ESP32-DevKitC-32D; Sensor de temperatura DS18B20 a prueba de agua; Sensor de humedad del suelo; Adaptador 5 V/2 A USB*. Recuperado el 9 de noviembre de 2026 de https://www.dynamoelectronics.com
 - **[EQUIPO-E2]** Robles Mojica, B. A., Sánchez Fernández, K. J. y Torres González, J. (2026). *EcoCompost IoT: Entregable 2. Idear y prototipar en baja fidelidad* [Documento de curso]. Universidad del Magdalena.
 
 ## Umbrales de diagnóstico
@@ -50,6 +55,27 @@ Los valores viven en `backend/src/main/resources/application.yml`. Estado: **FAO
 | Relación C:N inicial de 25:1 a 35:1 | [FAO-2013, p. 64] |
 | Bolsa o recipiente **verde** para residuos orgánicos aprovechables | Artículo 4 [MADS-2019] |
 
+### Manejo del lixiviado (bandeja de abajo)
+
+Revisión del 9 de noviembre de 2026, a partir de la prueba con usuarios del Entregable 4 (hipótesis H3).
+
+| Contenido | Estado | Respaldo |
+|---|---|---|
+| El lixiviado "contiene también nutrientes solubles y algunos microorganismos" | FAO | [FAO-2013, p. 73] |
+| Si el compost está encharcado e inmaduro, el lixiviado puede ser fitotóxico; si viene de compost fresco es oscuro, de pH ácido y con mal olor | FAO | [FAO-2013, p. 73] |
+| Vaciar la bandeja con guantes cada semana | FAO | Nota de la Figura 28 [FAO-2013, p. 62] |
+| No devolverlo a la compostera en fase de calor: solo se recircula hasta 45 °C, y sobre 55 °C se suspende porque puede llevar patógenos | UAESP | [UAESP-2014, PDF pp. 25–26] |
+| Guardarlo en botellas tapadas, aireándolo de vez en cuando, unos 15 días hasta que madure | IM | [IM-2026, PDF p. 13] |
+| Diluir 1 litro de lixiviado en 10 litros de agua y regar como máximo cada 15 días | IM | [IM-2026, PDF pp. 12–13] |
+| Regar sobre la tierra, no sobre la planta | IM | Preguntas frecuentes del programa Hogares Sustentables, Intendencia de Montevideo |
+| Si después del reposo sigue oscuro o con mal olor, no usarlo en plantas | EQUIPO | Aplica las señales de lixiviado de compost fresco [FAO-2013, p. 73] |
+| Si sigue oscuro o con mal olor, diluirlo en agua y desecharlo por un sifón conectado al alcantarillado | EQUIPO | Decisión del equipo del 9 de noviembre de 2026; ninguna fuente revisada indica cómo desecharlo |
+| Para reducir el lixiviado, agregar material seco cuando la humedad pase de 60 % | FAO | Tabla 2 [FAO-2013, p. 27] |
+
+**Contexto:** el lixiviado de compost de frutas y verduras es ácido y de alta conductividad; dañó el maíz a dosis altas, pero a dosis controladas rindió como el fertilizante mineral [SALL-2019, resumen]. El 1:10 de Montevideo no trae fuente propia. La dosis del lixiviado de **lombricompost** (10 % al suelo, 5 % foliar [UAESP-2014, PDF p. 58]) no aplica a esta compostera, que no usa lombrices.
+
+**Sin fuente:** cómo desechar el lixiviado que no se puede usar. No se encontró guía oficial sobre verterlo al desagüe, así que la regla del sifón es criterio del equipo. Debe ser un sifón del alcantarillado sanitario, no una rejilla de aguas lluvias.
+
 Ya no se usa "agregar 1 litro de agua" (venía del wireframe sin fuente); se reemplazó por la técnica del puño. Tampoco se usa la proporción 3:1 marrón/verde: la FAO expresa la mezcla como relación C:N, no como proporción de volúmenes.
 
 ## Impacto y contexto
@@ -67,14 +93,33 @@ Ya no se usa "agregar 1 litro de agua" (venía del wireframe sin fuente); se ree
 
 **Retirado:** "un hogar estándar genera 1,2 kg/día" y "la pensión genera 3 veces más". No se encontró fuente para 1,2 kg/día, y las cifras oficiales son por persona e incluyen todo tipo de residuos, así que no son comparables con 3,9 kg/día de orgánicos de toda la casa.
 
+## Costos de la propuesta de implementación (E5)
+
+Precios de una unidad consultados el 9 de noviembre de 2026. No se verificó si incluyen IVA.
+
+| Componente | Referencia | Precio (COP) | Respaldo |
+|---|---|---|---|
+| Bidón con tapa | Tanque con tapa 220 L, Colplast | 199.900 | [HC-2026] |
+| Microcontrolador | ESP32-DevKitC-32D (agotado el día de la consulta) | 44.000 | [DYN-2026] |
+| Sensor de temperatura | DS18B20 a prueba de agua | 15.000 | [DYN-2026] |
+| Sensor de humedad | Sensor de humedad de suelo genérico (no confirma ser el capacitivo v1.2) | 6.500 | [DYN-2026] |
+| Alimentación | Adaptador 5 V / 2 A USB (agotado el día de la consulta) | 26.000 | [DYN-2026] |
+| Llave de la bandeja | Regulación 1/2", Grival | 36.900 | [HC-2026] |
+| Malla | 1 m de un rollo de 7,62 m a 99.900 (cálculo propio) | 13.100 | [HC-2026] |
+| **Subtotal cotizado** | | **341.400** | |
+
+**Por cotizar:** caja IP65, resina para encapsular, cables, recipiente de la bandeja, guantes y tapabocas, y el servidor de la fase 2.
+
+**Consumo eléctrico máximo:** 5 V × 2 A = 10 W → 0,24 kWh/día → 7,2 kWh/mes si el adaptador trabajara siempre al máximo (cálculo propio; el ESP32 consume menos).
+
 ## Hallazgos de las fuentes que afectan el diseño
 
 1. **Volumen del contenedor.** El ejemplo 8 de la FAO [FAO-2013, p. 64] dimensiona una compostera con una densidad compactada de 400 kg/m³: una familia que produce 20 kg por semana necesita un bidón de 220 L para 5 semanas de llenado. La pensión produce unos 27 kg por semana (3,9 kg/día × 7). Con el mismo método, 2 semanas de llenado ocupan unos 137 L (27,3 kg × 2 ÷ 400 kg/m³ ≈ 0,137 m³), y la FAO sugiere llenar el recipiente durante 2 o 3 semanas [FAO-2013, p. 64]. El tanque de 50 L del diseño conceptual (E2) se llenaría en unos 5 días. **Decisión del equipo (25 de octubre de 2026): usar un bidón de 220 L**, como el del manual. Con 3,9 kg/día y 400 kg/m³ se llena en unos 22 días (220 L × 0,4 kg/L ÷ 3,9 kg/día), dentro de las 2 o 3 semanas de llenado que sugiere la FAO.
 2. **Clima cálido.** La FAO advierte que los sistemas cerrados pueden alcanzar temperaturas altas y recomienda agregar tierra en climas cálidos [FAO-2013, p. 60]. Refuerza la alerta de temperatura alta para Santa Marta.
 
-## Datos que siguen sin fuente
+## Criterios del equipo sin fuente externa
 
-| Dato | Uso | Cómo cerrarlo |
+| Dato | Uso | Criterio |
 |---|---|---|
-| Temperatura ambiente de Santa Marta (30 °C en el simulador) | Curvas del Mock Data Service | No se encontraron las normales climatológicas del IDEAM. Medirla con un termómetro (foto, fecha y hora) o citar las normales del IDEAM para la estación del aeropuerto Simón Bolívar |
+| Temperatura ambiente de Santa Marta: 30 °C | Curvas del Mock Data Service y detección de maduración | El equipo eligió 30 °C como temperatura promedio de Santa Marta |
 | Curvas de los escenarios de demo | `mock-data/*.json` | Son ilustrativas por diseño (`valoresIlustrativos: true`); sus picos y fases se alinearon con los rangos de la FAO |

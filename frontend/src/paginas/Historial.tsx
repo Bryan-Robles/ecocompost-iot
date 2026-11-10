@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { CartesianGrid, Line, LineChart, ReferenceArea, ReferenceLine, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts'
 import { obtenerActual, obtenerDiagnostico, obtenerHistorial } from '../api/cliente'
 import type { Fase, Lectura } from '../api/tipos'
+import { fases, ordenFases } from '../contenido/fases'
 import './Historial.css'
 
 // Pantalla Historial y maduración (wireframe 2 de E2).
@@ -11,12 +12,13 @@ import './Historial.css'
 const DIA_MS = 24 * 60 * 60 * 1000
 const REFRESCO_MS = 15000
 
-const fases: { id: Fase; nombre: string }[] = [
-  { id: 'MESOFILA', nombre: 'Mesófila' },
-  { id: 'TERMOFILA', nombre: 'Termófila' },
-  { id: 'ENFRIAMIENTO', nombre: 'Enfriamiento' },
-  { id: 'MADURACION', nombre: 'Maduración' },
+const rangos: { dias: number; etiqueta: string }[] = [
+  { dias: 1, etiqueta: '1 día' },
+  { dias: 3, etiqueta: '3 días' },
+  { dias: 7, etiqueta: '7 días' },
+  { dias: 14, etiqueta: '14 días' },
 ]
+
 
 const formatoHora = new Intl.DateTimeFormat('es-CO', {
   timeZone: 'America/Bogota',
@@ -35,6 +37,7 @@ function Historial() {
   const [ultima, setUltima] = useState<Lectura | null>(null)
   const [fase, setFase] = useState<Fase | null>(null)
   const [error, setError] = useState<string | null>(null)
+  const [dias, setDias] = useState(7)
 
   useEffect(() => {
     let cancelado = false
@@ -46,7 +49,7 @@ function Historial() {
           return
         }
         const hasta = new Date(actual.lectura.medidoEn)
-        const desde = new Date(hasta.getTime() - 7 * DIA_MS)
+        const desde = new Date(hasta.getTime() - dias * DIA_MS)
         const [historial, diagnostico] = await Promise.all([
           obtenerHistorial(desde, new Date(hasta.getTime() + 60_000)),
           obtenerDiagnostico(),
@@ -72,15 +75,29 @@ function Historial() {
       cancelado = true
       clearInterval(id)
     }
-  }, [])
+  }, [dias])
 
   if (puntos === null) {
-    return <p className="historial-aviso">Cargando el historial…</p>
+    return error ? (
+      <p className="historial-aviso" role="alert">{error}</p>
+    ) : (
+      <p className="historial-aviso">Cargando el historial…</p>
+    )
   }
 
   return (
     <section className="historial">
       <h1>Historial y maduración</h1>
+      <div className="historial-rango">
+        <label htmlFor="historial-rango">Rango</label>
+        <select id="historial-rango" value={dias} onChange={(e) => setDias(Number(e.target.value))}>
+          {rangos.map((r) => (
+            <option key={r.dias} value={r.dias}>
+              {r.etiqueta}
+            </option>
+          ))}
+        </select>
+      </div>
       {error && <p className="historial-aviso" role="alert">{error}</p>}
       {puntos.length === 0 ? (
         <p className="historial-aviso">Todavía no hay lecturas para mostrar.</p>
@@ -108,19 +125,23 @@ function Historial() {
       )}
 
       <div className="historial-fases" aria-label="Fases del compostaje">
-        <h2>Fases del compostaje</h2>
+        <h2>Etapas del compostaje</h2>
         <ol>
-          {fases.map((f) => (
-            <li key={f.id} className={f.id === fase ? 'activa' : ''} aria-current={f.id === fase ? 'step' : undefined}>
-              {f.nombre}
-              {f.id === fase && <small> · fase actual</small>}
+          {ordenFases.map((id) => (
+            <li key={id} className={id === fase ? 'activa' : ''} aria-current={id === fase ? 'step' : undefined}>
+              <strong>{fases[id].nombre}</strong>
+              {id === fase && <span className="historial-fase-actual">Etapa actual</span>}
+              {fases[id].tecnico !== fases[id].nombre.toLowerCase() && (
+                <small className="historial-fase-tecnico">Fase {fases[id].tecnico}</small>
+              )}
             </li>
           ))}
         </ol>
+        {fase && fase !== 'DESCONOCIDA' && <p className="historial-fase-descripcion">{fases[fase].descripcion}</p>}
       </div>
 
       <p className="historial-nota">
-        Datos simulados para el prototipo. Los pesajes de residuos sí son reales.
+        Datos simulados para el prototipo: temperatura y humedad.
       </p>
     </section>
   )

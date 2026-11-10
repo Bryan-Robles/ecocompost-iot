@@ -1,6 +1,6 @@
 package co.edu.unimagdalena.ecocompost.diagnostico;
 
-/** Fases del compostaje que muestra el dashboard. La detección es la tarea M09. */
+/** Fases del compostaje que muestra el dashboard. Las calcula {@link DetectorDeFase}. */
 public enum Fase {
 	MESOFILA,
 	TERMOFILA,

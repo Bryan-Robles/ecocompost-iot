@@ -45,18 +45,20 @@ El análisis completo (requisitos, C4, modelo de datos, ADR, backlog y plan) est
 
 ## Cómo ejecutar
 
-Requisitos: **Java 21** y **Node.js 24** (ver `frontend/.nvmrc`). No hace falta instalar Maven ni una base de datos.
+Requisitos: **Java 21** y **Node.js 24** (ver `frontend/.nvmrc`). No hace falta instalar Maven ni una base de datos: el backend usa H2 en un archivo dentro de `backend/data/`.
 
-**Backend** (puerto 8080):
+Hay que levantar primero el backend y luego el frontend, en dos terminales.
+
+**1. Backend** (puerto 8080). Arranca con el perfil `mock`, así que el simulador envía lecturas solas cada 5 segundos:
 
 ```bash
 cd backend
 ./mvnw spring-boot:run
 ```
 
-En Windows (cmd o PowerShell) se usa `mvnw.cmd spring-boot:run`. Comprobación rápida: <http://localhost:8080/actuator/health>.
+En Windows (cmd o PowerShell) se usa `mvnw.cmd spring-boot:run`. La primera ejecución descarga dependencias de Maven y tarda más. Comprobación: <http://localhost:8080/actuator/health> debe responder `UP`.
 
-**Frontend** (puerto 5173; las llamadas a `/api` se redirigen al backend):
+**2. Frontend** (puerto 5173; las llamadas a `/api` se redirigen al backend):
 
 ```bash
 cd frontend
@@ -64,28 +66,35 @@ npm install
 npm run dev
 ```
 
+Abrir <http://localhost:5173>.
+
 **Pruebas y build:**
 
 ```bash
 cd backend && ./mvnw verify
-cd frontend && npm run build
+cd frontend && npm run lint && npm run build
 ```
+
+**Plan B sin backend:** `VITE_MODO=offline npm run dev` muestra las pantallas con los datos guardados de `frontend/src/fixtures/`.
 
 ## Endpoints
 
-Contrato previsto para el Entregable 3 (detalle en la sección 2.5 del análisis de arquitectura). Estado: en construcción.
+Contrato del prototipo (detalle en la sección 2.5 del análisis de arquitectura). Las rutas marcadas *pendiente* aún no existen y responden 404.
 
 | Método | Ruta | Descripción |
 |---|---|---|
-| `POST` | `/api/lecturas` | Registrar una lectura (contrato del ESP32 y del simulador) |
-| `GET` | `/api/lecturas/actual` | Última lectura y estado de conexión del sensor |
-| `GET` | `/api/lecturas?desde=&hasta=` | Historial por rango (ISO-8601) |
+| `POST` | `/api/lecturas` | Registrar una lectura (contrato del ESP32 y del simulador). Responde `201` |
+| `GET` | `/api/lecturas/actual` | Última lectura y estado de conexión (`EN_LINEA` o `SIN_CONEXION`). Responde `204` si no hay lecturas |
+| `GET` | `/api/lecturas?desde=&hasta=` | Historial por rango. `desde` y `hasta` son obligatorios, en ISO-8601 (ej. `2026-10-28T00:00:00Z`) |
 | `GET` | `/api/diagnostico` | Estado de temperatura y humedad, fase del compostaje y acciones |
-| `GET` | `/api/alertas` | Alertas abiertas y atendidas |
+| `GET` | `/api/alertas?estado=` | Alertas. `estado` puede ser `abiertas`, `atendidas` o `todas` (por defecto) |
 | `PATCH` | `/api/alertas/{id}/atender` | Marcar una alerta como atendida |
-| `GET`/`POST` | `/api/cargas` | Cargas de residuos (pesaje real) |
-| `GET` | `/api/umbrales` | Umbrales vigentes con su fuente |
-| `POST` | `/api/demo/escenario` | Cambiar el escenario del simulador (solo perfil `mock`) |
+| `GET` | `/api/demo/escenarios` | Escenario activo y escenarios disponibles (solo perfil `mock`) |
+| `POST` | `/api/demo/escenario` | Cambiar el escenario del simulador, body `{"nombre":"humedad-baja"}` (solo perfil `mock`) |
+| `GET`/`POST` | `/api/cargas` | Cargas de residuos (pesaje real). *Pendiente* |
+| `GET` | `/api/umbrales` | Umbrales vigentes con su fuente. *Pendiente* |
+
+Las alertas se cierran a mano: quien las atiende marca la alerta con `PATCH`. Si el problema desaparece, la alerta sigue abierta hasta que alguien la marque. Es una decisión del equipo para el prototipo.
 
 Ejemplo de lectura, tal como la enviaría el ESP32:
 
@@ -99,13 +108,28 @@ curl -X POST http://localhost:8080/api/lecturas \
 
 Los rangos de diagnóstico salen del *Manual de compostaje del agricultor* de la FAO (Román, Martínez y Pantoja, 2013): temperatura normal 45–65 °C con problema sobre 70 °C o bajo 35 °C, y humedad ideal 45–60 %. Los márgenes de aviso que agregó el equipo están declarados como criterio propio. Todo vive en configuración (`application.yml`), no en el código. El respaldo de cada dato, con página, está en [docs/referencias.md](docs/referencias.md).
 
+## Documentos del proceso
+
+| Etapa | Documento |
+|---|---|
+| Prototipar (E3) | [Análisis de arquitectura](docs/analisis-arquitectura-entregable-3.md) · [Guion de la demo](docs/demo/guion-demo.md) |
+| Evaluar (E4) | [Kit de prueba con usuarios](docs/prueba-usuarios/kit-prueba-usuarios.md) |
+| Cierre (E5) | [Guion de la sustentación final](docs/demo/guion-sustentacion.md) |
+| Todas | [Bitácoras semanales](docs/bitacoras/) · [Referencias y trazabilidad de datos](docs/referencias.md) |
+
+Los PDF de los entregables y la guía de la docente se guardan fuera del repositorio (`docs/fuentes/`, ignorado por Git).
+
+**Cambios tras la prueba con usuarios (E4):** letra más grande y menú en pestañas, etapas con nombres sencillos (Arranque, Etapa de calor, Enfriamiento, Maduración), etiqueta antes que el número, «Qué hacer ahora» primero cuando hay alerta y una sección de la Guía sobre el líquido de abajo (lixiviado) con fuente para cada paso.
+
+**Trabajo futuro (issues abiertas):** registro de cargas de residuos y tarjeta de impacto (#28), umbrales con fuente en la API (#29), envío por lotes del búfer del ESP32 (#30), Swagger UI (#31) y build offline publicada (#32).
+
 ## Equipo
 
 | Integrante | Rol de coordinación |
 |---|---|
-| Bryan Andre Robles Mojica | Líder de usuarios *(por confirmar)* |
-| Karyme Judith Sánchez Fernández | Líder de documentación *(por confirmar)* |
-| Jussi Torres González | Líder técnico *(por confirmar)* |
+| Bryan Andre Robles Mojica | Líder de usuarios |
+| Karyme Judith Sánchez Fernández | Líder de documentación |
+| Jussi Torres González | Líder técnico |
 
 Los roles coordinan; no reparten el trabajo técnico. Todos participan en backend, frontend y documentación. Ver [CONTRIBUTING.md](CONTRIBUTING.md).
 
