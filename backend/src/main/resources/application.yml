@@ -42,7 +42,7 @@ ecocompost:
       ventana-lecturas: 12             # media móvil e histéresis (análisis, sección 4.2)
       dias-minimos-maduracion: 3       # días con T ≤ ambiente + margen antes de maduración; criterio del equipo
       margen-sobre-ambiente: 5.0       # criterio del equipo
-      temperatura-ambiente: 30.0       # ⚠️ sin fuente: medir o citar (ver docs/referencias.md)
+      temperatura-ambiente: 30.0       # criterio del equipo: temperatura promedio de Santa Marta (ver docs/referencias.md)
     humedad:
       normal-min: 45.0        # Tabla 2: rango ideal 45-60 % (FAO 2013, p. 27)
       normal-max: 60.0

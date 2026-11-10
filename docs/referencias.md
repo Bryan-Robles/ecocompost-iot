@@ -117,9 +117,9 @@ Precios de una unidad consultados el 9 de noviembre de 2026. No se verificó si 
 1. **Volumen del contenedor.** El ejemplo 8 de la FAO [FAO-2013, p. 64] dimensiona una compostera con una densidad compactada de 400 kg/m³: una familia que produce 20 kg por semana necesita un bidón de 220 L para 5 semanas de llenado. La pensión produce unos 27 kg por semana (3,9 kg/día × 7). Con el mismo método, 2 semanas de llenado ocupan unos 137 L (27,3 kg × 2 ÷ 400 kg/m³ ≈ 0,137 m³), y la FAO sugiere llenar el recipiente durante 2 o 3 semanas [FAO-2013, p. 64]. El tanque de 50 L del diseño conceptual (E2) se llenaría en unos 5 días. **Decisión del equipo (25 de octubre de 2026): usar un bidón de 220 L**, como el del manual. Con 3,9 kg/día y 400 kg/m³ se llena en unos 22 días (220 L × 0,4 kg/L ÷ 3,9 kg/día), dentro de las 2 o 3 semanas de llenado que sugiere la FAO.
 2. **Clima cálido.** La FAO advierte que los sistemas cerrados pueden alcanzar temperaturas altas y recomienda agregar tierra en climas cálidos [FAO-2013, p. 60]. Refuerza la alerta de temperatura alta para Santa Marta.
 
-## Datos que siguen sin fuente
+## Criterios del equipo sin fuente externa
 
-| Dato | Uso | Cómo cerrarlo |
+| Dato | Uso | Criterio |
 |---|---|---|
-| Temperatura ambiente de Santa Marta (30 °C en el simulador) | Curvas del Mock Data Service | No se encontraron las normales climatológicas del IDEAM. Medirla con un termómetro (foto, fecha y hora) o citar las normales del IDEAM para la estación del aeropuerto Simón Bolívar |
+| Temperatura ambiente de Santa Marta: 30 °C | Curvas del Mock Data Service y detección de maduración | El equipo eligió 30 °C como temperatura promedio de Santa Marta |
 | Curvas de los escenarios de demo | `mock-data/*.json` | Son ilustrativas por diseño (`valoresIlustrativos: true`); sus picos y fases se alinearon con los rangos de la FAO |

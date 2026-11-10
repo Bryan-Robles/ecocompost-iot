@@ -1,8 +1,12 @@
+import { lazy, Suspense } from 'react'
 import { NavLink, Route, Routes } from 'react-router'
 import Alertas from './paginas/Alertas'
 import Estado from './paginas/Estado'
 import Guia from './paginas/Guia'
-import Historial from './paginas/Historial'
+
+// Historial se carga aparte: trae la librería de gráficas (Recharts), que es la parte más pesada.
+// Así Estado, Guía y Alertas abren más rápido en el celular.
+const Historial = lazy(() => import('./paginas/Historial'))
 
 const secciones = [
   { nombre: 'Estado', ruta: '/' },
@@ -30,7 +34,14 @@ function App() {
       <main style={{ padding: 16 }}>
         <Routes>
           <Route path="/" element={<Estado />} />
-          <Route path="/historial" element={<Historial />} />
+          <Route
+            path="/historial"
+            element={
+              <Suspense fallback={<p>Cargando el historial…</p>}>
+                <Historial />
+              </Suspense>
+            }
+          />
           <Route path="/guia" element={<Guia />} />
           <Route path="/alertas" element={<Alertas />} />
           <Route path="*" element={<Estado />} />

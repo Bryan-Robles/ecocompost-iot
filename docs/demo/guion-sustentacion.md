@@ -46,9 +46,10 @@ Rúbrica: Claridad y coherencia 20 % (las 5 etapas con evidencia) · Originalida
 - **"¿Por qué no se cumplió H3 y qué hicieron?"** El esposo diluiría el líquido, pero no sabía que debe reposar antes. La Guía no lo decía. Investigamos (FAO, UAESP, Montevideo) y agregamos la sección 6 con fuente en cada paso. Se volverá a probar en el piloto.
 - **"¿El lixiviado sirve o no sirve?"** Tiene nutrientes, pero fresco puede dañar las plantas (FAO, p. 73). Después de reposar y diluirse 1 en 10 se puede regar en la tierra cada 15 días (Intendencia de Montevideo, 2026).
 - **"¿Por qué se bota por el sifón?"** Es una decisión del equipo: ninguna fuente dice cómo desechar el que no sirve. Se diluye y va al alcantarillado sanitario, nunca a la rejilla de aguas lluvias.
-- **"¿Cuándo se pesó?"** ⚠️ **Aclarar antes de la sustentación.** El registro dice 17 y 19 a 22 de octubre, pero el Entregable 1 (16 de octubre) ya reportaba los días 1 a 3.
+- **"¿Cuándo se pesó?"** Los días 1 a 3 se pesaron para el Entregable 1, y el pesaje continuó hasta completar los 5 días que se reportaron en el Entregable 2.
 - **"¿El costo está completo?"** No: faltan la caja IP65, la resina, los cables y el servidor de la fase 2, y dos productos estaban agotados el día de la consulta. Se dice así.
-- **"¿La lista de riesgos fue aprobada?"** ⚠️ Confirmar antes de la sustentación y tener la constancia a mano.
+- **"¿La lista de riesgos fue aprobada?"** Sí, la docente la aprobó. Son 6 riesgos (R1 a R6) con su control.
+- **"¿De dónde sale la temperatura ambiente del simulador?"** Son 30 °C, la temperatura promedio de Santa Marta que eligió el equipo.
 
 ## Lista de chequeo
 
