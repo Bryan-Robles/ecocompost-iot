@@ -23,7 +23,7 @@ Rúbrica: Claridad y coherencia 20 % (las 5 etapas con evidencia) · Originalida
 | 8:00–9:30 | Jussi | **Demo 2 · Alerta** | Escenario **humedad-baja** (activarlo en el minuto 6, ver nota). La pantalla pasa a rojo y muestra «Qué hacer ahora» primero. Abrir **Alertas** y marcarla como atendida. | Aplicabilidad |
 | 9:30–10:30 | Karyme | **Demo 3 · Guía** | Pestaña **Guía**, sección 6 «El líquido de abajo»: no echarlo fresco, reposo de 15 días, 1 en 10, y qué hacer si huele mal. Cada paso tiene fuente (FAO, UAESP, Intendencia de Montevideo). Mostrar «¿Quién hace qué?»: Cande, nada extra. | Originalidad, Aplicabilidad |
 | 10:30–11:00 | Karyme | **Demo 4 · Etapas** | Pestaña **Historial**: etapas con nombres sencillos (Arranque, Etapa de calor, Enfriamiento, Maduración). | Aplicabilidad |
-| 11:00–13:30 | Bryan | **Propuesta** | Fase 1: piloto de 12 semanas en la casa. Fase 2: otras pensiones del barrio. Costo cotizado de una unidad: 341.400 COP (falta caja IP65, resina y cables). Responsables: el esposo de Jenis opera, Jenis deposita, Cande nada extra, Bryan es el contacto técnico. | Aplicabilidad |
+| 11:00–13:30 | Bryan | **Propuesta** | Fase 1: piloto de 12 semanas en la casa. Fase 2: otras pensiones del barrio. Costo de una unidad: 580.140 COP; el servidor es gratuito (Oracle Cloud Always Free). Responsables: el esposo de Jenis opera, Jenis deposita, Cande nada extra, Bryan es el contacto técnico. | Aplicabilidad |
 | 13:30–15:00 | Bryan | **Impacto y cierre** | ≈ 117 kg/mes y 1,4 t/año menos al camión; 35–70 kg/mes de abono. Son proyecciones con el pesaje propio. Se medirá con pesaje semanal. Repetir el mensaje central. | Aplicabilidad, Claridad |
 | 15:00–20:00 | Todos | **Preguntas** | Cada uno responde las que preparó (abajo). | Presentación |
 
@@ -47,7 +47,8 @@ Rúbrica: Claridad y coherencia 20 % (las 5 etapas con evidencia) · Originalida
 - **"¿El lixiviado sirve o no sirve?"** Tiene nutrientes, pero fresco puede dañar las plantas (FAO, p. 73). Después de reposar y diluirse 1 en 10 se puede regar en la tierra cada 15 días (Intendencia de Montevideo, 2026).
 - **"¿Por qué se bota por el sifón?"** Es una decisión del equipo: ninguna fuente dice cómo desechar el que no sirve. Se diluye y va al alcantarillado sanitario, nunca a la rejilla de aguas lluvias.
 - **"¿Cuándo se pesó?"** Los días 1 a 3 se pesaron para el Entregable 1, y el pesaje continuó hasta completar los 5 días que se reportaron en el Entregable 2.
-- **"¿El costo está completo?"** No: faltan la caja IP65, la resina, los cables y el servidor de la fase 2, y dos productos estaban agotados el día de la consulta. Se dice así.
+- **"¿El costo está completo?"** Sí: 580.140 COP por unidad, con todos los materiales cotizados en tiendas colombianas. El ESP32 y el adaptador estaban agotados el día de la consulta, así que su precio es de referencia; la resina alcanza para varias unidades.
+- **"¿Dónde corre el servidor?"** En una máquina virtual gratuita de Oracle Cloud (Always Free), que guarda la base de datos en disco. Si Oracle la recupera por poco uso, la alternativa es el nivel gratuito de Google Cloud.
 - **"¿La lista de riesgos fue aprobada?"** Sí, la docente la aprobó. Son 6 riesgos (R1 a R6) con su control.
 - **"¿De dónde sale la temperatura ambiente del simulador?"** Son 30 °C, la temperatura promedio de Santa Marta que eligió el equipo.
 

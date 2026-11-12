@@ -14,6 +14,9 @@ Revisión de fuentes del 25 de octubre de 2026. Cada dato del sistema indica de 
 - **[SALL-2019]** Sall, P. M., Antoun, H., Chalifour, F.-P. y Beauchamp, C. J. (2019). Potential use of leachate from composted fruit and vegetable waste as fertilizer for corn. *Cogent Food & Agriculture, 5*(1), 1580180. https://doi.org/10.1080/23311932.2019.1580180. Solo se leyó el resumen.
 - **[HC-2026]** Homecenter Colombia. (s. f.). *Tanque con tapa 220 litros negro Colplast; Regulación moderna hembra macho 1/2 pulgada (Grival); Malla para mosquitero en fibra de vidrio 91,44 cm × 7,62 m (Adfors)*. Recuperado el 9 de noviembre de 2026 de https://www.homecenter.com.co
 - **[DYN-2026]** Dynamo Electronics. (s. f.). *Board ESP32-DevKitC-32D; Sensor de temperatura DS18B20 a prueba de agua; Sensor de humedad del suelo; Adaptador 5 V/2 A USB*. Recuperado el 9 de noviembre de 2026 de https://www.dynamoelectronics.com
+- **[SIGMA-2026]** Sigma Electrónica. (s. f.). *SEN0193, sensor capacitivo para humedad en suelos (DFRobot)*. Recuperado el 11 de noviembre de 2026 de https://www.sigmaelectronica.net/producto/sen0193/
+- **[OCI-2026]** Oracle. (s. f.). *Always Free Resources*. Oracle Cloud Infrastructure Documentation. Recuperado el 11 de noviembre de 2026 de https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm
+- **[GCP-2026]** Google Cloud. (s. f.). *Free Tier usage limits*. Recuperado el 11 de noviembre de 2026 de https://docs.cloud.google.com/free/docs/free-cloud-features
 - **[EQUIPO-E2]** Robles Mojica, B. A., Sánchez Fernández, K. J. y Torres González, J. (2026). *EcoCompost IoT: Entregable 2. Idear y prototipar en baja fidelidad* [Documento de curso]. Universidad del Magdalena.
 
 ## Umbrales de diagnóstico
@@ -95,20 +98,29 @@ Ya no se usa "agregar 1 litro de agua" (venía del wireframe sin fuente); se ree
 
 ## Costos de la propuesta de implementación (E5)
 
-Precios de una unidad consultados el 9 de noviembre de 2026. No se verificó si incluyen IVA.
+Precios de una unidad consultados entre el 9 y el 11 de noviembre de 2026. No se verificó si incluyen IVA.
 
 | Componente | Referencia | Precio (COP) | Respaldo |
 |---|---|---|---|
 | Bidón con tapa | Tanque con tapa 220 L, Colplast | 199.900 | [HC-2026] |
 | Microcontrolador | ESP32-DevKitC-32D (agotado el día de la consulta) | 44.000 | [DYN-2026] |
 | Sensor de temperatura | DS18B20 a prueba de agua | 15.000 | [DYN-2026] |
-| Sensor de humedad | Sensor de humedad de suelo genérico (no confirma ser el capacitivo v1.2) | 6.500 | [DYN-2026] |
+| Sensor de humedad | Sensor capacitivo anticorrosivo DFRobot SEN0193 | 30.940 | [SIGMA-2026] |
 | Alimentación | Adaptador 5 V / 2 A USB (agotado el día de la consulta) | 26.000 | [DYN-2026] |
+| Caja para el ESP32 | Caja hermética 10 × 10, Halux (la tienda no indica el grado IP) | 14.200 | [HC-2026] |
+| Resistencia de 4,7 kΩ | Kit de 200 resistencias de 1/4 W (no confirma el valor de 4,7 kΩ) | 10.000 | [DYN-2026] |
+| Cables | Cables dupont de 20 cm, 10 unidades | 3.500 | [DYN-2026] |
+| Encapsulado de los sensores | Kit de resina epóxica Epoglass 1/4 de galón, Preflex (alcanza para varias unidades) | 114.900 | [HC-2026] |
 | Llave de la bandeja | Regulación 1/2", Grival | 36.900 | [HC-2026] |
 | Malla | 1 m de un rollo de 7,62 m a 99.900 (cálculo propio) | 13.100 | [HC-2026] |
-| **Subtotal cotizado** | | **341.400** | |
+| Recipiente del líquido | Balde de 10 L, Estra | 23.900 | [HC-2026] |
+| Guantes | Guantes de nitrilo, caja de 100, Steelpro | 30.900 | [HC-2026] |
+| Tapabocas | Tapabocas desechables, paquete de 50, Element | 16.900 | [HC-2026] |
+| Servidor | Máquina virtual Always Free de Oracle Cloud | 0 | [OCI-2026] |
+| Software | Spring Boot, React y H2 (código abierto) | 0 | |
+| **Total de una unidad** | | **580.140** | |
 
-**Por cotizar:** caja IP65, resina para encapsular, cables, recipiente de la bandeja, guantes y tapabocas, y el servidor de la fase 2.
+**Servidor elegido:** máquina virtual *Always Free* de Oracle Cloud. Gratuita "for the life of the account", con hasta el equivalente a 2 OCPU y 12 GB de memoria en Ampere A1 y 200 GB de almacenamiento en bloque, así que el archivo H2 se conserva entre reinicios [OCI-2026]. Riesgo: Oracle puede recuperar una instancia inactiva si durante 7 días su CPU, red y memoria se quedan bajo el 20 % [OCI-2026]. Alternativa: e2-micro del nivel gratuito de Google Cloud, con disco persistente de 30 GB pero con cuenta de facturación obligatoria [GCP-2026]. Se descartó Render gratis porque su sistema de archivos se borra al reiniciar y no permite disco persistente.
 
 **Consumo eléctrico máximo:** 5 V × 2 A = 10 W → 0,24 kWh/día → 7,2 kWh/mes si el adaptador trabajara siempre al máximo (cálculo propio; el ESP32 consume menos).
 
