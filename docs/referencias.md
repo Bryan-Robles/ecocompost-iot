@@ -86,15 +86,19 @@ Ya no se usa "agregar 1 litro de agua" (venía del wireframe sin fuente); se ree
 | Dato | Valor | Respaldo |
 |---|---|---|
 | Residuos orgánicos de la pensión | 19,5 kg en 5 días (17 y 19 a 22 de octubre de 2026); 3,9 kg/día | Pesaje propio [EQUIPO-E2] |
-| Residuos desviados al mes | ≈ 117 kg/mes | Proyección lineal propia (3,9 kg/día × 30) |
+| Residuos desviados en un ciclo del bidón | ≈ 86 kg | Cálculo propio: 3,9 kg/día × 22 días de llenado del bidón de 220 L |
+| Duración de un ciclo | ≈ 9–13 semanas | 22 días de llenado + 6 a 10 semanas de maduración [FAO-2013, p. 61] |
+| Potencial de la casa con más bidones | ≈ 117 kg/mes | Proyección lineal propia (3,9 kg/día × 30) |
 | Por persona | ≈ 0,33 kg/persona/día de orgánicos crudos | Cálculo propio: 3,9 kg/día ÷ 12 personas (dueños y 10 estudiantes, [EQUIPO-E2]) |
 | Rendimiento de compost | 30–60 % del peso inicial; cerca de 50 % típico | [CRA-2025], que recopila a Haug (1993), Diaz et al. (1993) y CDFA (2022). **Fuente secundaria** |
-| Abono estimado | ≈ 35–70 kg/mes | Cálculo propio: 117 kg × 30–60 % [CRA-2025] |
+| Abono estimado por ciclo | ≈ 26–51 kg | Cálculo propio: 86 kg × 30–60 % [CRA-2025] |
 | Reducción de volumen de la pila | hasta 50 % | [FAO-2013, p. 31] |
 | Generación nacional | 515 kg por habitante; 47 % de los 24,8 millones de t/año viene de hogares | DANE citado en [DNP-2022, p. 6 del PDF]. La guía no indica el periodo de los 515 kg ni separa los orgánicos |
 | Normativa local | PGIRS de Santa Marta adoptado por Decreto 070 de 2023 y modificado por Decreto 461 de 2023 | [SM-2023] |
 
 **Retirado:** "un hogar estándar genera 1,2 kg/día" y "la pensión genera 3 veces más". No se encontró fuente para 1,2 kg/día, y las cifras oficiales son por persona e incluyen todo tipo de residuos, así que no son comparables con 3,9 kg/día de orgánicos de toda la casa.
+
+**Límite de un solo bidón:** el bidón de 220 L se llena el día 22 y después madura de 6 a 10 semanas sin recibir residuos [FAO-2013, p. 61]; mientras tanto, los residuos vuelven a la recolección. Si el sistema se implementa, hay que aumentar el número de bidones y planificar una estrategia que coordine los días de llenado, la rotación entre bidones y los días del camión recolector (martes, jueves y sábado).
 
 ## Costos de la propuesta de implementación (E5)
 
