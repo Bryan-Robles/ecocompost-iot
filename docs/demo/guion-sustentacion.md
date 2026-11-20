@@ -12,33 +12,34 @@ Rúbrica: Claridad y coherencia 20 % (las 5 etapas con evidencia) · Originalida
 
 ## Guion minuto a minuto
 
-| Min | Quién | Bloque | Qué se dice o se muestra | Criterio |
-|---|---|---|---|---|
-| 0:00–1:30 | Bryan | **Empatizar** | La casa: dueños y 10 estudiantes. Entrevistamos a 5 personas. Lo que no sabíamos: el dolor más fuerte es el trabajo de Cande con las bolsas que escurren, no solo el olor. | Claridad |
-| 1:30–2:30 | Karyme | **Definir** | Punto de vista y pregunta «¿Cómo podríamos…?». Pesaje propio: 19,5 kg en 5 días (3,9 kg/día). | Claridad |
-| 2:30–4:00 | Karyme | **Idear** | 8 ideas en Crazy 8s y matriz de impacto y esfuerzo. Elegimos la compostera aeróbica; el biodigestor se descartó por gas a presión y olores. Cambios por fuentes: bidón de 50 a 220 L (FAO) y se retiraron datos sin fuente. | Originalidad, Claridad |
-| 4:00–5:30 | Jussi | **Prototipar** | Esquema: sensores → ESP32 → servidor → app. Alcance autorizado: el software funciona; el hardware es un diseño y los datos de temperatura y humedad son simulados (aviso visible en la app). Valores de la FAO: 45–65 °C y 45–60 %. | Aplicabilidad, Claridad |
-| 5:30–7:00 | Bryan | **Evaluar** | Prueba por videollamada con Jenis, Cande y el esposo: 6 hipótesis. Se cumplieron H1, H2, H4 y H6; H5 con mejoras; **H3 no** (qué hacer con el líquido de abajo). Mostrar la tabla de 6 cambios. | Originalidad |
-| 7:00–8:00 | Jussi | **Demo 1 · Antes y después** | Pantalla **Estado** en verde: mensaje grande «Todo bien», etiqueta antes del número, menú en pestañas. Mostrar al lado la captura vieja (Figura 2 del informe). | Originalidad |
-| 8:00–9:30 | Jussi | **Demo 2 · Alerta** | Escenario **humedad-baja** (activarlo en el minuto 6, ver nota). La pantalla pasa a rojo y muestra «Qué hacer ahora» primero. Abrir **Alertas** y marcarla como atendida. | Aplicabilidad |
-| 9:30–10:30 | Karyme | **Demo 3 · Guía** | Pestaña **Guía**, sección 6 «El líquido de abajo»: no echarlo fresco, reposo de 15 días, 1 en 10, y qué hacer si huele mal. Cada paso tiene fuente (FAO, UAESP, Intendencia de Montevideo). Mostrar «¿Quién hace qué?»: Cande, nada extra. | Originalidad, Aplicabilidad |
-| 10:30–11:00 | Karyme | **Demo 4 · Etapas** | Pestaña **Historial**: etapas con nombres sencillos (Arranque, Etapa de calor, Enfriamiento, Maduración). | Aplicabilidad |
-| 11:00–13:30 | Bryan | **Propuesta** | Fase 1: piloto de 12 semanas en la casa. Fase 2: otras pensiones del barrio. Costo cotizado de una unidad: 341.400 COP (falta caja IP65, resina y cables). Responsables: el esposo de Jenis opera, Jenis deposita, Cande nada extra, Bryan es el contacto técnico. | Aplicabilidad |
-| 13:30–15:00 | Bryan | **Impacto y cierre** | ≈ 117 kg/mes y 1,4 t/año menos al camión; 35–70 kg/mes de abono. Son proyecciones con el pesaje propio. Se medirá con pesaje semanal. Repetir el mensaje central. | Aplicabilidad, Claridad |
-| 15:00–20:00 | Todos | **Preguntas** | Cada uno responde las que preparó (abajo). | Presentación |
+**Reparto:** Karyme abre (diapositivas 1 a 5), sigue Jussi (6 a 11) y cierra Bryan (12 a 16), que hace la demo porque es quien mejor conoce el prototipo. Cada uno tiene unos 5 minutos y Bryan maneja el computador.
 
-**Nota de la demo 2:** el escenario `humedad-baja` tarda entre 1,5 y 2 minutos en llegar a rojo, y después se recupera solo. Activarlo cuando empiece el bloque «Evaluar» (minuto 5:30), con el selector de `?demo=1` o con el comando del anexo. Si se pasa el momento, volver a activarlo.
+| Min | Quién | Diapositivas | Qué se dice o se muestra | Criterio |
+|---|---|---|---|---|
+| 0:00–0:30 | Karyme | 1 · Portada | Saludo, nombres del equipo y mensaje central. | Presentación |
+| 0:30–2:45 | Karyme | 2–3 · Problema y usuarios | La casa: dueños y 10 estudiantes; pesaje propio de 19,5 kg en 5 días (3,9 kg/día). Lo que no sabíamos: el dolor más fuerte es el trabajo de Cande. Jenis echa los residuos, el esposo opera y Cande no hace nada extra. | Claridad |
+| 2:45–3:30 | Karyme | 4 · Pregunta reto | Leer la pregunta «¿Cómo podríamos…?». | Claridad |
+| 3:30–5:00 | Karyme | 5 · Decisión | 8 ideas en Crazy 8s y matriz de impacto y esfuerzo. Compostera con sensores; el biodigestor se descartó por gas a presión y olores. Bidón de 50 a 220 L por la FAO. | Originalidad |
+| 5:00–6:45 | Jussi | 6–7 · Cómo funciona y valores | Sensores → ESP32 → servidor → app. El software funciona; el hardware es un diseño y los datos son simulados, como lo autorizó la docente. Riesgos aprobados. Valores de la FAO: 45–65 °C y 45–60 %. | Aplicabilidad, Claridad |
+| 6:45–9:15 | Jussi | 8–10 · Prueba y cambios | Videollamada con Jenis, Cande y el esposo: H1, H2, H4 y H6 cumplidas; H5 con mejoras; **H3 no**. Antes y después de la pantalla y los 6 cambios con su evidencia. | Originalidad |
+| 9:15–10:00 | Jussi | 11 · Líquido de abajo | Reposo de 15 días, 1 en 10, y si huele mal, al sifón. Cada paso tiene fuente (FAO, UAESP, Intendencia de Montevideo). | Originalidad, Aplicabilidad |
+| 10:00–12:30 | Bryan | 12 · Demo en vivo | Activar `humedad-baja` (ver nota). **Estado** todavía en verde; **Guía**, sección 6 y «¿Quién hace qué?»; **Historial** con las etapas; volver a **Estado**, ya en rojo, abrir **Alertas** y marcarla como atendida. | Aplicabilidad |
+| 12:30–14:00 | Bryan | 13–14 · Propuesta y responsables | Fase 1: piloto en la casa. Fase 2: otras pensiones del barrio. 580.140 COP por unidad; servidor gratuito en Oracle Cloud. Opera el esposo de Jenis; Bryan es el contacto técnico. | Aplicabilidad |
+| 14:00–15:00 | Bryan | 15–16 · Impacto y cierre | Un bidón se llena en 22 días: ≈ 86 kg menos al camión y 26–51 kg de abono por ciclo. Para aprovechar los ≈ 117 kg/mes hay que sumar bidones y coordinar con el camión. Repetir el mensaje central. | Aplicabilidad, Claridad |
+| 15:00–20:00 | Todos | Preguntas | Cada uno responde las dos que le tocan (abajo). | Presentación |
+
+**Nota de la demo:** el escenario `humedad-baja` tarda entre 1,5 y 2 minutos en llegar a rojo y después se recupera solo. Bryan lo activa al empezar la demo, con el selector de `?demo=1` o con el comando del anexo, y muestra Guía e Historial mientras cambia. Si se pasa el momento, volver a activarlo.
 
 ## Preguntas de la guía del curso
 
 | Pregunta | Responde | Respuesta corta |
 |---|---|---|
-| ¿Quiénes son sus usuarios y qué descubrieron que no sabían? | Bryan | Jenis, Cande, el esposo de Jenis y los estudiantes. Descubrimos que el mayor dolor es el trabajo físico de Cande, y en la prueba, que los términos técnicos los confunden y que nadie sabía qué hacer con el líquido de abajo. |
+| ¿Quiénes son sus usuarios y qué descubrieron que no sabían? | Karyme | Jenis, Cande, el esposo de Jenis y los estudiantes. Descubrimos que el mayor dolor es el trabajo físico de Cande, y en la prueba, que los términos técnicos los confunden y que nadie sabía qué hacer con el líquido de abajo. |
 | ¿Por qué compostera y no biodigestor? ¿Qué descartaron? | Karyme | La compostera aeróbica no produce gas a presión ni olores fuertes y da abono para la terraza. Descartamos el biodigestor, la compostera manual giratoria y, para más adelante, la automatización con válvulas y la visión artificial. |
-| ¿Qué valores usan para decidir si el proceso va bien, y de dónde salen? | Karyme | FAO (2013): temperatura normal 45–65 °C, problema sobre 70 °C o bajo 35 °C; humedad ideal 45–60 %. El margen de aviso de 5 puntos y los 14 días de enfriamiento prematuro son criterio del equipo, y así lo decimos. |
+| ¿Qué valores usan para decidir si el proceso va bien, y de dónde salen? | Jussi | FAO (2013): temperatura normal 45–65 °C, problema sobre 70 °C o bajo 35 °C; humedad ideal 45–60 %. El margen de aviso de 5 puntos y los 14 días de enfriamiento prematuro son criterio del equipo, y así lo decimos. |
 | ¿Qué cambió entre el primer prototipo y el final, y por qué? | Jussi | De los mockups de E2 al prototipo: bidón de 50 a 220 L por el cálculo de la FAO. Después de la prueba: 6 cambios en la app, cada uno con evidencia (letra, vocabulario, números, instrucciones, pantallas, colores). |
-| ¿Cuántos residuos se dejarían de enviar a la recolección y cómo lo calcularon? | Bryan | ≈ 117 kg al mes: 3,9 kg/día del pesaje propio × 30 días. Es una proyección; en el piloto se medirá con pesaje semanal. |
-| ¿Quién operará el sistema después del curso? | Jussi | El esposo de Jenis, que revisa la app cada mañana; Jenis deposita los residuos; Cande no hace trabajo extra. Bryan queda como contacto técnico. |
+| ¿Cuántos residuos se dejarían de enviar a la recolección y cómo lo calcularon? | Bryan | ≈ 86 kg por ciclo: 3,9 kg/día del pesaje propio × 22 días, que es lo que tarda en llenarse el bidón. Después madura de 6 a 10 semanas. Con más bidones y una estrategia coordinada con el camión se llegaría a ≈ 117 kg/mes. |
+| ¿Quién operará el sistema después del curso? | Bryan | El esposo de Jenis, que revisa la app cada mañana; Jenis deposita los residuos; Cande no hace trabajo extra. Bryan queda como contacto técnico. |
 
 ## Preguntas difíciles probables
 
@@ -47,7 +48,8 @@ Rúbrica: Claridad y coherencia 20 % (las 5 etapas con evidencia) · Originalida
 - **"¿El lixiviado sirve o no sirve?"** Tiene nutrientes, pero fresco puede dañar las plantas (FAO, p. 73). Después de reposar y diluirse 1 en 10 se puede regar en la tierra cada 15 días (Intendencia de Montevideo, 2026).
 - **"¿Por qué se bota por el sifón?"** Es una decisión del equipo: ninguna fuente dice cómo desechar el que no sirve. Se diluye y va al alcantarillado sanitario, nunca a la rejilla de aguas lluvias.
 - **"¿Cuándo se pesó?"** Los días 1 a 3 se pesaron para el Entregable 1, y el pesaje continuó hasta completar los 5 días que se reportaron en el Entregable 2.
-- **"¿El costo está completo?"** No: faltan la caja IP65, la resina, los cables y el servidor de la fase 2, y dos productos estaban agotados el día de la consulta. Se dice así.
+- **"¿El costo está completo?"** Sí: 580.140 COP por unidad, con todos los materiales cotizados en tiendas colombianas. El ESP32 y el adaptador estaban agotados el día de la consulta, así que su precio es de referencia; la resina alcanza para varias unidades.
+- **"¿Dónde corre el servidor?"** En una máquina virtual gratuita de Oracle Cloud (Always Free), que guarda la base de datos en disco. Si Oracle la recupera por poco uso, la alternativa es el nivel gratuito de Google Cloud.
 - **"¿La lista de riesgos fue aprobada?"** Sí, la docente la aprobó. Son 6 riesgos (R1 a R6) con su control.
 - **"¿De dónde sale la temperatura ambiente del simulador?"** Son 30 °C, la temperatura promedio de Santa Marta que eligió el equipo.
 

@@ -14,6 +14,9 @@ Revisión de fuentes del 25 de octubre de 2026. Cada dato del sistema indica de 
 - **[SALL-2019]** Sall, P. M., Antoun, H., Chalifour, F.-P. y Beauchamp, C. J. (2019). Potential use of leachate from composted fruit and vegetable waste as fertilizer for corn. *Cogent Food & Agriculture, 5*(1), 1580180. https://doi.org/10.1080/23311932.2019.1580180. Solo se leyó el resumen.
 - **[HC-2026]** Homecenter Colombia. (s. f.). *Tanque con tapa 220 litros negro Colplast; Regulación moderna hembra macho 1/2 pulgada (Grival); Malla para mosquitero en fibra de vidrio 91,44 cm × 7,62 m (Adfors)*. Recuperado el 9 de noviembre de 2026 de https://www.homecenter.com.co
 - **[DYN-2026]** Dynamo Electronics. (s. f.). *Board ESP32-DevKitC-32D; Sensor de temperatura DS18B20 a prueba de agua; Sensor de humedad del suelo; Adaptador 5 V/2 A USB*. Recuperado el 9 de noviembre de 2026 de https://www.dynamoelectronics.com
+- **[SIGMA-2026]** Sigma Electrónica. (s. f.). *SEN0193, sensor capacitivo para humedad en suelos (DFRobot)*. Recuperado el 11 de noviembre de 2026 de https://www.sigmaelectronica.net/producto/sen0193/
+- **[OCI-2026]** Oracle. (s. f.). *Always Free Resources*. Oracle Cloud Infrastructure Documentation. Recuperado el 11 de noviembre de 2026 de https://docs.oracle.com/en-us/iaas/Content/FreeTier/freetier_topic-Always_Free_Resources.htm
+- **[GCP-2026]** Google Cloud. (s. f.). *Free Tier usage limits*. Recuperado el 11 de noviembre de 2026 de https://docs.cloud.google.com/free/docs/free-cloud-features
 - **[EQUIPO-E2]** Robles Mojica, B. A., Sánchez Fernández, K. J. y Torres González, J. (2026). *EcoCompost IoT: Entregable 2. Idear y prototipar en baja fidelidad* [Documento de curso]. Universidad del Magdalena.
 
 ## Umbrales de diagnóstico
@@ -83,32 +86,45 @@ Ya no se usa "agregar 1 litro de agua" (venía del wireframe sin fuente); se ree
 | Dato | Valor | Respaldo |
 |---|---|---|
 | Residuos orgánicos de la pensión | 19,5 kg en 5 días (17 y 19 a 22 de octubre de 2026); 3,9 kg/día | Pesaje propio [EQUIPO-E2] |
-| Residuos desviados al mes | ≈ 117 kg/mes | Proyección lineal propia (3,9 kg/día × 30) |
+| Residuos desviados en un ciclo del bidón | ≈ 86 kg | Cálculo propio: 3,9 kg/día × 22 días de llenado del bidón de 220 L |
+| Duración de un ciclo | ≈ 9–13 semanas | 22 días de llenado + 6 a 10 semanas de maduración [FAO-2013, p. 61] |
+| Potencial de la casa con más bidones | ≈ 117 kg/mes | Proyección lineal propia (3,9 kg/día × 30) |
 | Por persona | ≈ 0,33 kg/persona/día de orgánicos crudos | Cálculo propio: 3,9 kg/día ÷ 12 personas (dueños y 10 estudiantes, [EQUIPO-E2]) |
 | Rendimiento de compost | 30–60 % del peso inicial; cerca de 50 % típico | [CRA-2025], que recopila a Haug (1993), Diaz et al. (1993) y CDFA (2022). **Fuente secundaria** |
-| Abono estimado | ≈ 35–70 kg/mes | Cálculo propio: 117 kg × 30–60 % [CRA-2025] |
+| Abono estimado por ciclo | ≈ 26–51 kg | Cálculo propio: 86 kg × 30–60 % [CRA-2025] |
 | Reducción de volumen de la pila | hasta 50 % | [FAO-2013, p. 31] |
 | Generación nacional | 515 kg por habitante; 47 % de los 24,8 millones de t/año viene de hogares | DANE citado en [DNP-2022, p. 6 del PDF]. La guía no indica el periodo de los 515 kg ni separa los orgánicos |
 | Normativa local | PGIRS de Santa Marta adoptado por Decreto 070 de 2023 y modificado por Decreto 461 de 2023 | [SM-2023] |
 
 **Retirado:** "un hogar estándar genera 1,2 kg/día" y "la pensión genera 3 veces más". No se encontró fuente para 1,2 kg/día, y las cifras oficiales son por persona e incluyen todo tipo de residuos, así que no son comparables con 3,9 kg/día de orgánicos de toda la casa.
 
+**Límite de un solo bidón:** el bidón de 220 L se llena el día 22 y después madura de 6 a 10 semanas sin recibir residuos [FAO-2013, p. 61]; mientras tanto, los residuos vuelven a la recolección. Si el sistema se implementa, hay que aumentar el número de bidones y planificar una estrategia que coordine los días de llenado, la rotación entre bidones y los días del camión recolector (martes, jueves y sábado).
+
 ## Costos de la propuesta de implementación (E5)
 
-Precios de una unidad consultados el 9 de noviembre de 2026. No se verificó si incluyen IVA.
+Precios de una unidad consultados entre el 9 y el 11 de noviembre de 2026. No se verificó si incluyen IVA.
 
 | Componente | Referencia | Precio (COP) | Respaldo |
 |---|---|---|---|
 | Bidón con tapa | Tanque con tapa 220 L, Colplast | 199.900 | [HC-2026] |
 | Microcontrolador | ESP32-DevKitC-32D (agotado el día de la consulta) | 44.000 | [DYN-2026] |
 | Sensor de temperatura | DS18B20 a prueba de agua | 15.000 | [DYN-2026] |
-| Sensor de humedad | Sensor de humedad de suelo genérico (no confirma ser el capacitivo v1.2) | 6.500 | [DYN-2026] |
+| Sensor de humedad | Sensor capacitivo anticorrosivo DFRobot SEN0193 | 30.940 | [SIGMA-2026] |
 | Alimentación | Adaptador 5 V / 2 A USB (agotado el día de la consulta) | 26.000 | [DYN-2026] |
+| Caja para el ESP32 | Caja hermética 10 × 10, Halux (la tienda no indica el grado IP) | 14.200 | [HC-2026] |
+| Resistencia de 4,7 kΩ | Kit de 200 resistencias de 1/4 W (no confirma el valor de 4,7 kΩ) | 10.000 | [DYN-2026] |
+| Cables | Cables dupont de 20 cm, 10 unidades | 3.500 | [DYN-2026] |
+| Encapsulado de los sensores | Kit de resina epóxica Epoglass 1/4 de galón, Preflex (alcanza para varias unidades) | 114.900 | [HC-2026] |
 | Llave de la bandeja | Regulación 1/2", Grival | 36.900 | [HC-2026] |
 | Malla | 1 m de un rollo de 7,62 m a 99.900 (cálculo propio) | 13.100 | [HC-2026] |
-| **Subtotal cotizado** | | **341.400** | |
+| Recipiente del líquido | Balde de 10 L, Estra | 23.900 | [HC-2026] |
+| Guantes | Guantes de nitrilo, caja de 100, Steelpro | 30.900 | [HC-2026] |
+| Tapabocas | Tapabocas desechables, paquete de 50, Element | 16.900 | [HC-2026] |
+| Servidor | Máquina virtual Always Free de Oracle Cloud | 0 | [OCI-2026] |
+| Software | Spring Boot, React y H2 (código abierto) | 0 | |
+| **Total de una unidad** | | **580.140** | |
 
-**Por cotizar:** caja IP65, resina para encapsular, cables, recipiente de la bandeja, guantes y tapabocas, y el servidor de la fase 2.
+**Servidor elegido:** máquina virtual *Always Free* de Oracle Cloud. Gratuita "for the life of the account", con hasta el equivalente a 2 OCPU y 12 GB de memoria en Ampere A1 y 200 GB de almacenamiento en bloque, así que el archivo H2 se conserva entre reinicios [OCI-2026]. Riesgo: Oracle puede recuperar una instancia inactiva si durante 7 días su CPU, red y memoria se quedan bajo el 20 % [OCI-2026]. Alternativa: e2-micro del nivel gratuito de Google Cloud, con disco persistente de 30 GB pero con cuenta de facturación obligatoria [GCP-2026]. Se descartó Render gratis porque su sistema de archivos se borra al reiniciar y no permite disco persistente.
 
 **Consumo eléctrico máximo:** 5 V × 2 A = 10 W → 0,24 kWh/día → 7,2 kWh/mes si el adaptador trabajara siempre al máximo (cálculo propio; el ESP32 consume menos).
 
